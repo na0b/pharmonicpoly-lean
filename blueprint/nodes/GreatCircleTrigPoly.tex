@@ -1,0 +1,85 @@
+\begin{lemma}[A polynomial restricted to a circle is a trigonometric polynomial]
+Let $n,m\in\mathbb{N}$, let $P\in\mathbb{R}[X_1,\dots,X_n]$ have total degree
+$\deg P\le m$, and let $A,B\in\mathbb{R}^n$. Then the function
+\[
+  t\ \longmapsto\ P\bigl(\cos(t)A+\sin(t)B\bigr)
+\]
+is a real trigonometric polynomial of degree at most $m$.
+\end{lemma}
+\begin{proof}
+Write $\gamma(t)=\cos(t)A+\sin(t)B$, so that coordinatewise
+\begin{equation}\label{eq:gctp-coord}
+  \gamma(t)_a=\cos(t)A_a+\sin(t)B_a\qquad(1\le a\le n),
+\end{equation}
+and let $V_N=\{T:\mathbb{R}\to\mathbb{R}\ \text{a real trigonometric polynomial
+of degree at most }N\}$ in the sense of \noderef{TrigPolyLe}.
+
+\emph{Step 1: $V_N$ is closed under passing to a larger degree.} Let $k\le N$ and
+$T\in V_k$, with witnesses $\alpha,\beta:\mathbb{N}\to\mathbb{R}$, so
+$T(t)=\sum_{j=0}^{k}(\alpha_j\cos(jt)+\beta_j\sin(jt))$ for all $t$. Define
+$\alpha'_j=\alpha_j$ and $\beta'_j=\beta_j$ for $j\le k$, and
+$\alpha'_j=\beta'_j=0$ for $j>k$. Then for every $t$
+\[
+  \sum_{j=0}^{N}\bigl(\alpha'_j\cos(jt)+\beta'_j\sin(jt)\bigr)
+  =\sum_{j=0}^{k}\bigl(\alpha_j\cos(jt)+\beta_j\sin(jt)\bigr)=T(t),
+\]
+because every term with $k<j\le N$ vanishes. So $(\alpha',\beta')$ witnesses
+$T\in V_N$. (This step is not vacuous: the witnesses supplied by $T\in V_k$ need
+not themselves vanish above $k$, which is why they are replaced.)
+
+\emph{Step 2: each coordinate function lies in $V_1$.} Fix $a$. Taking
+$\alpha_0=0$, $\alpha_1=A_a$, $\beta_0=0$, $\beta_1=B_a$ and all further entries
+$0$, we get, for every $t$,
+\[
+  \sum_{j=0}^{1}\bigl(\alpha_j\cos(jt)+\beta_j\sin(jt)\bigr)
+  =\alpha_0+\alpha_1\cos t+\beta_1\sin t
+  =\cos(t)A_a+\sin(t)B_a=\gamma(t)_a ,
+\]
+using $\cos(0\cdot t)=1$ and $\sin(0\cdot t)=0$. So $t\mapsto\gamma(t)_a$ lies in
+$V_1$ by \noderef{TrigPolyLe}.
+
+\emph{Step 3: a monomial of degree $k$ gives an element of $V_k$.} Let
+$d\in\mathbb{N}^n$ with $k=\sum_a d_a$. We claim
+$t\mapsto\prod_{a=1}^{n}\gamma(t)_a^{\,d_a}$ lies in $V_k$. The product is a
+product of exactly $k$ factors, each of them one of the functions
+$t\mapsto\gamma(t)_a$ (the factor $t\mapsto\gamma(t)_a$ repeated $d_a$ times).
+We argue by induction on $k$. If $k=0$ the product is the constant function $1$,
+which lies in $V_0$: take $\alpha_0=1$ and all other entries $0$, so that
+$\sum_{j=0}^{0}(\alpha_j\cos(jt)+\beta_j\sin(jt))=\alpha_0=1$. If $k\ge1$, split
+off one factor: the product equals $g\cdot h$ where $g(t)=\gamma(t)_{a_0}$ for
+some index $a_0$ with $d_{a_0}\ge1$, and $h$ is the product of the remaining
+$k-1$ factors. By Step 2, $g\in V_1$; by the induction hypothesis, $h\in V_{k-1}$.
+By \noderef{TrigPolyMul} the pointwise product $g\cdot h$ lies in
+$V_{1+(k-1)}=V_k$, which completes the induction.
+
+\emph{Step 4: each monomial of $P$ gives an element of $V_m$.} Let
+$d\in\operatorname{supp}P$. By the background proposition on the monomial
+expansion, $\sum_a d_a\le\deg P\le m$. So by Step 3 the function
+$t\mapsto\prod_a\gamma(t)_a^{\,d_a}$ lies in $V_k$ with $k=\sum_ad_a\le m$, and
+hence in $V_m$ by Step 1.
+
+\emph{Step 5: assembling the finite sum.} By the background proposition on the
+monomial expansion, for every $t$
+\begin{equation}\label{eq:gctp-exp}
+  P\bigl(\gamma(t)\bigr)
+  =\sum_{d\in\operatorname{supp}P}\bigl(\operatorname{coeff}_dP\bigr)
+    \prod_{a=1}^{n}\gamma(t)_a^{\,d_a}.
+\end{equation}
+We show by induction on the cardinality of a finite set
+$S\subseteq\operatorname{supp}P$ that
+$t\mapsto\sum_{d\in S}(\operatorname{coeff}_dP)\prod_a\gamma(t)_a^{d_a}$ lies in
+$V_m$. For $S=\emptyset$ the function is the constant $0$, which lies in $V_m$
+(take all witness entries $0$). For the inductive step write
+$S=S_0\cup\{d_0\}$ with $d_0\notin S_0$; then the function for $S$ is
+$1\cdot G_0+(\operatorname{coeff}_{d_0}P)\cdot G_1$ where
+$G_0(t)=\sum_{d\in S_0}(\operatorname{coeff}_dP)\prod_a\gamma(t)_a^{d_a}$ lies in
+$V_m$ by the induction hypothesis and
+$G_1(t)=\prod_a\gamma(t)_a^{(d_0)_a}$ lies in $V_m$ by Step 4. By
+\noderef{TrigPolyLinComb}, applied to $G_0$ and $G_1$ with the scalars
+$c=1$ and $d=\operatorname{coeff}_{d_0}P$, that linear combination lies in
+$V_m$; and it agrees pointwise with the function for $S$, hence equals it.
+
+Taking $S=\operatorname{supp}P$ and using \eqref{eq:gctp-exp}, the function
+$t\mapsto P(\gamma(t))$ agrees at every $t$ with a function in $V_m$, hence
+equals it and so lies in $V_m$. That is the assertion.
+\end{proof}

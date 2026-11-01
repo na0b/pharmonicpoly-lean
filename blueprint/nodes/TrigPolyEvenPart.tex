@@ -1,0 +1,53 @@
+\begin{lemma}[Algebraic form of the even part]
+Let $m\in\mathbb{N}$ and let $T:\mathbb{R}\to\mathbb{R}$ be a real
+trigonometric polynomial of degree at most $m$. Then there is a polynomial
+$P\in\mathbb{R}[X]$ with $\deg P\le m$ such that
+\[
+  P(\cos t)=\frac{T(t)+T(-t)}{2}\qquad\text{for every }t\in\mathbb{R}.
+\]
+\end{lemma}
+\begin{proof}
+By the definition in \noderef{TrigPolyLe} there are sequences
+$a,b:\mathbb{N}\to\mathbb{R}$ with
+\begin{equation}\label{eq:tpep-rep}
+  T(t)=\sum_{k=0}^{m}\bigl(a_k\cos(kt)+b_k\sin(kt)\bigr)
+  \qquad\text{for every }t\in\mathbb{R}.
+\end{equation}
+
+\emph{Step 1: computing the even part.} Fix $t\in\mathbb{R}$. Applying
+\eqref{eq:tpep-rep} at $-t$ and using that $\cos$ is even and $\sin$ is odd,
+i.e. $\cos(k(-t))=\cos(kt)$ and $\sin(k(-t))=-\sin(kt)$ for every
+$k\in\mathbb{N}$, we get
+\[
+  T(-t)=\sum_{k=0}^{m}\bigl(a_k\cos(kt)-b_k\sin(kt)\bigr).
+\]
+Adding this to \eqref{eq:tpep-rep} and dividing by $2$, the $\sin$ terms cancel
+term by term and
+\begin{equation}\label{eq:tpep-even}
+  \frac{T(t)+T(-t)}{2}=\sum_{k=0}^{m}a_k\cos(kt).
+\end{equation}
+
+\emph{Step 2: the polynomial.} Let $T_k\in\mathbb{R}[X]$ be the $k$-th
+Chebyshev polynomial of the first kind and set
+\[
+  P=\sum_{k=0}^{m}a_k\,T_k\ \in\ \mathbb{R}[X].
+\]
+
+\emph{Step 3: the degree bound.} By the background proposition on Chebyshev
+polynomials, $\deg T_k=k$ for every $k\in\mathbb{N}$. Hence
+$\deg\bigl(a_kT_k\bigr)\le\deg T_k=k\le m$ for each $0\le k\le m$ (with the
+convention $\deg 0=-\infty$, which also satisfies the bound, covering the case
+$a_k=0$). Since the degree of a finite sum of polynomials is at most the maximum
+of their degrees, $\deg P\le m$.
+
+\emph{Step 4: the identity.} Fix $t\in\mathbb{R}$. By the background proposition
+on Chebyshev polynomials, $T_k(\cos t)=\cos(kt)$ for every $k\in\mathbb{N}$.
+Since evaluation at a point is a ring homomorphism $\mathbb{R}[X]\to\mathbb{R}$,
+and in particular $\mathbb{R}$-linear,
+\[
+  P(\cos t)=\sum_{k=0}^{m}a_k\,T_k(\cos t)=\sum_{k=0}^{m}a_k\cos(kt)
+          =\frac{T(t)+T(-t)}{2},
+\]
+the last equality being \eqref{eq:tpep-even}. This $P$ therefore has all the
+required properties.
+\end{proof}

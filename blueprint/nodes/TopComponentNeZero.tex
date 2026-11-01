@@ -1,0 +1,37 @@
+\begin{lemma}[The top homogeneous component of a nonzero polynomial]
+Let $\sigma$ be any index type, let $R$ be a commutative semiring and let
+$P\in R[X_a:a\in\sigma]$ be nonzero. Then
+\[
+  H_{\deg P}(P)\ne0,
+\]
+where $\deg P$ is the total degree of $P$ and $H_d$ is the $d$-th homogeneous
+component.
+\end{lemma}
+\begin{proof}
+Since $P\ne0$ its support is nonempty. The total degree of $P$ is by definition
+the largest of the entry sums $\sum_a d_a$ over the exponent tuples
+$d\in\operatorname{supp}P$; as $\operatorname{supp}P$ is a nonempty finite set,
+that largest value is attained, so we may fix $d\in\operatorname{supp}P$ with
+\begin{equation}\label{eq:tcnz-attained}
+  \sum_a d_a=\deg P .
+\end{equation}
+
+Now compute the $d$-th coefficient of the top homogeneous component. By the
+definition of the homogeneous component, $H_{d_0}(P)$ keeps exactly the
+monomials of $P$ whose exponent tuple has entry sum $d_0$; coefficientwise,
+\[
+  \operatorname{coeff}_d\bigl(H_{d_0}(P)\bigr)
+  =\begin{cases}\operatorname{coeff}_dP,&\sum_a d_a=d_0,\\ 0,&\text{otherwise.}\end{cases}
+\]
+Taking $d_0=\deg P$ and using \eqref{eq:tcnz-attained}, the first case applies,
+so
+\begin{equation}\label{eq:tcnz-coeff}
+  \operatorname{coeff}_d\bigl(H_{\deg P}(P)\bigr)=\operatorname{coeff}_dP .
+\end{equation}
+
+Suppose, for contradiction, that $H_{\deg P}(P)=0$. Then the left-hand side of
+\eqref{eq:tcnz-coeff} is the $d$-th coefficient of the zero polynomial, i.e.
+$0$, so $\operatorname{coeff}_dP=0$. But $d\in\operatorname{supp}P$ means
+precisely that $\operatorname{coeff}_dP\ne0$ --- a contradiction. Hence
+$H_{\deg P}(P)\ne0$.
+\end{proof}

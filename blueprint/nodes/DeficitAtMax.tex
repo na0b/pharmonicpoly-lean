@@ -1,0 +1,142 @@
+\begin{lemma}[The deficit and latitude estimates at the maximum point]
+Let $n,m\in\mathbb{N}$ with $n\ge3$ and $m\ge2$, let $p\in\mathbb{R}$ with
+$n-\tfrac1{13}\le p$, let $P\in\mathbb{R}[X_1,\dots,X_n]$ be homogeneous of
+degree $m$, let $\mathbb{R}^n$ carry the Euclidean inner product and let
+$u(y)=P(y)$. Let $e\in\mathbb{R}^n$ satisfy $\lVert e\rVert=1$, $u(e)=1$ and
+$\lvert u(y)\rvert\le1$ for every unit $y$, and assume
+$\mathcal{E}^{\mathrm{alg}}_p(P)=0$. Write $\theta_0=\pi/m$ and, for a unit
+vector $v$ with $\langle e,v\rangle=0$,
+\[
+  d_v=D^2u(e)[v,v]+m(m-1),
+  \qquad
+  T_v(t)=u\bigl(\cos(t)e+\sin(t)v\bigr).
+\]
+Then $p\le n$, and for every unit $v$ with $\langle e,v\rangle=0$,
+\[
+  0\le d_v\le(n-p)\,m(m-1),
+  \qquad
+  -1\le T_v(\theta_0)\le-1+\frac{\pi^2(n-p)}{2},
+  \qquad
+  -T_v(\theta_0)>\frac8{13}.
+\]
+\end{lemma}
+\begin{proof}
+Throughout, $v$ denotes a unit vector with $\langle e,v\rangle=0$ and
+$\gamma_v(t)=\cos(t)e+\sin(t)v$, so $T_v(t)=u(\gamma_v(t))$.
+
+\emph{Step 0: $\deg P\le m$, and $\gamma_v$ lies on the unit sphere.} Since $P$
+is homogeneous of degree $m$, every exponent tuple in $\operatorname{supp}P$ has
+entry sum $m$; as the total degree is the largest such entry sum (and is $0$ for
+$P=0$), $\deg P\le m$. Moreover, expanding the inner product and using
+$\lVert e\rVert=\lVert v\rVert=1$ and $\langle e,v\rangle=0$,
+\begin{equation}\label{eq:dam-sphere}
+  \lVert\gamma_v(t)\rVert^2=\cos^2(t)+\sin^2(t)=1
+  \qquad(t\in\mathbb{R}).
+\end{equation}
+
+\emph{Step 1: $T_v$ satisfies the hypotheses of the deficit estimate.}
+\begin{itemize}
+\item $T_v$ is a real trigonometric polynomial of degree at most $m$: this is
+  \noderef{GreatCircleTrigPoly} applied with $A=e$, $B=v$ and the bound
+  $\deg P\le m$ of Step 0.
+\item $\lvert T_v(t)\rvert\le1$ for every $t$: by \eqref{eq:dam-sphere} the
+  point $\gamma_v(t)$ is a unit vector, so the hypothesis
+  $\lvert u(y)\rvert\le1$ for unit $y$ applies.
+\item $T_v(0)=1$: indeed $\gamma_v(0)=\cos(0)e+\sin(0)v=e$, so $T_v(0)=u(e)=1$.
+\end{itemize}
+
+\emph{Step 2: $m^2+T_v''(0)=d_v$.} By Step 1 the function $T_v$ is a real
+trigonometric polynomial of degree at most $m$, so by \noderef{TrigPolySmooth} it
+is real-analytic on $\mathbb{R}$ and in particular infinitely differentiable;
+hence $T_v''(0)$ denotes its genuine second derivative at $0$. By
+\noderef{GreatCircleSecondDeriv} applied
+with $C=0$, $A=e$, $B=v$ at the parameter $t=0$, and using
+$\gamma_v(0)=e$ and $\gamma_v'(0)=-\sin(0)e+\cos(0)v=v$,
+\[
+  T_v''(0)=D^2u(e)[v,v]-\bigl\langle\nabla u(e),\,\cos(0)e+\sin(0)v\bigr\rangle
+         =D^2u(e)[v,v]-\bigl\langle\nabla u(e),e\bigr\rangle .
+\]
+By \noderef{MaxPointDerivatives}, whose three hypotheses on $e$ are ours,
+$\nabla u(e)=m\,e$, so $\langle\nabla u(e),e\rangle=m\lVert e\rVert^2=m$. Hence
+\begin{equation}\label{eq:dam-d}
+  m^2+T_v''(0)=m^2+D^2u(e)[v,v]-m=D^2u(e)[v,v]+m(m-1)=d_v .
+\end{equation}
+
+\emph{Step 3: what the deficit estimate gives.} By \noderef{DeficitBound}
+applied with this $m\ge2$ and $T=T_v$ (its three hypotheses are Step 1), and
+rewriting $m^2+T_v''(0)$ as $d_v$ by \eqref{eq:dam-d},
+\begin{equation}\label{eq:dam-db}
+  0\le1+T_v(\theta_0),
+  \qquad
+  1+T_v(\theta_0)\le d_v\bigl(1-\cos\theta_0\bigr),
+  \qquad
+  d_v\bigl(1-\cos\theta_0\bigr)\le\frac{\pi^2d_v}{2m^2}.
+\end{equation}
+In particular $-1\le T_v(\theta_0)$, which is the left half of the latitude
+bound.
+
+\emph{Step 4: $d_v\ge0$.} Since $m\ge2$ we have $0<\theta_0=\pi/m\le\pi/2$, and
+$\cos$ is strictly decreasing on $[0,\pi]$ with $\cos0=1$, so $\cos\theta_0<1$,
+i.e. $1-\cos\theta_0>0$. Chaining the first two inequalities of
+\eqref{eq:dam-db} gives $0\le d_v(1-\cos\theta_0)$, and dividing by the positive
+number $1-\cos\theta_0$ gives $d_v\ge0$. (This is where the paper cites
+eq:bernstein; the deficit estimate alone suffices.)
+
+\emph{Step 5: $p\le n$.} Since $n\ge3\ge1$, the single-vector orthonormal family
+$(e)$ extends, by the background proposition on extending an orthonormal family,
+to an orthonormal basis $(b_i)_{i=1}^{n}$ of $\mathbb{R}^n$ with $b_{i_0}=e$ for
+some index $i_0$. For every $i\ne i_0$ the vector $b_i$ is a unit vector with
+$\langle e,b_i\rangle=\langle b_{i_0},b_i\rangle=0$, so Step 4 applies to it and
+gives $d_{b_i}\ge0$. By \noderef{TraceIdentity}, applied with this basis and
+index (its hypotheses on $m$, $P$, $e$ and $\mathcal{E}^{\mathrm{alg}}_p(P)$ are
+ours, using $m\ge2\ge1$),
+\begin{equation}\label{eq:dam-trace}
+  \sum_{i\ne i_0}d_{b_i}=(n-p)\,m(m-1).
+\end{equation}
+The left-hand side is a sum of nonnegative reals, hence nonnegative, so
+$(n-p)m(m-1)\ge0$. Since $m\ge2$ we have $m(m-1)>0$, so dividing gives
+$n-p\ge0$, i.e. $p\le n$.
+
+\emph{Step 6: $d_v\le(n-p)m(m-1)$.} Fix $v$ as above. The pair $(e,v)$ is an
+orthonormal family of two vectors in $\mathbb{R}^n$ (both unit and mutually
+orthogonal by hypothesis), and $n\ge3\ge2$, so by the background extension
+proposition there is an orthonormal basis $(b_i)_{i=1}^{n}$ of $\mathbb{R}^n$
+and two distinct indices $i_0\ne i_1$ with $b_{i_0}=e$ and $b_{i_1}=v$. Exactly
+as in Step 5, every $i\ne i_0$ gives a unit $b_i$ orthogonal to $e$, so
+$d_{b_i}\ge0$ by Step 4, and \eqref{eq:dam-trace} holds for this basis. Since
+$i_1$ is one of the indices $i\ne i_0$ and all the summands are nonnegative, the
+single term $d_{b_{i_1}}$ is at most the whole sum:
+\[
+  d_v=d_{b_{i_1}}\le\sum_{i\ne i_0}d_{b_i}=(n-p)\,m(m-1).
+\]
+
+\emph{Step 7: the latitude upper bound.} Put $\delta=n-p$. By Step 5,
+$\delta\ge0$, and from the hypothesis $n-\tfrac1{13}\le p$ we get
+$\delta=n-p\le\tfrac1{13}$. Now chain \eqref{eq:dam-db} and Step 6:
+\[
+  1+T_v(\theta_0)
+  \ \le\ d_v\bigl(1-\cos\theta_0\bigr)
+  \ \le\ \frac{\pi^2d_v}{2m^2}
+  \ \le\ \frac{\pi^2\,\delta\,m(m-1)}{2m^2}
+  =\frac{\pi^2\delta}{2}\cdot\frac{m-1}{m}
+  \ \le\ \frac{\pi^2\delta}{2},
+\]
+where the third inequality multiplies $d_v\le\delta m(m-1)$ (Step 6) by the
+positive number $\pi^2/(2m^2)$, and the last uses $0\le(m-1)/m\le1$ together
+with $\pi^2\delta/2\ge0$ (which holds since $\delta\ge0$). Subtracting $1$,
+\[
+  T_v(\theta_0)\le-1+\frac{\pi^2\delta}{2}=-1+\frac{\pi^2(n-p)}{2},
+\]
+which with Step 3 completes the two-sided latitude bound.
+
+\emph{Step 8: $-T_v(\theta_0)>8/13$.} Put $a=-T_v(\theta_0)$, so by Step 7
+$a\ge1-\pi^2\delta/2$. By the background numerical bounds for $\pi$ we have
+$\pi^2<10$. If $\delta=0$ then $\pi^2\delta/2=0<5/13$. If $\delta>0$ then
+multiplying $\pi^2<10$ by $\delta/2>0$ gives
+$\pi^2\delta/2<5\delta\le5/13$, using $\delta\le1/13$. In both cases
+$\pi^2\delta/2<5/13$, hence
+\[
+  a\ \ge\ 1-\frac{\pi^2\delta}{2}\ >\ 1-\frac5{13}=\frac8{13},
+\]
+which is the last assertion.
+\end{proof}

@@ -12,8 +12,8 @@ theorem AffineOfTotalDegreeLeOne {n : ℕ} {P : MvPolynomial (Fin n) ℝ}
     ∃ (w : EuclideanSpace ℝ (Fin n)) (c : ℝ), ∀ x : EuclideanSpace ℝ (Fin n),
       MvPolynomial.eval (fun i => x i) P = inner ℝ w x + c := by
   classical
-  refine ⟨WithLp.toLp 2 (fun a : Fin n => MvPolynomial.coeff (Finsupp.single a 1) P),
-    MvPolynomial.coeff 0 P, ?_⟩
+  refine ⟨WithLp.toLp 2 (fun a : Fin n => P.coeff (Finsupp.single a 1)),
+    P.coeff 0, ?_⟩
   intro x
   have hinj : Function.Injective (fun a : Fin n => Finsupp.single a 1) := by
     intro a b hab
@@ -76,5 +76,5 @@ theorem AffineOfTotalDegreeLeOne {n : ℕ} {P : MvPolynomial (Fin n) ℝ}
   simp only [RCLike.inner_apply, conj_trivial]
   rw [mul_one]
   rw [add_comm]
-  exact congrArg (fun z => z + MvPolynomial.coeff 0 P)
+  exact congrArg (fun z => z + P.coeff 0)
     (Finset.sum_congr rfl (fun a _ => by ring))

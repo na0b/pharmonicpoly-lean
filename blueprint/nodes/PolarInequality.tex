@@ -1,0 +1,189 @@
+\begin{lemma}[eq:polar as an inequality]
+Let $n,m\in\mathbb{N}$ with $n\ge3$ and $m\ge2$, let $p\in\mathbb{R}$ with
+$n-\tfrac1{13}\le p$, let $P\in\mathbb{R}[X_1,\dots,X_n]$ be homogeneous of
+degree $m$, let $\mathbb{R}^n$ carry the Euclidean inner product and let
+$u(y)=P(y)$. Put $\theta_0=\pi/m$. Let $e,v_0\in\mathbb{R}^n$ satisfy
+$\lVert e\rVert=\lVert v_0\rVert=1$ and $\langle e,v_0\rangle=0$, let
+$u(e)=1$ and $\lvert u(y)\rvert\le1$ for every unit $y$, and assume
+$\mathcal{E}^{\mathrm{alg}}_p(P)=0$ and that $v_0$ maximizes
+$v\mapsto u(\cos(\theta_0)e+\sin(\theta_0)v)$ over unit vectors $v$ with
+$\langle e,v\rangle=0$. Write
+$F(s)=u(\cos(s)e+\sin(s)v_0)$ and $x_0=\cos(\theta_0)e+\sin(\theta_0)v_0$, and
+let $a,b,c,q\in\mathbb{R}$ satisfy the defining equations
+\[
+  F(\theta_0)=-a,\qquad F'(\theta_0)=m\,b,\qquad F''(\theta_0)=m^2c,
+  \qquad q=a^2+b^2,\qquad 0<q .
+\]
+Then
+\[
+  0\ \le\ c-\Bigl(p-1+\frac{n-p}{m}\Bigr)a
+    +(n-2)\,\frac{\cos\theta_0}{\sin\theta_0\cdot m}\,b
+    +(p-2)\,\frac{b^2(c-a)}{q}.
+\]
+\end{lemma}
+\begin{proof}
+Put $e_r=x_0=\cos(\theta_0)e+\sin(\theta_0)v_0$ and
+$e_\theta=-\sin(\theta_0)e+\cos(\theta_0)v_0$, and write $H[z,z']=D^2u(x_0)[z,z']$.
+
+\emph{Step 0: elementary consequences.} Since $m\ge2$ and $\pi>0$ we have
+$0<\theta_0\le\pi/2$, so $\sin\theta_0>0$ and $m>0$. From $n\ge3$ and
+$n-\tfrac1{13}\le p$,
+\begin{equation}\label{eq:pi-p2}
+  p\ \ge\ 3-\tfrac1{13}=\tfrac{38}{13}\ >\ 2,
+\end{equation}
+so $p-2>0$; this is Remark 1.2 of the paper. (That positivity is what the
+paper's argument uses when it replaces $c$ by $s$. The derivation below performs
+no such replacement and does not use the positivity: the hypothesis
+$n-\tfrac1{13}\le p$ is retained here only because it records the standing range
+of $p$ under which this step of Section 3 is carried out.) Expanding inner
+products and using
+$\lVert e\rVert=\lVert v_0\rVert=1$, $\langle e,v_0\rangle=0$,
+\begin{equation}\label{eq:pi-frame}
+  \lVert e_r\rVert=\lVert e_\theta\rVert=1,
+  \qquad\langle e_r,e_\theta\rangle=0,
+\end{equation}
+and directly
+\begin{equation}\label{eq:pi-decomp}
+  \cos(\theta_0)\,e_r-\sin(\theta_0)\,e_\theta=e,
+  \qquad
+  \sin(\theta_0)\,e_r+\cos(\theta_0)\,e_\theta=v_0 .
+\end{equation}
+
+\emph{Step 1: $\mathcal{E}_p(u)(x_0)=0$.} By \noderef{EpOpEvalPoly} at the point
+$x_0$, $\mathcal{E}_p(u)(x_0)=\bigl(\mathcal{E}^{\mathrm{alg}}_p(P)\bigr)(x_0)$,
+and the right-hand side is $0$ because $\mathcal{E}^{\mathrm{alg}}_p(P)$ is the
+zero polynomial and the zero polynomial takes the value $0$. So, by the
+definition in \noderef{EpOp},
+\begin{equation}\label{eq:pi-eq}
+  0=\lvert\nabla u(x_0)\rvert^2\,\Delta u(x_0)
+   +(p-2)\,H\bigl[\nabla u(x_0),\nabla u(x_0)\bigr].
+\end{equation}
+
+\emph{Step 2: $\nabla u(x_0)=(-m a)\,e_r+(m b)\,e_\theta$, so
+$\lvert\nabla u(x_0)\rvert^2=m^2q$.} By \eqref{eq:pi-frame} the pair
+$(e_r,e_\theta)$ is an orthonormal family of two vectors, and $n\ge3\ge2$, so by
+the background proposition on extending an orthonormal family there is an
+orthonormal basis $(b_i)_{i=1}^{n}$ of $\mathbb{R}^n$ and distinct indices
+$i_0\ne i_1$ with $b_{i_0}=e_r$ and $b_{i_1}=e_\theta$. Let
+$i\notin\{i_0,i_1\}$; then $b_i$ is a unit vector with
+$\langle e_r,b_i\rangle=\langle e_\theta,b_i\rangle=0$, so by
+\eqref{eq:pi-decomp} and linearity $\langle e,b_i\rangle=\langle v_0,b_i\rangle=0$.
+Hence by the first conclusion of \noderef{TangentialLaplacianBound}, applied with
+this $e$, $v_0$ and the maximality hypothesis, $\langle\nabla u(x_0),b_i\rangle=0$
+for every such $i$. By the background orthonormal-expansion proposition,
+\[
+  \nabla u(x_0)=\sum_{i=1}^{n}\langle b_i,\nabla u(x_0)\rangle\,b_i
+   =\langle e_r,\nabla u(x_0)\rangle\,e_r+\langle e_\theta,\nabla u(x_0)\rangle\,e_\theta ,
+\]
+all other terms vanishing. By \noderef{FrameHessian} applied with this $e$, this
+$v_0$ and $t=\theta_0$ (its hypothesis $m\ge1$ follows from $m\ge2$), the first
+two of its five identities give
+\begin{equation}\label{eq:pi-grad}
+  \langle\nabla u(x_0),e_r\rangle=m\,F(\theta_0)=-m\,a,
+  \qquad
+  \langle\nabla u(x_0),e_\theta\rangle=F'(\theta_0)=m\,b,
+\end{equation}
+using the defining equations for $a$ and $b$. Hence
+$\nabla u(x_0)=(-ma)e_r+(mb)e_\theta$, and since $(e_r,e_\theta)$ is orthonormal,
+\begin{equation}\label{eq:pi-norm}
+  \lvert\nabla u(x_0)\rvert^2=(-ma)^2+(mb)^2=m^2(a^2+b^2)=m^2q .
+\end{equation}
+
+\emph{Step 3: the Hessian term.} By \noderef{MvPolyHessian},
+$H[z,z']=\sum_i\sum_j z_i z'_j(\partial_i\partial_jP)(x_0)$, which is linear in
+each argument separately. Expanding $\nabla u(x_0)=(-ma)e_r+(mb)e_\theta$ from
+Step 2 in both slots,
+\[
+  H[\nabla u(x_0),\nabla u(x_0)]
+  =(ma)^2H[e_r,e_r]-(ma)(mb)\,H[e_r,e_\theta]-(mb)(ma)\,H[e_\theta,e_r]
+   +(mb)^2H[e_\theta,e_\theta].
+\]
+The two mixed entries are equal. Indeed, by \noderef{MvPolyContDiff} the function
+$u$ is of class $C^k$ on $\mathbb{R}^n$ for every smoothness exponent $k$, in
+particular $C^\infty$; and the second derivative of a function that is twice
+continuously differentiable at a point is a symmetric bilinear form there, so
+$H[e_\theta,e_r]=H[e_r,e_\theta]$. (This symmetry is genuinely needed:
+\noderef{FrameHessian} supplies only the entry $H[e_r,e_\theta]$.) Hence
+\[
+  H[\nabla u(x_0),\nabla u(x_0)]
+  =m^2a^2\,H[e_r,e_r]-2m^2ab\,H[e_r,e_\theta]+m^2b^2\,H[e_\theta,e_\theta].
+\]
+By the third, fourth and fifth identities of \noderef{FrameHessian} at
+$t=\theta_0$, together with the defining equations,
+\[
+  H[e_r,e_r]=m(m-1)F(\theta_0)=-m(m-1)a,
+  \quad
+  H[e_r,e_\theta]=(m-1)F'(\theta_0)=(m-1)mb,
+  \quad
+  H[e_\theta,e_\theta]=F''(\theta_0)+mF(\theta_0)=m^2c-ma .
+\]
+Substituting and expanding,
+\begin{align*}
+  H[\nabla u(x_0),\nabla u(x_0)]
+  &=m^2a^2\bigl(-m(m-1)a\bigr)-2m^2ab\,(m-1)mb+m^2b^2\bigl(m^2c-ma\bigr)\\
+  &=-m^3(m-1)a^3-2m^3(m-1)ab^2+m^4b^2c-m^3ab^2\\
+  &=m^3\Bigl(m\,b^2c-(m-1)a^3-(2m-1)a\,b^2\Bigr),
+\end{align*}
+the last step collecting the two $ab^2$ terms, whose coefficients sum to
+$-2(m-1)-1=-(2m-1)$.
+\begin{equation}\label{eq:pi-hess}
+  H[\nabla u(x_0),\nabla u(x_0)]
+   =m^3\Bigl(m\,b^2c-(m-1)a^3-(2m-1)a\,b^2\Bigr).
+\end{equation}
+
+\emph{Step 4: the Laplacian bound.} By the third conclusion of
+\noderef{TangentialLaplacianBound}, and substituting the defining equations,
+\begin{equation}\label{eq:pi-lap}
+  \Delta u(x_0)\ \le\ U:=-m(m+n-2)a+m^2c
+    +(n-2)\,m\,b\,\frac{\cos\theta_0}{\sin\theta_0}.
+\end{equation}
+(The paper obtains the corresponding expression from eq:suspension; here the
+spherical Laplacian never appears, and the paper's term $\Delta_vF\le0$ is
+already absorbed into the cited bound.)
+
+\emph{Step 5: substituting the bound.} By \eqref{eq:pi-norm} and $q>0$, $m>0$,
+the factor $\lvert\nabla u(x_0)\rvert^2=m^2q$ is strictly positive, so
+multiplying \eqref{eq:pi-lap} by it preserves the inequality:
+$m^2q\,\Delta u(x_0)\le m^2q\,U$. Adding the unchanged term
+$(p-2)H[\nabla u,\nabla u]$ to both sides and using \eqref{eq:pi-eq},
+\[
+  0=m^2q\,\Delta u(x_0)+(p-2)H[\nabla u,\nabla u]
+   \ \le\ m^2q\,U+(p-2)H[\nabla u,\nabla u].
+\]
+Substituting \eqref{eq:pi-hess},
+\begin{equation}\label{eq:pi-mid}
+  0\ \le\ m^2q\Bigl(-m(m+n-2)a+m^2c+(n-2)mb\frac{\cos\theta_0}{\sin\theta_0}\Bigr)
+   +(p-2)\,m^3\Bigl(m\,b^2c-(m-1)a^3-(2m-1)a\,b^2\Bigr).
+\end{equation}
+
+\emph{Step 6: dividing by $m^4q$.} Since $m>0$ and $q>0$ we have $m^4q>0$, so
+dividing the previous display by $m^4q$ preserves it:
+\[
+  0\ \le\ c-\frac{(m+n-2)a}{m}
+    +(n-2)\,\frac{\cos\theta_0}{\sin\theta_0\cdot m}\,b
+    +\frac{p-2}{m\,q}\Bigl(m\,b^2c-(m-1)a^3-(2m-1)a\,b^2\Bigr).
+\]
+
+\emph{Step 7: the two regroupings.} Both are identities of real numbers, valid
+because $m\ne0$ and $q\ne0$; each is verified by clearing denominators and
+expanding. First, using $q=a^2+b^2$,
+\begin{equation}\label{eq:pi-reg1}
+  \frac{p-2}{m\,q}\Bigl(m\,b^2c-(m-1)a^3-(2m-1)a\,b^2\Bigr)
+  =(p-2)\,\frac{b^2(c-a)}{q}-\frac{(p-2)(m-1)}{m}\,a .
+\end{equation}
+Second,
+\begin{equation}\label{eq:pi-reg2}
+  \frac{m+n-2}{m}+\frac{(p-2)(m-1)}{m}=(p-1)+\frac{n-p}{m}.
+\end{equation}
+Substituting \eqref{eq:pi-reg1} into Step 6 and then collecting the two
+multiples of $a$ by \eqref{eq:pi-reg2},
+\[
+  0\ \le\ c-\Bigl(\frac{m+n-2}{m}+\frac{(p-2)(m-1)}{m}\Bigr)a
+    +(n-2)\frac{\cos\theta_0}{\sin\theta_0\cdot m}b
+    +(p-2)\frac{b^2(c-a)}{q}
+  = c-\Bigl(p-1+\frac{n-p}{m}\Bigr)a
+    +(n-2)\frac{\cos\theta_0}{\sin\theta_0\cdot m}b
+    +(p-2)\frac{b^2(c-a)}{q},
+\]
+which is the assertion.
+\end{proof}

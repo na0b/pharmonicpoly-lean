@@ -1,0 +1,63 @@
+\begin{lemma}[From formal partial derivatives to the Frechet derivative]
+Let $n\in\mathbb{N}$, let $P\in\mathbb{R}[X_1,\dots,X_n]$ and let $x\in\mathbb{R}^n$.
+Then the polynomial function $v\mapsto P(v)$ on the coordinate space
+$\mathbb{R}^n$ is Frechet differentiable at $x$, and its derivative is the
+continuous linear form
+\[
+  w\ \longmapsto\ \sum_{i=1}^{n}(\partial_iP)(x)\,w_i .
+\]
+\end{lemma}
+\begin{proof}
+Write $\widehat{Q}(v)=Q(v)$ for the polynomial function of
+$Q\in\mathbb{R}[X_1,\dots,X_n]$, and for $x\in\mathbb{R}^n$ let
+$L_Q^x:\mathbb{R}^n\to\mathbb{R}$ be the continuous linear form
+$L_Q^x(w)=\sum_{i=1}^{n}(\partial_iQ)(x)w_i$; it is continuous and linear because
+it is a finite linear combination of the coordinate projections
+$w\mapsto w_i$, each of which is continuous and linear. The assertion is that
+$\widehat{Q}$ has Frechet derivative $L_Q^x$ at $x$, for $Q=P$.
+
+We prove this for all $Q$ simultaneously, by the standard induction principle for
+multivariate polynomials: the class of $Q$ for which the claim holds contains
+every constant, is closed under addition, and is closed under multiplication by
+a single variable $X_i$. Since every element of $\mathbb{R}[X_1,\dots,X_n]$ is
+obtained from constants by finitely many such operations, this suffices.
+
+\emph{Case $Q=c$ constant.} Then $\widehat{Q}$ is the constant function $c$,
+which is differentiable at $x$ with derivative the zero form. On the other hand
+$\partial_ic=0$ for every $i$, so $L_Q^x=0$ as well, and the claim holds.
+
+\emph{Case $Q=Q_1+Q_2$, assuming the claim for $Q_1$ and $Q_2$.} Then
+$\widehat{Q}=\widehat{Q_1}+\widehat{Q_2}$, so by the sum rule $\widehat{Q}$ is
+differentiable at $x$ with derivative $L_{Q_1}^x+L_{Q_2}^x$. Since formal partial
+differentiation is additive, $\partial_i Q=\partial_iQ_1+\partial_iQ_2$ for each
+$i$, hence for every $w$
+\[
+  L_Q^x(w)=\sum_{i=1}^{n}\bigl((\partial_iQ_1)(x)+(\partial_iQ_2)(x)\bigr)w_i
+  =L_{Q_1}^x(w)+L_{Q_2}^x(w),
+\]
+so $L_Q^x=L_{Q_1}^x+L_{Q_2}^x$ and the claim holds for $Q$.
+
+\emph{Case $Q=R\cdot X_i$, assuming the claim for $R$.} The coordinate
+projection $\pi_i:v\mapsto v_i$ is continuous and linear, hence differentiable at
+$x$ with derivative $\pi_i$ itself. By the induction hypothesis $\widehat{R}$ is
+differentiable at $x$ with derivative $L_R^x$. Since
+$\widehat{Q}=\widehat{R}\cdot\pi_i$, the product rule gives that $\widehat{Q}$ is
+differentiable at $x$ with derivative
+\begin{equation}\label{eq:mpfd-prod}
+  w\ \longmapsto\ L_R^x(w)\,\pi_i(x)+\widehat{R}(x)\,\pi_i(w)
+  =x_i\sum_{j=1}^{n}(\partial_jR)(x)\,w_j+R(x)\,w_i .
+\end{equation}
+It remains to check that this agrees with $L_Q^x$. The Leibniz rule for formal
+partial derivatives gives
+$\partial_jQ=\partial_j(R\cdot X_i)=(\partial_jR)\,X_i+R\,(\partial_jX_i)$, and
+$\partial_jX_i$ is $1$ if $j=i$ and $0$ otherwise. Hence
+\[
+  L_Q^x(w)=\sum_{j=1}^{n}\Bigl((\partial_jR)(x)\,x_i+R(x)\,(\partial_jX_i)(x)\Bigr)w_j
+  =x_i\sum_{j=1}^{n}(\partial_jR)(x)\,w_j+R(x)\,w_i,
+\]
+where in the second sum every term with $j\ne i$ vanishes and the term $j=i$
+contributes $R(x)w_i$. This is exactly \eqref{eq:mpfd-prod}, so the claim holds
+for $Q$.
+
+The three cases complete the induction, and taking $Q=P$ gives the lemma.
+\end{proof}

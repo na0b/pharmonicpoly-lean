@@ -1,0 +1,47 @@
+\begin{lemma}[Cauchy--Schwarz bound for $s+\lvert b\rvert/\pi$]
+Let $b,s\in\mathbb{R}$ satisfy $s\ge0$ and $s^2+b^2=1$. Then
+\[
+  s+\frac{\lvert b\rvert}{\pi}<\frac{17}{16}.
+\]
+\end{lemma}
+\begin{proof}
+Write $B=\lvert b\rvert$, so $B\ge0$ and $B^2=b^2$; the hypothesis becomes
+$s^2+B^2=1$. Also $\pi>3>0$.
+
+\emph{Step 1: $(s+B/\pi)^2\le1+\pi^{-2}$.} We claim the algebraic identity
+\begin{equation}\label{eq:csp-id}
+  \Bigl(1+\frac1{\pi^2}\Bigr)-\Bigl(s+\frac{B}{\pi}\Bigr)^2
+  =\frac{(B\pi-s)^2}{\pi^2}.
+\end{equation}
+Indeed, substituting $1=s^2+B^2$ in the two places where the constant $1$
+occurs on the left-hand side and expanding,
+\[
+  \Bigl(s^2+B^2\Bigr)+\frac{s^2+B^2}{\pi^2}
+   -s^2-\frac{2sB}{\pi}-\frac{B^2}{\pi^2}
+  =B^2-\frac{2sB}{\pi}+\frac{s^2}{\pi^2}
+  =\frac{B^2\pi^2-2sB\pi+s^2}{\pi^2}
+  =\frac{(B\pi-s)^2}{\pi^2},
+\]
+which is \eqref{eq:csp-id}. The right-hand side of \eqref{eq:csp-id} is a square
+divided by the positive number $\pi^2$, hence nonnegative, so
+\begin{equation}\label{eq:csp-sq}
+  \Bigl(s+\frac{B}{\pi}\Bigr)^2\le1+\frac1{\pi^2}.
+\end{equation}
+
+\emph{Step 2: $1+\pi^{-2}<(17/16)^2$.} Since $\pi>3$ we have $\pi^2>9>0$, hence
+$1/\pi^2<1/9$ and therefore
+\[
+  1+\frac1{\pi^2}<1+\frac19=\frac{10}{9}
+  <\frac{289}{256}=\Bigl(\frac{17}{16}\Bigr)^2,
+\]
+the middle inequality because $10\cdot256=2560<2601=289\cdot9$.
+
+\emph{Step 3: taking square roots.} Combining \eqref{eq:csp-sq} with Step 2,
+\[
+  \Bigl(s+\frac{B}{\pi}\Bigr)^2<\Bigl(\frac{17}{16}\Bigr)^2 .
+\]
+Moreover $s+B/\pi\ge0$, because $s\ge0$ by hypothesis and $B/\pi\ge0$ as a
+quotient of nonnegative numbers. Since also $17/16>0$, and the squaring map is
+strictly increasing on $[0,\infty)$, the displayed inequality between squares
+forces $s+B/\pi<17/16$. Recalling $B=\lvert b\rvert$, this is the assertion.
+\end{proof}

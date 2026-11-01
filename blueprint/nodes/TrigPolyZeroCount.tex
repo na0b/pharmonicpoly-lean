@@ -1,0 +1,132 @@
+\begin{lemma}[Zero counting for a trigonometric polynomial over one period]
+Let $m\in\mathbb{N}$ and let $T:\mathbb{R}\to\mathbb{R}$ be a real
+trigonometric polynomial of degree at most $m$ which does not vanish
+identically, i.e. there is $s\in\mathbb{R}$ with $T(s)\ne0$. Let
+$t_0\in\mathbb{R}$, let $Z$ be a finite set of real numbers such that
+\[
+  Z\subseteq[t_0,t_0+2\pi)
+  \qquad\text{and}\qquad
+  T(z)=0\ \text{ for every }z\in Z,
+\]
+and let $t_1\in[t_0,t_0+2\pi)$ satisfy $t_1\notin Z$, $T(t_1)=0$ and
+$T'(t_1)=0$, where $T'$ is the pointwise derivative of $T$. Then
+\[
+  \#Z+2\ \le\ 2m .
+\]
+\end{lemma}
+\begin{proof}
+Throughout, $i\in\mathbb{C}$ is the imaginary unit, and for $s\in\mathbb{R}$ we
+write $\varphi(s)=e^{is}\in\mathbb{C}$.
+
+\emph{Step 0: $T$ is differentiable.} By \noderef{TrigPolySmooth}, $T$ is
+real-analytic on $\mathbb{R}$, in particular differentiable at every point; so
+$T'$ is the genuine derivative of $T$ everywhere, and the hypothesis
+$T'(t_1)=0$ says that the derivative of $T$ at $t_1$ vanishes.
+
+\emph{Step 1: the associated complex polynomial.} By
+\noderef{TrigPolyToComplexPoly} there is $Q\in\mathbb{C}[X]$ with
+\begin{equation}\label{eq:tpzc-Q}
+  \deg Q\le 2m
+  \qquad\text{and}\qquad
+  Q\bigl(e^{it}\bigr)=e^{imt}\,T(t)\ \text{ for every }t\in\mathbb{R}.
+\end{equation}
+
+\emph{Step 2: $Q\ne0$.} Pick $s\in\mathbb{R}$ with $T(s)\ne0$. By
+\eqref{eq:tpzc-Q}, $Q(\varphi(s))=e^{ims}T(s)$. Now
+$\bigl\lvert e^{ims}\bigr\rvert=1$, so $e^{ims}\ne0$, and $T(s)\ne0$ as a
+complex number because the inclusion $\mathbb{R}\subseteq\mathbb{C}$ is
+injective; hence $Q(\varphi(s))\ne0$ and therefore $Q$ is not the zero
+polynomial. Consequently $\deg Q$ is a natural number, and \eqref{eq:tpzc-Q}
+reads
+\begin{equation}\label{eq:tpzc-deg}
+  \deg Q\le 2m .
+\end{equation}
+
+\emph{Step 3: $\varphi$ is injective on $[t_0,t_0+2\pi)$.} Let
+$s,s'\in[t_0,t_0+2\pi)$ with $e^{is}=e^{is'}$. Since $e^{w}=e^{w'}$ holds for
+complex $w,w'$ exactly when $w=w'+n\,(2\pi i)$ for some $n\in\mathbb{Z}$, there
+is $n\in\mathbb{Z}$ with $is=is'+2\pi i n$; dividing by $i\ne0$ gives
+$s=s'+2\pi n$. From $t_0\le s<t_0+2\pi$ and $t_0\le s'<t_0+2\pi$ we get
+$\lvert s-s'\rvert<2\pi$, i.e. $2\pi\lvert n\rvert<2\pi$, so $\lvert n\rvert<1$
+and therefore $n=0$ and $s=s'$.
+
+\emph{Step 4: $\#Z+1$ distinct roots of $Q$.} Put $W=Z\cup\{t_1\}$. Since
+$t_1\notin Z$, $W$ is a finite set with $\#W=\#Z+1$, and
+$W\subseteq[t_0,t_0+2\pi)$ by hypothesis. For $z\in Z$ we have $T(z)=0$, so
+\eqref{eq:tpzc-Q} gives $Q(\varphi(z))=e^{imz}\cdot0=0$; likewise
+$Q(\varphi(t_1))=e^{imt_1}\cdot0=0$ since $T(t_1)=0$. Hence every point of
+$\varphi(W)$ is a root of $Q$, and by Step 3 the map $\varphi$ is injective on
+$W$, so $\varphi(W)$ consists of exactly $\#Z+1$ pairwise distinct roots of $Q$.
+
+\emph{Step 5: $w_1:=\varphi(t_1)$ is a root of $Q$ of multiplicity at least
+$2$.} Consider the two $\mathbb{C}$-valued functions of a real variable
+\[
+  F(t)=Q\bigl(e^{it}\bigr),\qquad G(t)=e^{imt}\,T(t)\qquad(t\in\mathbb{R}).
+\]
+By \eqref{eq:tpzc-Q} they agree at every point, i.e. $F=G$ as functions
+$\mathbb{R}\to\mathbb{C}$; consequently they have the same derivative at every
+point of $\mathbb{R}$.
+
+We compute both derivatives at an arbitrary $t\in\mathbb{R}$.
+\begin{itemize}
+\item The curve $\gamma(t)=e^{it}$ is differentiable as a map
+$\mathbb{R}\to\mathbb{C}$ with $\gamma'(t)=i\,e^{it}$, and the polynomial
+function $w\mapsto Q(w)$ is complex differentiable at every $w\in\mathbb{C}$
+with complex derivative $Q'(w)$, where $Q'$ denotes the formal derivative of
+$Q$ (for a polynomial the complex derivative of its associated function is the
+function associated with its formal derivative). If $g:\mathbb{C}\to\mathbb{C}$
+is complex differentiable at $\gamma(t)$ and $\gamma:\mathbb{R}\to\mathbb{C}$ is
+differentiable at $t$, then $g\circ\gamma$ is differentiable at $t$ with
+$(g\circ\gamma)'(t)=g'(\gamma(t))\,\gamma'(t)$: indeed, complex
+differentiability of $g$ at $\gamma(t)$ says that the $\mathbb{R}$-linear
+Fr\'echet derivative of $g$ at $\gamma(t)$ is multiplication by $g'(\gamma(t))$,
+and the ordinary chain rule for Fr\'echet derivatives then gives the displayed
+formula. Applying this with $g(w)=Q(w)$ yields that $F=g\circ\gamma$ is
+differentiable and
+\[
+  F'(t)=Q'\bigl(e^{it}\bigr)\cdot i\,e^{it}.
+\]
+\item The curve $t\mapsto e^{imt}$ is differentiable with derivative
+$t\mapsto i\,m\,e^{imt}$, and $T$ is differentiable by Step 0. By the product
+rule, $G$ is differentiable and
+\[
+  G'(t)=i\,m\,e^{imt}\,T(t)+e^{imt}\,T'(t).
+\]
+\end{itemize}
+Evaluating at $t=t_1$ and using $T(t_1)=0$ and $T'(t_1)=0$ gives $G'(t_1)=0$,
+hence
+\[
+  Q'(w_1)\cdot i\,e^{it_1}=F'(t_1)=G'(t_1)=0 .
+\]
+Since $i\ne0$ and $\lvert e^{it_1}\rvert=1$ so $e^{it_1}\ne0$, we may cancel and
+obtain
+\begin{equation}\label{eq:tpzc-double}
+  Q(w_1)=0\qquad\text{and}\qquad Q'(w_1)=0 .
+\end{equation}
+Now $Q(w_1)=0$ means $w_1$ is a root of $Q$, so by the factor theorem
+$Q=(X-w_1)R$ for some $R\in\mathbb{C}[X]$. Differentiating formally,
+$Q'=R+(X-w_1)R'$, so evaluating at $w_1$ gives $Q'(w_1)=R(w_1)$. By
+\eqref{eq:tpzc-double} we get $R(w_1)=0$, so the factor theorem applies again
+and $R=(X-w_1)S$ for some $S\in\mathbb{C}[X]$. Therefore
+$Q=(X-w_1)^2S$, i.e. $(X-w_1)^2$ divides $Q$, which (as $Q\ne0$ by Step 2) says
+precisely that the multiplicity of $w_1$ as a root of $Q$ is at least $2$.
+
+\emph{Step 6: counting with multiplicity.} For $w\in\mathbb{C}$ let $\mu(w)$ be
+the multiplicity of $w$ as a root of $Q$. Since $Q\ne0$ and $\mathbb{C}$ is a
+field, the multiset of roots of $Q$ counted with multiplicity contains each $w$
+exactly $\mu(w)$ times and has total cardinality at most $\deg Q$. Because the
+elements of $\varphi(W)$ are pairwise distinct (Step 4), their contributions to
+that multiset are disjoint, so
+\[
+  \sum_{w\in\varphi(W)}\mu(w)\ \le\ \deg Q\ \le\ 2m,
+\]
+the last inequality being \eqref{eq:tpzc-deg}. On the other hand, by Step 4 each
+of the $\#Z$ points $\varphi(z)$, $z\in Z$, is a root of $Q$ and so has
+$\mu(\varphi(z))\ge1$, while $\mu(w_1)\ge2$ by Step 5; since
+$\varphi(W)=\{\varphi(z):z\in Z\}\cup\{w_1\}$ is a disjoint union of $\#Z$
+points and the point $w_1$ (Step 3 and $t_1\notin Z$),
+\[
+  \sum_{w\in\varphi(W)}\mu(w)\ \ge\ \#Z\cdot 1+2=\#Z+2 .
+\]
+Combining the two displays gives $\#Z+2\le 2m$, as claimed.
+\end{proof}

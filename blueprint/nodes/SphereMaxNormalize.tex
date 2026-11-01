@@ -1,0 +1,63 @@
+\begin{lemma}[Normalization at a maximum point of the unit sphere]
+Let $n,m\in\mathbb{N}$ with $n\ge1$ and $m\ge1$, let $p\in\mathbb{R}$, and let
+$P\in\mathbb{R}[X_1,\dots,X_n]$ be nonzero and homogeneous of degree $m$, where
+$\mathbb{R}^n$ carries the Euclidean inner product. Then there exist
+$c\in\mathbb{R}$ and $e\in\mathbb{R}^n$ with
+\[
+  c\ne0,\qquad \lVert e\rVert=1,\qquad (cP)(e)=1,\qquad
+  \lvert (cP)(y)\rvert\le1\ \text{ for every }y\text{ with }\lVert y\rVert=1,
+\]
+and such that
+\[
+  \mathcal{E}^{\mathrm{alg}}_p(cP)=0
+  \quad\Longleftrightarrow\quad
+  \mathcal{E}^{\mathrm{alg}}_p(P)=0 .
+\]
+\end{lemma}
+\begin{proof}
+Write $u(y)=P(y)$ for the polynomial function of $P$ and
+$S=\{y\in\mathbb{R}^n:\lVert y\rVert=1\}$.
+
+\emph{Step 1: $\lvert u\rvert$ attains a maximum on $S$.} By
+\noderef{MvPolyContDiff}, $u$ is of class $C^k$ on $\mathbb{R}^n$ for every
+smoothness exponent $k$; in particular $u$ is continuous, hence so is
+$\lvert u\rvert$. By the background proposition on the unit sphere, $S$ is
+compact and (since $n\ge1$) nonempty, so there is $e\in S$ with
+\begin{equation}\label{eq:smn-max}
+  \lvert u(y)\rvert\le\lvert u(e)\rvert\qquad\text{for every }y\in S .
+\end{equation}
+
+\emph{Step 2: $u(e)\ne0$.} Suppose $u(e)=0$. Then \eqref{eq:smn-max} forces
+$u(y)=0$ for every $y\in S$. Let $x\in\mathbb{R}^n$ be arbitrary. If $x=0$ then
+$u(0)=0$ by the background homogeneous-scaling proposition, since $m\ge1$. If
+$x\ne0$ put $r=\lVert x\rVert>0$ and $y=r^{-1}x$; then $\lVert y\rVert=1$, so
+$y\in S$ and $u(y)=0$, and by the same scaling proposition
+$u(x)=u(ry)=r^{m}u(y)=0$. Hence $u$ is the zero function on $\mathbb{R}^n$, so
+by the background proposition that polynomials are determined by their values,
+$P=0$ --- contradicting the hypothesis $P\ne0$. Therefore $u(e)\ne0$.
+
+\emph{Step 3: the constant.} Put $c=1/u(e)$, which is defined and nonzero by
+Step 2. Since evaluation is $\mathbb{R}$-linear, $(cP)(y)=c\,u(y)$ for every
+$y$. Hence
+\[
+  (cP)(e)=c\,u(e)=\frac{u(e)}{u(e)}=1,
+\]
+and for every $y\in S$, using \eqref{eq:smn-max} and $\lvert c\rvert>0$,
+\[
+  \lvert (cP)(y)\rvert=\lvert c\rvert\,\lvert u(y)\rvert
+  \le\lvert c\rvert\,\lvert u(e)\rvert
+  =\frac{\lvert u(e)\rvert}{\lvert u(e)\rvert}=1 .
+\]
+
+\emph{Step 4: the equivalence.} By \noderef{EpAlgSmul} applied with this $c$,
+\[
+  \mathcal{E}^{\mathrm{alg}}_p(cP)=c^3\,\mathcal{E}^{\mathrm{alg}}_p(P).
+\]
+Since $c\ne0$ we have $c^3\ne0$, and in the $\mathbb{R}$-vector space
+$\mathbb{R}[X_1,\dots,X_n]$ a scalar multiple $c^3Q$ vanishes if and only if
+$Q$ vanishes (multiply by $c^{-3}$). Applying this with
+$Q=\mathcal{E}^{\mathrm{alg}}_p(P)$ gives
+$\mathcal{E}^{\mathrm{alg}}_p(cP)=0\iff\mathcal{E}^{\mathrm{alg}}_p(P)=0$.
+
+The pair $(c,e)$ therefore has all the required properties.
+\end{proof}

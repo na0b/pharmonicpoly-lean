@@ -1,0 +1,51 @@
+\begin{lemma}[A maximizer on the latitude set]
+Let $n\ge2$, let $e\in\mathbb{R}^n$ with $\lVert e\rVert=1$, where
+$\mathbb{R}^n$ carries the Euclidean inner product, and let
+$f:\mathbb{R}^n\to\mathbb{R}$ be continuous. Then there is
+$v_0\in\mathbb{R}^n$ with
+\[
+  \lVert v_0\rVert=1,
+  \qquad
+  \langle e,v_0\rangle=0,
+  \qquad
+  f(v)\le f(v_0)\ \text{ for every }v\text{ with }\lVert v\rVert=1,\ \langle e,v\rangle=0 .
+\]
+\end{lemma}
+\begin{proof}
+Write $S=\{v\in\mathbb{R}^n:\lVert v\rVert=1\ \text{and}\ \langle e,v\rangle=0\}$
+for the latitude set.
+
+\emph{Step 1: $S$ is compact.} We have
+$S=\bigl\{v:\lVert v\rVert=1\bigr\}\cap\bigl\{v:\langle e,v\rangle=0\bigr\}$ by
+definition. The first factor, the unit sphere, is compact by the background
+proposition on the unit sphere. The second factor is closed: the map
+$v\mapsto\langle e,v\rangle$ is continuous (it is linear on a
+finite-dimensional space, being the inner product with a fixed vector) and the
+set is the preimage of the closed set $\{0\}$ under it. The intersection of a
+compact set with a closed set is compact, so $S$ is compact.
+
+\emph{Step 2: $S$ is nonempty.} Since $\lVert e\rVert=1$ we have $e\ne0$, so the
+line $\mathbb{R}e$ spanned by $e$ has dimension $1$. For a subspace $K$ of a
+finite-dimensional inner product space one has
+$\dim K+\dim K^{\perp}=\dim\mathbb{R}^n=n$; applying this with $K=\mathbb{R}e$
+gives $\dim(\mathbb{R}e)^{\perp}=n-1\ge1$, using $n\ge2$. A subspace of positive
+dimension is not the zero subspace, so there is $w\in(\mathbb{R}e)^{\perp}$ with
+$w\ne0$. By definition of the orthogonal complement, $w$ is orthogonal to every
+element of $\mathbb{R}e$, in particular $\langle e,w\rangle=0$. Since $w\ne0$ we
+have $\lVert w\rVert\ne0$, so $v=\lVert w\rVert^{-1}w$ is defined and satisfies
+\[
+  \lVert v\rVert=\lVert w\rVert^{-1}\lVert w\rVert=1,
+  \qquad
+  \langle e,v\rangle=\lVert w\rVert^{-1}\langle e,w\rangle=0 ,
+\]
+using that the norm is absolutely homogeneous and the inner product is linear in
+its second argument. Hence $v\in S$ and $S\ne\emptyset$.
+
+\emph{Step 3: conclusion.} By Steps 1 and 2, $S$ is a nonempty compact set, and
+$f$ is continuous, hence continuous on $S$. A continuous real-valued function on
+a nonempty compact set attains a maximum there, so there is $v_0\in S$ with
+$f(v)\le f(v_0)$ for every $v\in S$. Unfolding the definition of $S$, this
+$v_0$ satisfies $\lVert v_0\rVert=1$, $\langle e,v_0\rangle=0$, and
+$f(v)\le f(v_0)$ for every $v$ with $\lVert v\rVert=1$ and
+$\langle e,v\rangle=0$, which is the assertion.
+\end{proof}

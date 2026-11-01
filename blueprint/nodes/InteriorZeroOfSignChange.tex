@@ -1,0 +1,32 @@
+\begin{lemma}[A sign change forces a strictly interior zero]
+Let $D\colon\mathbb{R}\to\mathbb{R}$ be continuous and let $a<b$ be reals with
+$D(a)\,D(b)<0$. Then there exists $z$ with $a<z<b$ and $D(z)=0$.
+\end{lemma}
+\begin{proof}
+\emph{Step 1: neither endpoint value vanishes.} If $D(a)=0$ then
+$D(a)D(b)=0$, contradicting $D(a)D(b)<0$; so $D(a)\ne 0$, and the same argument
+at $b$ gives $D(b)\ne 0$.
+
+\emph{Step 2: a zero in the closed interval.} Since $D(a)\ne0$, either
+$D(a)<0$ or $D(a)>0$.
+
+Suppose first $D(a)<0$. We claim $D(b)>0$. Indeed $D(b)\ne 0$ by Step 1, and if
+$D(b)<0$ then the product of two negative numbers would give $D(a)D(b)>0$,
+contradicting the hypothesis; so $D(b)>0$. Hence $D(a)\le 0\le D(b)$, i.e.\ $0$
+lies in the interval $[D(a),D(b)]$. As $a\le b$ and $D$ is continuous on
+$[a,b]$, the intermediate value theorem provides $z\in[a,b]$ with $D(z)=0$.
+
+Suppose instead $D(a)>0$. Symmetrically $D(b)<0$: it is nonzero, and if it were
+positive the product of two positive numbers would give $D(a)D(b)>0$. Hence
+$D(b)\le 0\le D(a)$, so $0$ lies in $[D(b),D(a)]$, and the intermediate value
+theorem in the reverse-order form (applied to the continuous $D$ on $[a,b]$ with
+$D(b)\le D(a)$) again provides $z\in[a,b]$ with $D(z)=0$.
+
+In either case we obtain $z\in[a,b]$ with $D(z)=0$.
+
+\emph{Step 3: the zero is strictly interior.} Let $z\in[a,b]$ with $D(z)=0$ be
+as in Step 2, so $a\le z$ and $z\le b$. If $a=z$ then $D(a)=D(z)=0$, which
+contradicts $D(a)\ne 0$; hence $a<z$. If $z=b$ then $D(b)=D(z)=0$, which
+contradicts $D(b)\ne 0$; hence $z<b$. Therefore $a<z<b$ and $D(z)=0$, as
+required.
+\end{proof}

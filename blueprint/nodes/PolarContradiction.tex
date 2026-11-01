@@ -1,0 +1,123 @@
+\begin{lemma}[The eq:polar right-hand side is negative]
+Let $n,m\in\mathbb{N}$ with $n\ge3$ and $m\ge2$, and let
+$p,a,b,c,q,\kappa\in\mathbb{R}$ satisfy
+\[
+  n-\tfrac1{13}\le p,\quad p\le n,\quad
+  \tfrac8{13}<a,\quad a\le1,\quad
+  q=a^2+b^2,\quad q\le1,\quad b^2+c^2\le1,\quad
+  0\le\kappa\le\tfrac1\pi .
+\]
+Then
+\[
+  c-\Bigl(p-1+\frac{n-p}{m}\Bigr)a+(n-2)\,\kappa\,b
+   +(p-2)\,\frac{b^2(c-a)}{q}\ <\ 0 .
+\]
+\end{lemma}
+\begin{proof}
+Put $\delta=n-p$ and $k=n-2$.
+
+\emph{Step 0: elementary consequences of the hypotheses.} From $p\le n$ we get
+$\delta\ge0$, and from $n-\tfrac1{13}\le p$ we get $\delta\le\tfrac1{13}$. From
+$n\ge3$ we get $k=n-2\ge1$. From $a>\tfrac8{13}$ we get $a>0$. Since
+$n\ge3$ and $p\ge n-\tfrac1{13}$,
+\[
+  p\ \ge\ 3-\tfrac1{13}=\tfrac{38}{13}\ >\ 2,
+\]
+so $p-2>0$. Also $m\ge2>0$, and $\pi>3>0$ by the background numerical bounds for
+$\pi$. Finally $q=a^2+b^2\ge a^2>0$. Note the two identities
+\begin{equation}\label{eq:pc-kid}
+  k+1-\delta=(n-2)+1-(n-p)=p-1,
+  \qquad
+  k-\delta=(n-2)-(n-p)=p-2 .
+\end{equation}
+
+\emph{Step 1: introducing $s$.} Since $q=a^2+b^2\ge b^2$ and $q\le1$, we have
+$b^2\le1$. Put $s=\sqrt{1-b^2}$, so that
+\begin{equation}\label{eq:pc-s}
+  s\ge0,\qquad s^2=1-b^2,\qquad s^2+b^2=1 .
+\end{equation}
+
+\emph{Step 2: $a\le s$.} From $q\le1$ and $q=a^2+b^2$ we get
+$a^2\le1-b^2=s^2$. If we had $a>s$, then from $s\ge0$ and $a>0$ we would get
+$a^2>s^2$, a contradiction; hence $a\le s$.
+
+\emph{Step 3: $c\le s$.} From $b^2+c^2\le1$ we get $c^2\le1-b^2=s^2$. If we had
+$c>s$, then from $s\ge0$ we would get $c>0$ and hence $c^2>s^2$, a
+contradiction; hence $c\le s$.
+
+\emph{Step 4: the $A$-bound.} Put $A=b^2(s-a)/q$. By \noderef{ABound}, applied
+with these $a,b,s,q$ --- its four hypotheses $0<a$, $a\le s$, $q=a^2+b^2$ and
+$s^2+b^2=1$ hold by Step 0, Step 2, the assumption and \eqref{eq:pc-s} ---
+\begin{equation}\label{eq:pc-A}
+  0\le A
+  \qquad\text{and}\qquad
+  A\le\frac{(1-a)^2}{2a}.
+\end{equation}
+
+\emph{Step 5: raising $c$ to $s$ in the $(p-2)$ term.} Since $c\le s$ (Step 3)
+we have $b^2(c-a)\le b^2(s-a)$, because $b^2\ge0$; dividing by $q>0$,
+\[
+  \frac{b^2(c-a)}{q}\ \le\ \frac{b^2(s-a)}{q}=A .
+\]
+Multiplying by $p-2>0$,
+\begin{equation}\label{eq:pc-step5}
+  (p-2)\,\frac{b^2(c-a)}{q}\ \le\ (p-2)\,A .
+\end{equation}
+
+\emph{Step 6: dropping the $\delta/m$ term.} Since $\delta\ge0$, $m>0$ and
+$a>0$, we have $\delta a/m\ge0$, hence
+\begin{equation}\label{eq:pc-step6}
+  -\Bigl(p-1+\frac{\delta}{m}\Bigr)a=-(p-1)a-\frac{\delta a}{m}\ \le\ -(p-1)a .
+\end{equation}
+
+\emph{Step 7: the cotangent term.} Since $\kappa\ge0$ and $b\le\lvert b\rvert$,
+we get $\kappa b\le\kappa\lvert b\rvert$; and since $\lvert b\rvert\ge0$ and
+$\kappa\le1/\pi$, we get $\kappa\lvert b\rvert\le\lvert b\rvert/\pi$. Hence
+$\kappa b\le\lvert b\rvert/\pi$, and multiplying by $k=n-2\ge1>0$,
+\begin{equation}\label{eq:pc-step7}
+  (n-2)\,\kappa\,b\ \le\ k\,\frac{\lvert b\rvert}{\pi}.
+\end{equation}
+
+\emph{Step 8: collecting.} Adding $c\le s$ (Step 3) to \eqref{eq:pc-step6},
+\eqref{eq:pc-step7} and \eqref{eq:pc-step5}, and then rewriting the coefficients
+by \eqref{eq:pc-kid},
+\[
+  c-\Bigl(p-1+\frac{\delta}{m}\Bigr)a+(n-2)\kappa b+(p-2)\frac{b^2(c-a)}{q}
+  \ \le\ s-(p-1)a+k\frac{\lvert b\rvert}{\pi}+(p-2)A
+  \ =\ s-(k+1-\delta)a+k\frac{\lvert b\rvert}{\pi}+(k-\delta)A .
+\]
+
+\emph{Step 9: absorbing $k$.} By \noderef{AbsorbK}, applied with
+$k=n-2$, $\delta$, $a$, $b$, $s$ and $A$: its hypotheses are $1\le k$ (Step 0),
+$0\le\delta$ (Step 0), $0\le A$ (\eqref{eq:pc-A}) and $(1-\delta)a\le s$, the
+last because $\delta\ge0$ and $a>0$ give $(1-\delta)a\le a$, and $a\le s$ by
+Step 2. Hence
+\begin{equation}\label{eq:pc-step9}
+  s-(k+1-\delta)a+k\frac{\lvert b\rvert}{\pi}+(k-\delta)A
+  \ \le\ k\Bigl(s+\frac{\lvert b\rvert}{\pi}-(2-\delta)a+A\Bigr).
+\end{equation}
+
+\emph{Step 10: the endgame.} By \noderef{Endgame}, applied with $a,b,s$ and
+$\delta$ --- its hypotheses $0\le\delta$, $\delta\le\tfrac1{13}$,
+$\tfrac8{13}<a$, $a\le1$, $0\le s$ and $s^2+b^2=1$ all hold by Step 0, the
+assumptions and \eqref{eq:pc-s} ---
+\[
+  s+\frac{\lvert b\rvert}{\pi}-(2-\delta)a+\frac{(1-a)^2}{2a}\ <\ 0 .
+\]
+By the second half of \eqref{eq:pc-A}, $A\le(1-a)^2/(2a)$, so replacing
+$(1-a)^2/(2a)$ by the smaller $A$ preserves the strict inequality:
+\[
+  s+\frac{\lvert b\rvert}{\pi}-(2-\delta)a+A\ <\ 0 .
+\]
+Multiplying by $k\ge1>0$ gives
+\begin{equation}\label{eq:pc-step10}
+  k\Bigl(s+\frac{\lvert b\rvert}{\pi}-(2-\delta)a+A\Bigr)\ <\ 0 .
+\end{equation}
+
+\emph{Step 11: conclusion.} Chaining Step 8, \eqref{eq:pc-step9} and
+\eqref{eq:pc-step10},
+\[
+  c-\Bigl(p-1+\frac{n-p}{m}\Bigr)a+(n-2)\kappa b+(p-2)\frac{b^2(c-a)}{q}\ <\ 0 ,
+\]
+which is the assertion.
+\end{proof}

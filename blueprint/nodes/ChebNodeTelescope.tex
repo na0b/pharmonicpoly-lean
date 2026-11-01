@@ -1,0 +1,72 @@
+\begin{lemma}[Telescoping product at the first Chebyshev node]
+Let $m\ge2$ be an integer and let $x_a=x^{(m)}_a=\cos(a\pi/m)$ be the Chebyshev
+extremal nodes of order $m$. Then
+\[
+  \prod_{a=2}^{m}\frac{1-x_a}{x_1-x_a}=2 .
+\]
+\end{lemma}
+\begin{proof}
+Put $h=\dfrac{\pi}{2m}$ and $s_a=\sin(ah)$ for $a\in\mathbb{N}$, so that
+$x_a=\cos(2ah)$ for every $a$.
+
+\emph{Step 0: positivity of the relevant sines.} Since $m\ge2$ we have
+$0<h\le\pi/4$. For $1\le a\le m+1$ we get
+$0<ah\le(m+1)h=\frac{\pi}{2}+h\le\frac{\pi}{2}+\frac{\pi}{4}<\pi$, hence
+$s_a=\sin(ah)>0$, because $\sin$ is strictly positive on $(0,\pi)$. Also
+$\cos h>0$, since $0<h\le\pi/4<\pi/2$.
+
+\emph{Step 1: the numerator.} The identity $1-\cos\varphi=2\sin^2(\varphi/2)$
+(a rewriting of the double-angle formula
+$\cos\varphi=1-2\sin^2(\varphi/2)$), applied with $\varphi=2ah$, gives
+\begin{equation}\label{eq:cnt-num}
+  1-x_a=1-\cos(2ah)=2\sin^2(ah)=2s_a^2
+  \qquad(a\in\mathbb{N}).
+\end{equation}
+
+\emph{Step 2: the denominator.} The identity
+$\cos A-\cos B=2\sin\!\frac{A+B}{2}\,\sin\!\frac{B-A}{2}$, applied with
+$A=2h$ and $B=2ah$, gives for every $a\in\mathbb{N}$
+\begin{equation}\label{eq:cnt-den}
+  x_1-x_a=\cos(2h)-\cos(2ah)
+   =2\sin\bigl((a+1)h\bigr)\sin\bigl((a-1)h\bigr)=2s_{a+1}s_{a-1},
+\end{equation}
+where for $a\ge1$ the index $a-1$ is a natural number.
+
+\emph{Step 3: the factors.} Let $2\le a\le m$. Then $1\le a-1\le m+1$ and
+$1\le a+1\le m+1$, so $s_{a-1}>0$ and $s_{a+1}>0$ by Step 0. Hence by
+\eqref{eq:cnt-den} the denominator $x_1-x_a=2s_{a+1}s_{a-1}$ is strictly
+positive, in particular nonzero, and by \eqref{eq:cnt-num}
+\[
+  \frac{1-x_a}{x_1-x_a}=\frac{2s_a^2}{2s_{a+1}s_{a-1}}
+   =\frac{s_a^2}{s_{a+1}s_{a-1}}
+   =\frac{s_a}{s_{a-1}}\cdot\frac{s_a}{s_{a+1}} .
+\]
+
+\emph{Step 4: telescoping.} All the quantities $s_1,\dots,s_{m+1}$ are nonzero
+by Step 0, so we may multiply the identities of Step 3 over $a=2,\dots,m$ and
+split the product:
+\[
+  \prod_{a=2}^{m}\frac{1-x_a}{x_1-x_a}
+  =\Biggl(\prod_{a=2}^{m}\frac{s_a}{s_{a-1}}\Biggr)
+   \Biggl(\prod_{a=2}^{m}\frac{s_a}{s_{a+1}}\Biggr)
+  =\frac{s_m}{s_1}\cdot\frac{s_2}{s_{m+1}} ,
+\]
+the two telescoping evaluations being
+$\prod_{a=2}^{m}\frac{s_a}{s_{a-1}}
+=\frac{s_2}{s_1}\frac{s_3}{s_2}\cdots\frac{s_m}{s_{m-1}}=\frac{s_m}{s_1}$ and
+$\prod_{a=2}^{m}\frac{s_a}{s_{a+1}}
+=\frac{s_2}{s_3}\frac{s_3}{s_4}\cdots\frac{s_m}{s_{m+1}}=\frac{s_2}{s_{m+1}}$.
+(For $m=2$ both products consist of the single factor $a=2$ and the formulas
+read $s_2/s_1$ and $s_2/s_3$, as stated.)
+
+\emph{Step 5: evaluation.} Since $mh=\pi/2$ we have
+$s_m=\sin(\pi/2)=1$ and
+$s_{m+1}=\sin\bigl(\tfrac{\pi}{2}+h\bigr)=\cos h$. Moreover
+$s_2=\sin(2h)=2\sin h\cos h=2s_1\cos h$, so $s_2/s_1=2\cos h$ (using
+$s_1=\sin h\ne0$). Therefore, using $\cos h\ne0$,
+\[
+  \prod_{a=2}^{m}\frac{1-x_a}{x_1-x_a}
+  =\frac{s_m}{s_{m+1}}\cdot\frac{s_2}{s_1}
+  =\frac{1}{\cos h}\cdot 2\cos h=2 .
+\]
+\end{proof}

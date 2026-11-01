@@ -1,0 +1,40 @@
+\begin{lemma}[Absorbing the dimensional factor $k=n-2$]
+Let $k,\delta,a,b,s,A\in\mathbb{R}$ satisfy
+\[
+  1\le k,\qquad 0\le\delta,\qquad 0\le A,\qquad (1-\delta)a\le s .
+\]
+Then
+\[
+  s-(k+1-\delta)a+k\,\frac{\lvert b\rvert}{\pi}+(k-\delta)A
+  \ \le\ k\left(s+\frac{\lvert b\rvert}{\pi}-(2-\delta)a+A\right).
+\]
+\end{lemma}
+\begin{proof}
+The two sides differ by an expression that is manifestly nonnegative. Precisely,
+subtracting the left-hand side from the right-hand side and expanding,
+\begin{align*}
+  &k\left(s+\frac{\lvert b\rvert}{\pi}-(2-\delta)a+A\right)
+   -\left(s-(k+1-\delta)a+k\,\frac{\lvert b\rvert}{\pi}+(k-\delta)A\right)\\
+  &\qquad=ks+k\,\frac{\lvert b\rvert}{\pi}-k(2-\delta)a+kA
+    -s+(k+1-\delta)a-k\,\frac{\lvert b\rvert}{\pi}-(k-\delta)A\\
+  &\qquad=(k-1)s+\bigl(-k(2-\delta)+(k+1-\delta)\bigr)a+\bigl(kA-(k-\delta)A\bigr)\\
+  &\qquad=(k-1)s+\bigl(-2k+k\delta+k+1-\delta\bigr)a+\delta A\\
+  &\qquad=(k-1)s+\bigl(-(k-1)+\delta(k-1)\bigr)a+\delta A\\
+  &\qquad=(k-1)s-(k-1)(1-\delta)a+\delta A\\
+  &\qquad=(k-1)\bigl(s-(1-\delta)a\bigr)+\delta A .
+\end{align*}
+Here the two occurrences of $k\lvert b\rvert/\pi$ cancel; the coefficient of $a$
+is simplified by $-2k+k\delta+k+1-\delta=-(k-1)+\delta(k-1)$, which holds because
+both sides equal $(k-1)(\delta-1)$; and the coefficient of $A$ is
+$k-(k-\delta)=\delta$.
+
+Now both summands of the final expression are nonnegative:
+\begin{itemize}
+\item $(k-1)\bigl(s-(1-\delta)a\bigr)\ge0$, since $k-1\ge0$ by the hypothesis
+$1\le k$ and $s-(1-\delta)a\ge0$ by the hypothesis $(1-\delta)a\le s$, and a
+product of two nonnegative reals is nonnegative;
+\item $\delta A\ge0$, since $\delta\ge0$ and $A\ge0$.
+\end{itemize}
+Hence the difference of the two sides is nonnegative, which is exactly the
+asserted inequality.
+\end{proof}

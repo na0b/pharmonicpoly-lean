@@ -1,0 +1,55 @@
+\begin{lemma}[The gradient of a polynomial function]
+Let $n\in\mathbb{N}$, let $P\in\mathbb{R}[X_1,\dots,X_n]$, let $\mathbb{R}^n$
+carry the Euclidean inner product, and let $u:\mathbb{R}^n\to\mathbb{R}$ be the
+polynomial function $u(y)=P(y_1,\dots,y_n)$. Then for every
+$x\in\mathbb{R}^n$
+\[
+  \nabla u(x)=\bigl((\partial_1P)(x),\dots,(\partial_nP)(x)\bigr),
+\]
+i.e. the $i$-th coordinate of $\nabla u(x)$ is $(\partial_iP)(x)$ for every
+$1\le i\le n$.
+\end{lemma}
+\begin{proof}
+Let $V$ denote $\mathbb{R}^n$ with the coordinate (product) norm and $E$ denote
+$\mathbb{R}^n$ with the Euclidean norm, and let $\iota:E\to V$ be the identity
+map of $\mathbb{R}^n$ read between those two norms. Since the two norms on the
+finite-dimensional space $\mathbb{R}^n$ are equivalent, $\iota$ is a continuous
+linear isomorphism; in particular $\iota$ is differentiable at every point with
+derivative $\iota$ itself. Write $\widehat{u}:V\to\mathbb{R}$,
+$\widehat{u}(v)=P(v)$, so that $u=\widehat{u}\circ\iota$.
+
+Put
+\[
+  g=\bigl((\partial_1P)(x),\dots,(\partial_nP)(x)\bigr)\in E .
+\]
+
+\emph{Step 1: $u$ is differentiable at $x$ with $Du(x)(w)=\sum_{i=1}^n(\partial_iP)(x)w_i$.}
+By \noderef{MvPolyFDeriv} applied to $P$ at the point $\iota(x)=x$, the function
+$\widehat{u}$ is Frechet differentiable at $x$ with derivative the linear form
+$w\mapsto\sum_{i=1}^{n}(\partial_iP)(x)w_i$ on $V$. By the chain rule applied to
+$u=\widehat{u}\circ\iota$, the function $u$ is Frechet differentiable at $x$ and
+\[
+  Du(x)(w)=\bigl(D\widehat{u}(\iota x)\bigr)(\iota w)
+  =\sum_{i=1}^{n}(\partial_iP)(x)\,w_i
+  \qquad(w\in E),
+\]
+since $\iota w=w$ as a tuple.
+
+\emph{Step 2: that linear form is represented by $g$.} For every $w\in E$ the
+Euclidean inner product gives
+\[
+  \langle g,w\rangle=\sum_{i=1}^{n}g_i\,w_i=\sum_{i=1}^{n}(\partial_iP)(x)\,w_i
+  =Du(x)(w),
+\]
+by Step 1. Hence $Du(x)=\langle g,\cdot\rangle$ as linear forms on $E$.
+
+\emph{Step 3: conclusion.} By the background proposition that the gradient
+represents the derivative, $Du(x)=\langle\nabla u(x),\cdot\rangle$. Combining
+with Step 2,
+\[
+  \langle\nabla u(x),w\rangle=\langle g,w\rangle\qquad\text{for every }w\in E,
+\]
+so $\langle\nabla u(x)-g,w\rangle=0$ for every $w\in E$. Taking
+$w=\nabla u(x)-g$ gives $\lVert\nabla u(x)-g\rVert^2=0$, hence
+$\nabla u(x)=g$, which is the assertion.
+\end{proof}

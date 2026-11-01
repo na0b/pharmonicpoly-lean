@@ -1,0 +1,80 @@
+\begin{corollary}[Bernstein--Szeg\H{o} inequality applied to $T'/m$]
+Let $m\ge1$ be an integer and let $T:\mathbb{R}\to\mathbb{R}$ be a real
+trigonometric polynomial of degree at most $m$ with
+$\lvert T(t)\rvert\le1$ for every $t\in\mathbb{R}$. Then
+\[
+  \frac{\bigl(T'(t)\bigr)^2}{m^2}+\frac{\bigl(T''(t)\bigr)^2}{m^4}\le1
+  \qquad\text{for every }t\in\mathbb{R},
+\]
+where $T'$ and $T''$ denote the first and second pointwise derivatives of $T$.
+\end{corollary}
+\begin{proof}
+Since $m\ge1$, the real number $m$ satisfies $m>0$, so $m\ne0$ and all divisions
+by powers of $m$ below are legitimate. By \noderef{TrigPolySmooth}, $T$ is
+real-analytic on $\mathbb{R}$, in particular infinitely differentiable; so $T'$
+exists and is differentiable, and $T''=(T')'$ exists, at every point of
+$\mathbb{R}$.
+
+Define
+\[
+  U(t)=\frac{T'(t)}{m}\qquad(t\in\mathbb{R}).
+\]
+
+\emph{Step 1: $U$ is a real trigonometric polynomial of degree at most $m$.} By
+\noderef{TrigPolyDeriv} applied to $T$, the pointwise derivative $T'$ is a real
+trigonometric polynomial of degree at most $m$. Now apply
+\noderef{TrigPolyLinComb} with both functions taken to be $T'$ (each of degree at
+most $m$, as just shown) and with the scalars $c=1/m$ and $d=0$: the function
+\[
+  t\mapsto \frac{1}{m}\,T'(t)+0\cdot T'(t)
+\]
+is a real trigonometric polynomial of degree at most $m$. For every
+$t\in\mathbb{R}$ that function takes the value
+$\frac{1}{m}T'(t)+0=\frac{T'(t)}{m}=U(t)$, so it is $U$, and therefore $U$ is a
+real trigonometric polynomial of degree at most $m$.
+
+\emph{Step 2: $\lvert U(t)\rvert\le1$ for every $t$.} The hypotheses of
+\noderef{BernsteinSzego} hold for the integer $m$ and the function $T$: indeed
+$m\ge1$, $T$ is a real trigonometric polynomial of degree at most $m$, and
+$\lvert T(t)\rvert\le1$ for every $t$. That theorem therefore gives
+\begin{equation}\label{eq:bss-first}
+  T(t)^2+\frac{\bigl(T'(t)\bigr)^2}{m^2}\le1
+  \qquad\text{for every }t\in\mathbb{R}.
+\end{equation}
+Since $T(t)^2\ge0$, \eqref{eq:bss-first} yields
+$\bigl(T'(t)\bigr)^2/m^2\le1$. As
+$U(t)^2=\bigl(T'(t)/m\bigr)^2=\bigl(T'(t)\bigr)^2/m^2$, this says
+$U(t)^2\le1$, i.e. $\lvert U(t)\rvert\le1$.
+
+\emph{Step 3: $U'(t)=T''(t)/m$ for every $t$.} We have $U=\frac1m\,T'$ as
+functions on $\mathbb{R}$; $T'$ is differentiable at every point (see the
+opening paragraph), and the derivative is linear, so $U$ is differentiable with
+\[
+  U'(t)=\frac1m\,\bigl(T'\bigr)'(t)=\frac{T''(t)}{m}
+  \qquad(t\in\mathbb{R}).
+\]
+
+\emph{Step 4: applying the inequality to $U$.} By Step 1, $U$ is a real
+trigonometric polynomial of degree at most $m$; by Step 2,
+$\lvert U(t)\rvert\le1$ for every $t$; and $m\ge1$. So the hypotheses of
+\noderef{BernsteinSzego} hold for the integer $m$ and the function $U$, and that
+theorem gives
+\[
+  U(t)^2+\frac{\bigl(U'(t)\bigr)^2}{m^2}\le1
+  \qquad\text{for every }t\in\mathbb{R}.
+\]
+Substituting $U(t)=T'(t)/m$ and, by Step 3, $U'(t)=T''(t)/m$, and using
+\[
+  U(t)^2=\frac{\bigl(T'(t)\bigr)^2}{m^2},
+  \qquad
+  \frac{\bigl(U'(t)\bigr)^2}{m^2}
+   =\frac{\bigl(T''(t)/m\bigr)^2}{m^2}
+   =\frac{\bigl(T''(t)\bigr)^2}{m^4},
+\]
+this becomes
+\[
+  \frac{\bigl(T'(t)\bigr)^2}{m^2}+\frac{\bigl(T''(t)\bigr)^2}{m^4}\le1
+  \qquad\text{for every }t\in\mathbb{R},
+\]
+which is the assertion.
+\end{proof}

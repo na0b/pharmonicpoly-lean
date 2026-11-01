@@ -1,0 +1,56 @@
+\begin{lemma}[The closing contradiction]
+Let $a,b,s,\delta\in\mathbb{R}$ satisfy
+\[
+  0\le\delta,\qquad \delta\le\tfrac1{13},\qquad
+  \tfrac8{13}<a,\qquad a\le1,\qquad
+  0\le s,\qquad s^2+b^2=1 .
+\]
+Then
+\[
+  s+\frac{\lvert b\rvert}{\pi}-(2-\delta)a+\frac{(1-a)^2}{2a}<0 .
+\]
+\end{lemma}
+\begin{proof}
+From $8/13<a$ we get $a>0$, so the quotient $(1-a)^2/(2a)$ is defined. (The
+hypothesis $0\le\delta$ is part of the constraint set in force at this point of
+the paper's argument, namely $\delta=n-p\in[0,1/13]$; the estimate below uses
+only the upper bound $\delta\le1/13$.)
+
+\emph{Step 1: $s+\lvert b\rvert/\pi<17/16$.} This is \noderef{CauchySchwarzPi},
+whose hypotheses $0\le s$ and $s^2+b^2=1$ are among ours.
+
+\emph{Step 2: $200/169<(2-\delta)a$.} From $\delta\le1/13$ we get
+$2-\delta\ge2-\tfrac1{13}=\tfrac{25}{13}>0$, and $a>\tfrac8{13}>0$. Multiplying
+the two inequalities $2-\delta\ge\tfrac{25}{13}>0$ and $a>\tfrac8{13}>0$ gives
+\[
+  (2-\delta)a\ \ge\ \tfrac{25}{13}\,a\ >\ \tfrac{25}{13}\cdot\tfrac8{13}
+  =\frac{200}{169},
+\]
+where the strict step is multiplication of $a>8/13$ by the positive constant
+$25/13$.
+
+\emph{Step 3: $(1-a)^2/(2a)<25/208$.} Since $2a>0$ and $208>0$, the claim is
+equivalent to $208(1-a)^2<25\cdot 2a=50a$. From $8/13<a\le1$ we have
+$0\le1-a<1-\tfrac8{13}=\tfrac5{13}$, hence
+\[
+  208(1-a)^2\ <\ 208\cdot\Bigl(\frac5{13}\Bigr)^2=\frac{5200}{169}
+  =\frac{400}{13}=50\cdot\frac8{13}\ <\ 50a ,
+\]
+the first strict step because $t\mapsto 208t^2$ is strictly increasing on
+$[0,\infty)$ and $0\le1-a<5/13$, and the last because $a>8/13$. (Both steps are
+strict, and they are needed: at $a=8/13$ the two outer quantities are equal, so
+the estimate is exactly tight there.)
+
+\emph{Step 4: conclusion.} Adding the three estimates of Steps 1--3 (the second
+with its sign reversed, which is legitimate since it is subtracted),
+\[
+  s+\frac{\lvert b\rvert}{\pi}-(2-\delta)a+\frac{(1-a)^2}{2a}
+  <\frac{17}{16}-\frac{200}{169}+\frac{25}{208} .
+\]
+Finally, over the common denominator $2704=16\cdot169$,
+\[
+  \frac{17}{16}-\frac{200}{169}+\frac{25}{208}
+  =\frac{2873-3200+325}{2704}=\frac{-2}{2704}=-\frac1{1352}<0 .
+\]
+Hence the left-hand side is $<-1/1352<0$, which is the assertion.
+\end{proof}

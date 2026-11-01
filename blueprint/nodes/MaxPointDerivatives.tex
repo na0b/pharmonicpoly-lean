@@ -1,0 +1,83 @@
+\begin{lemma}[Derivatives at a normalized maximum point]
+Let $n,m\in\mathbb{N}$ with $m\ge1$, let $P\in\mathbb{R}[X_1,\dots,X_n]$ be
+homogeneous of degree $m$, let $\mathbb{R}^n$ carry the Euclidean inner product
+and let $u(y)=P(y)$. Let $e\in\mathbb{R}^n$ satisfy
+\[
+  \lVert e\rVert=1,\qquad u(e)=1,\qquad
+  \lvert u(y)\rvert\le1\ \text{ for every }y\text{ with }\lVert y\rVert=1 .
+\]
+Then
+\[
+  \nabla u(e)=m\,e
+  \qquad\text{and}\qquad
+  D^2u(e)[e,e]=m(m-1).
+\]
+\end{lemma}
+\begin{proof}
+\emph{Step 1: $\langle\nabla u(e),e\rangle=m$.} By \noderef{GradientEuler}
+applied at $x=e$ (with any $w$, say $w=e$; only the first of its two conclusions
+is used here), $\langle\nabla u(e),e\rangle=m\,u(e)$, and $u(e)=1$ by
+hypothesis.
+
+\emph{Step 2: $\langle\nabla u(e),v\rangle=0$ for every unit $v$ with
+$\langle e,v\rangle=0$.} Fix such a $v$ and set
+$\gamma(t)=\cos(t)\,e+\sin(t)\,v$ and $g(t)=u(\gamma(t))$.
+
+First, $\gamma(t)$ lies on the unit sphere for every $t$: expanding the inner
+product and using $\lVert e\rVert=\lVert v\rVert=1$ and $\langle e,v\rangle=0$,
+\[
+  \lVert\gamma(t)\rVert^2
+  =\cos^2(t)\lVert e\rVert^2+2\cos(t)\sin(t)\langle e,v\rangle+\sin^2(t)\lVert v\rVert^2
+  =\cos^2 t+\sin^2 t=1 .
+\]
+Hence $\lvert g(t)\rvert\le1$ for every $t$ by hypothesis, so $g(t)\le1$. On the
+other hand $\gamma(0)=e$, so $g(0)=u(e)=1$. Therefore $g(t)\le g(0)$ for every
+$t\in\mathbb{R}$, i.e. $g$ attains a maximum at the interior point $0$.
+
+Next, $g$ is differentiable at $0$ with $g'(0)=\langle\nabla u(e),v\rangle$.
+Indeed, by \noderef{MvPolyFDeriv} applied to $P$ at the point $\gamma(0)=e$, the
+polynomial function $z\mapsto P(z)$ on the coordinate space $\mathbb{R}^n$ is
+Frechet differentiable at $e$ with derivative
+$w\mapsto\sum_i(\partial_iP)(e)w_i$; composing with the identity map of
+$\mathbb{R}^n$ read from the Euclidean to the coordinate norm, which is a
+continuous linear isomorphism because any two norms on a finite-dimensional
+space are equivalent, the chain rule makes $u$ Frechet differentiable at $e$
+with $Du(e)(w)=\sum_i(\partial_iP)(e)w_i$. By \noderef{MvPolyGradient} the
+$i$-th coordinate of $\nabla u(e)$ is $(\partial_iP)(e)$, so by the coordinate
+formula for the inner product $Du(e)(w)=\langle\nabla u(e),w\rangle$. The curve
+$\gamma$ is differentiable with $\gamma'(t)=-\sin(t)e+\cos(t)v$, hence
+$\gamma'(0)=v$; so the chain rule gives that $g=u\circ\gamma$ is differentiable
+at $0$ with $g'(0)=Du(e)(\gamma'(0))=\langle\nabla u(e),v\rangle$.
+
+Since $g$ is differentiable at $0$ and has a maximum there, $g'(0)=0$, i.e.
+$\langle\nabla u(e),v\rangle=0$.
+
+\emph{Step 3: $\nabla u(e)=m\,e$.} Put $z=\nabla u(e)-m\,e$. By Step 1 and
+$\lVert e\rVert=1$,
+\[
+  \langle z,e\rangle=\langle\nabla u(e),e\rangle-m\lVert e\rVert^2=m-m=0 .
+\]
+Let $y\in\mathbb{R}^n$ be arbitrary and put $y'=y-\langle y,e\rangle e$, so that
+$\langle y',e\rangle=\langle y,e\rangle-\langle y,e\rangle\lVert e\rVert^2=0$.
+If $y'=0$ then $\langle z,y'\rangle=0$. If $y'\ne0$, then
+$v=y'/\lVert y'\rVert$ is a unit vector with $\langle e,v\rangle=0$, so by
+Step 2 and $\langle z,e\rangle=0$,
+\[
+  \langle z,v\rangle=\langle\nabla u(e),v\rangle-m\langle e,v\rangle=0-0=0 ,
+\]
+whence $\langle z,y'\rangle=\lVert y'\rVert\,\langle z,v\rangle=0$. In both
+cases $\langle z,y'\rangle=0$, and therefore
+\[
+  \langle z,y\rangle=\langle y,e\rangle\,\langle z,e\rangle+\langle z,y'\rangle=0 .
+\]
+As $y$ was arbitrary, taking $y=z$ gives $\lVert z\rVert^2=0$, hence $z=0$, i.e.
+$\nabla u(e)=m\,e$.
+
+\emph{Step 4: $D^2u(e)[e,e]=m(m-1)$.} By \noderef{GradientEuler} applied at
+$x=e$ with $w=e$, its second conclusion gives
+\[
+  D^2u(e)[e,e]=(m-1)\,\langle\nabla u(e),e\rangle ,
+\]
+and $\langle\nabla u(e),e\rangle=m$ by Step 1. Hence $D^2u(e)[e,e]=(m-1)m$,
+which is the assertion.
+\end{proof}

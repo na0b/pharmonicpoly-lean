@@ -1,0 +1,66 @@
+\begin{lemma}[Polynomials of total degree at most one are affine]
+Let $n\in\mathbb{N}$ and let $P\in\mathbb{R}[X_1,\dots,X_n]$ have total degree
+$\deg P\le1$, where $\mathbb{R}^n$ carries the Euclidean inner product. Then
+there exist $w\in\mathbb{R}^n$ and $c\in\mathbb{R}$ such that
+\[
+  P(x)=\langle w,x\rangle+c\qquad\text{for every }x\in\mathbb{R}^n .
+\]
+\end{lemma}
+\begin{proof}
+For $1\le a\le n$ let $\delta_a\in\mathbb{N}^n$ be the exponent tuple whose
+$a$-th entry is $1$ and whose other entries are $0$, and let
+$0\in\mathbb{N}^n$ be the zero tuple. Define
+\[
+  c=\operatorname{coeff}_0P,
+  \qquad
+  w=\bigl(\operatorname{coeff}_{\delta_1}P,\dots,\operatorname{coeff}_{\delta_n}P\bigr)
+  \in\mathbb{R}^n .
+\]
+
+\emph{Step 1: the support consists of $0$ and the $\delta_a$.} Let
+$d\in\operatorname{supp}P$. By the background proposition on the monomial
+expansion, $\sum_{a=1}^{n}d_a\le\deg P\le1$. Since the $d_a$ are natural
+numbers, there are only two possibilities. If $\sum_a d_a=0$ then every $d_a=0$,
+i.e. $d=0$. If $\sum_a d_a=1$ then exactly one index $a$ has $d_a=1$ and all the
+others are $0$, i.e. $d=\delta_a$. Hence
+\begin{equation}\label{eq:aff-supp}
+  \operatorname{supp}P\subseteq S:=\{0\}\cup\{\delta_a:1\le a\le n\}.
+\end{equation}
+
+\emph{Step 2: the tuples in $S$ are pairwise distinct, and their monomials.} The
+tuple $0$ has entry sum $0$ while each $\delta_a$ has entry sum $1$, so $0$
+differs from every $\delta_a$; and if $\delta_a=\delta_b$ then comparing the
+$a$-th entries gives $1=(\delta_b)_a$, which forces $b=a$. So $S$ has exactly
+$n+1$ elements. Moreover, for $x\in\mathbb{R}^n$,
+\[
+  \prod_{a=1}^{n}x_a^{\,0_a}=\prod_{a=1}^{n}x_a^{0}=1,
+  \qquad
+  \prod_{b=1}^{n}x_b^{\,(\delta_a)_b}=x_a^{1}\prod_{b\ne a}x_b^{0}=x_a ,
+\]
+since all entries of $\delta_a$ other than the $a$-th vanish.
+
+\emph{Step 3: evaluating $P$.} Fix $x\in\mathbb{R}^n$. By the background
+proposition on the monomial expansion,
+\[
+  P(x)=\sum_{d\in\operatorname{supp}P}\bigl(\operatorname{coeff}_dP\bigr)
+        \prod_{a=1}^{n}x_a^{\,d_a}.
+\]
+By \eqref{eq:aff-supp} we may enlarge the index set of this finite sum from
+$\operatorname{supp}P$ to $S$ without changing its value: each tuple
+$d\in S\setminus\operatorname{supp}P$ contributes the term
+$\bigl(\operatorname{coeff}_dP\bigr)\prod_ax_a^{d_a}=0$, because
+$\operatorname{coeff}_dP=0$ for $d\notin\operatorname{supp}P$ by the definition
+of the support. Splitting the resulting sum over $S$ into the term $d=0$ and the
+$n$ terms $d=\delta_a$ (legitimate by Step 2, which shows these $n+1$ tuples are
+distinct and exhaust $S$), and inserting the monomial values of Step 2,
+\[
+  P(x)=\bigl(\operatorname{coeff}_0P\bigr)\cdot1
+       +\sum_{a=1}^{n}\bigl(\operatorname{coeff}_{\delta_a}P\bigr)\,x_a
+      =c+\sum_{a=1}^{n}w_a\,x_a .
+\]
+
+\emph{Step 4: conclusion.} By the coordinate formula for the Euclidean inner
+product, $\sum_{a=1}^{n}w_a x_a=\langle w,x\rangle$. Hence
+$P(x)=\langle w,x\rangle+c$ for every $x\in\mathbb{R}^n$, so the pair $(w,c)$
+constructed above witnesses the assertion.
+\end{proof}

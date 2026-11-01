@@ -1,0 +1,154 @@
+\begin{lemma}[Reduction to the top homogeneous component]
+Let $n\in\mathbb{N}$, let $p\in\mathbb{R}$ and let
+$P\in\mathbb{R}[X_1,\dots,X_n]$ with $\deg P\ge2$, where $\deg$ denotes total
+degree. Write $m=\deg P$. If $\mathcal{E}^{\mathrm{alg}}_p(P)=0$, then
+\[
+  \mathcal{E}^{\mathrm{alg}}_p\bigl(H_m(P)\bigr)=0,
+\]
+where $H_m(P)$ is the $m$-th homogeneous component of $P$.
+\end{lemma}
+\begin{proof}
+Put $m=\deg P\ge2$, $P_m=H_m(P)$ and $r=P-P_m$.
+
+\emph{Step 1: $P_m$ is homogeneous of degree $m$ and $\deg r\le m-1$.} By the
+background proposition on homogeneous components, $P_m=H_m(P)$ is homogeneous of
+degree $m$ and $P=\sum_{d=0}^{m}H_d(P)$. Subtracting the term $d=m$,
+\[
+  r=P-P_m=\sum_{d=0}^{m-1}H_d(P).
+\]
+For each $0\le d\le m-1$ the polynomial $H_d(P)$ is homogeneous of degree $d$,
+so every exponent tuple in its support has entry sum $d$ and hence
+$\deg H_d(P)\le d\le m-1$. By the background proposition on the total degree of
+a finite sum, $\deg r\le m-1$.
+
+\emph{Step 2: a bookkeeping lemma.} We claim: if $\varphi\in\mathbb{R}[X_1,\dots,X_n]$
+and $D\in\mathbb{N}$ satisfy $\deg\varphi\le D$, then
+\begin{enumerate}
+\item[(i)] for every index $a$, either $\partial_a\varphi=0$ or
+  $\deg(\partial_a\varphi)+1\le D$;
+\item[(ii)] for all indices $a,b$, either $\partial_a\partial_b\varphi=0$ or
+  $\deg(\partial_a\partial_b\varphi)+2\le D$.
+\end{enumerate}
+
+For (i), suppose $\partial_a\varphi\ne0$. If $D=0$ then $\deg\varphi=0$, so
+$\varphi$ is constant by the background proposition on total degrees, and then
+$\partial_a\varphi=0$ by the background proposition on partial derivatives — a
+contradiction. Hence $D\ge1$. By \noderef{TotalDegreePDeriv},
+$\deg(\partial_a\varphi)\le\deg\varphi-1\le D-1$, and since $D\ge1$ this is the
+same as $\deg(\partial_a\varphi)+1\le D$.
+
+For (ii), suppose $\partial_a\partial_b\varphi\ne0$. Then $\partial_b\varphi\ne0$,
+since $\partial_a0=0$. Put $D'=\deg(\partial_b\varphi)$. By (i) applied to
+$\varphi$ and $D$ we get $D'+1\le D$. By (i) applied to the polynomial
+$\partial_b\varphi$ with the bound $D'$ and the index $a$ (legitimate, since
+$\partial_a(\partial_b\varphi)\ne0$) we get
+$\deg(\partial_a\partial_b\varphi)+1\le D'$. Adding $1$ to both sides and
+combining with $D'+1\le D$,
+\[
+  \deg(\partial_a\partial_b\varphi)+2\le D'+1\le D .
+\]
+
+\emph{Step 3: degree budgets for the factors.} Applying Step 2 to
+$\varphi=P_m$ with $D=m$ (legitimate since $\deg P_m\le m$), and to
+$\varphi=r$ with $D=m-1$ (legitimate by Step 1), we obtain, for all indices
+$a,b$: every nonzero factor among
+\[
+  \partial_aP_m,\quad \partial_a\partial_bP_m,\quad \partial_ar,\quad
+  \partial_a\partial_br
+\]
+satisfies
+\begin{equation}\label{eq:tc-budget}
+  \deg F+k\le m\ \ \text{if }F\text{ is a $k$-th derivative of }P_m,
+  \qquad
+  \deg F+k+1\le m\ \ \text{if }F\text{ is a $k$-th derivative of }r,
+\end{equation}
+where $k\in\{1,2\}$ is the order of the derivative. Indeed, for $P_m$ the two
+cases are exactly (i) and (ii) with $D=m$; and for $r$ they are (i) and (ii)
+with $D=m-1$, after adding $1$ to both sides and using $m-1+1=m$ (valid since
+$m\ge2\ge1$).
+
+\emph{Step 4: the expansion.} By the background proposition on additivity of
+$\partial_i$, and since $P=P_m+r$,
+\[
+  \partial_aP=\partial_aP_m+\partial_ar,
+  \qquad
+  \partial_a\partial_bP=\partial_a\partial_bP_m+\partial_a\partial_br .
+\]
+Abbreviate $A_a=\partial_aP_m$, $\alpha_a=\partial_ar$,
+$B_{ab}=\partial_a\partial_bP_m$, $\beta_{ab}=\partial_a\partial_br$. Expanding
+the product of the two sums in the definition in \noderef{EpAlg} applied to $P$,
+\[
+  \mathcal{E}^{\mathrm{alg}}_p(P)
+  =\sum_{i}\sum_{k}(A_i+\alpha_i)(A_i+\alpha_i)(B_{kk}+\beta_{kk})
+   +(p-2)\sum_{i}\sum_{j}(B_{ij}+\beta_{ij})(A_i+\alpha_i)(A_j+\alpha_j).
+\]
+Expanding each triple product by distributivity gives $2^3=8$ summands. Exactly
+one summand of each triple product has all three factors taken from $P_m$,
+namely $A_iA_iB_{kk}$ in the first block and $B_{ij}A_iA_j$ in the second; and
+\[
+  \sum_i\sum_k A_iA_iB_{kk}=\Bigl(\sum_iA_i^2\Bigr)\Bigl(\sum_kB_{kk}\Bigr),
+  \qquad
+  \sum_i\sum_j B_{ij}A_iA_j,
+\]
+so these pure summands reassemble, again by the definition in \noderef{EpAlg},
+into $\mathcal{E}^{\mathrm{alg}}_p(P_m)$. Collecting all the remaining summands
+(seven from each triple product, over all index pairs, those from the second
+block carrying the scalar $p-2$) into a single polynomial $M$, we have
+\begin{equation}\label{eq:tc-split}
+  \mathcal{E}^{\mathrm{alg}}_p(P)=\mathcal{E}^{\mathrm{alg}}_p(P_m)+M .
+\end{equation}
+By construction every summand of $M$ is a product of three factors, possibly
+times the scalar $p-2$, in which exactly one factor is a second derivative
+(order $2$) and two factors are first derivatives (order $1$), each factor is a
+derivative of $P_m$ or of $r$, and \emph{at least one factor is a derivative of
+$r$}.
+
+\emph{Step 5: $\deg M\le 3m-5$.} Let $N$ be one of those summands, say
+$N=c\,F_1F_2F_3$ with $c\in\{1,p-2\}$ and with $F_t$ a derivative of order
+$k_t$, where $(k_1,k_2,k_3)$ is a permutation of $(1,1,2)$, so that
+$k_1+k_2+k_3=4$.
+
+If some $F_t=0$ then $N=0$ and $\deg N=0\le3m-5$, because $m\ge2$ gives
+$3m-5\ge1$.
+
+Otherwise all three factors are nonzero, so \eqref{eq:tc-budget} applies to each
+of them: $\deg F_t+k_t\le m$ for every $t$, and moreover
+$\deg F_t+k_t+1\le m$ for at least one $t$, namely any $t$ for which $F_t$ is a
+derivative of $r$ (such a $t$ exists by Step 4). Adding the three inequalities,
+taking the improved one for that distinguished $t$,
+\[
+  \bigl(\deg F_1+\deg F_2+\deg F_3\bigr)+(k_1+k_2+k_3)+1\le 3m,
+\]
+that is $\deg F_1+\deg F_2+\deg F_3+5\le3m$, i.e.
+$\deg F_1+\deg F_2+\deg F_3\le3m-5$. By the background proposition on the total
+degree of a product and of a scalar multiple,
+\[
+  \deg N\le\deg F_1+\deg F_2+\deg F_3\le3m-5 .
+\]
+Since $M$ is a finite sum of such summands, the background proposition on the
+total degree of a finite sum gives $\deg M\le3m-5$.
+
+\emph{Step 6: conclusion.} The operator $H_{3m-4}$ is $\mathbb{R}$-linear
+(background proposition on homogeneous components). Applying it to
+\eqref{eq:tc-split},
+\[
+  H_{3m-4}\bigl(\mathcal{E}^{\mathrm{alg}}_p(P)\bigr)
+  =H_{3m-4}\bigl(\mathcal{E}^{\mathrm{alg}}_p(P_m)\bigr)+H_{3m-4}(M).
+\]
+We evaluate the three terms.
+\begin{itemize}
+\item The left-hand side is $H_{3m-4}(0)=0$, by the hypothesis
+  $\mathcal{E}^{\mathrm{alg}}_p(P)=0$ and linearity.
+\item By \noderef{EpAlgHomogeneous}, whose hypotheses $m\ge2$ and ``$P_m$ is
+  homogeneous of degree $m$'' hold by assumption and by Step 1, the polynomial
+  $\mathcal{E}^{\mathrm{alg}}_p(P_m)$ is homogeneous of degree $3m-4$. Hence
+  $H_{3m-4}\bigl(\mathcal{E}^{\mathrm{alg}}_p(P_m)\bigr)=\mathcal{E}^{\mathrm{alg}}_p(P_m)$,
+  since $H_d$ is the identity on polynomials homogeneous of degree $d$.
+\item Since $m\ge2$ we have $3m-4\ge2$, so $3m-5=(3m-4)-1<3m-4$; combined with
+  Step 5 this gives $\deg M<3m-4$, whence $H_{3m-4}(M)=0$, since $H_d$ kills
+  polynomials of total degree $<d$.
+\end{itemize}
+Substituting these three evaluations,
+$0=\mathcal{E}^{\mathrm{alg}}_p(P_m)+0$, i.e.
+$\mathcal{E}^{\mathrm{alg}}_p\bigl(H_m(P)\bigr)=0$, which is the assertion.
+\end{proof}

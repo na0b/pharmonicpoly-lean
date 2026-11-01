@@ -24,6 +24,8 @@ public import Mathlib.LinearAlgebra.Lagrange
 
 -- Smoothness of polynomial evaluation (Polynomial.contDiff_aeval).
 public import Mathlib.Analysis.Calculus.ContDiff.Polynomial
+-- Derivatives of polynomial evaluation (Polynomial.hasDerivAt); no longer imported transitively.
+public import Mathlib.Analysis.Calculus.Deriv.Polynomial
 
 -- Multivariate polynomials: partial derivatives, homogeneity, Euler identity,
 -- analyticity of polynomial evaluation.

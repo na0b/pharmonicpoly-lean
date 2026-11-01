@@ -1,0 +1,51 @@
+\begin{lemma}[The cotangent bound]
+Let $m\ge2$ be an integer. Then
+\[
+  0\ \le\ \frac{\cos(\pi/m)}{\sin(\pi/m)\cdot m}\ \le\ \frac1\pi .
+\]
+Equivalently, with $\theta_0=\pi/m$, one has $0\le\cot\theta_0/m\le1/\pi$.
+\end{lemma}
+\begin{proof}
+Put $\theta=\pi/m$. Since $m\ge2$ we have $m>0$ as a real number, and $\pi>0$.
+
+\emph{Step 0: $0<\theta\le\pi/2$.} We have $\theta=\pi/m>0$ as a quotient of
+positive numbers. From $2\le m$ and $\pi>0$ we get $\pi/m\le\pi/2$, because
+$t\mapsto\pi/t$ is decreasing on $(0,\infty)$.
+
+\emph{Step 1: $\cos\theta\ge0$ and $\sin\theta>0$.} By Step 0 we have
+$\theta\in[-\pi/2,\pi/2]$, on which $\cos$ is nonnegative; hence
+$\cos\theta\ge0$. Also $0<\theta\le\pi/2<\pi$, and $\sin$ is strictly positive
+on $(0,\pi)$; hence $\sin\theta>0$.
+
+\emph{Step 2: the lower bound.} By Step 1 the numerator $\cos\theta$ is
+nonnegative and the denominator $\sin\theta\cdot m$ is a product of two positive
+numbers, hence positive. So the quotient is nonnegative.
+
+\emph{Step 3: reduction of the upper bound.} Since $\sin\theta\cdot m>0$ and
+$\pi>0$, the inequality $\cos\theta/(\sin\theta\cdot m)\le1/\pi$ is equivalent,
+after clearing both positive denominators, to
+\begin{equation}\label{eq:cb-key}
+  \pi\cos\theta\ \le\ \sin\theta\cdot m .
+\end{equation}
+
+\emph{Step 4: proof of \eqref{eq:cb-key}, case $\theta=\pi/2$.} This is the case
+$m=2$. Then $\cos\theta=\cos(\pi/2)=0$, so the left-hand side of
+\eqref{eq:cb-key} is $0$, while the right-hand side $\sin\theta\cdot m$ is
+nonnegative by Step 1. So \eqref{eq:cb-key} holds.
+
+\emph{Step 5: proof of \eqref{eq:cb-key}, case $\theta<\pi/2$.} Then
+$0<\theta<\pi/2$, so $\cos\theta>0$ ($\cos$ is strictly positive on
+$(-\pi/2,\pi/2)$). The elementary inequality $\theta<\tan\theta$, valid for
+$0<\theta<\pi/2$, gives $\theta\le\tan\theta=\sin\theta/\cos\theta$. Multiplying
+by $\cos\theta>0$ yields
+\[
+  \theta\cos\theta\ \le\ \sin\theta ,
+\]
+and multiplying by $m>0$ yields $\theta\,m\cos\theta\le\sin\theta\cdot m$. Since
+$\theta\,m=(\pi/m)\cdot m=\pi$, this is exactly \eqref{eq:cb-key}.
+
+By Steps 4 and 5, \eqref{eq:cb-key} holds in both cases, so by Step 3 the upper
+bound holds; together with Step 2 this is the assertion. Finally, since
+$\cot\theta_0=\cos\theta_0/\sin\theta_0$, the displayed quantity is
+$\cot\theta_0/m$, which gives the reformulation.
+\end{proof}

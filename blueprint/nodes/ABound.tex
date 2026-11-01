@@ -1,0 +1,58 @@
+\begin{lemma}[The $A$-bound]
+Let $a,b,s,q\in\mathbb{R}$ satisfy
+\[
+  0<a,\qquad a\le s,\qquad q=a^2+b^2,\qquad s^2+b^2=1 .
+\]
+Then
+\[
+  0\ \le\ \frac{b^2(s-a)}{q}\ \le\ \frac{(1-a)^2}{2a}.
+\]
+\end{lemma}
+\begin{proof}
+\emph{Step 0: $q>0$ and $s+a>0$.} Since $a>0$ we have $a^2>0$, and $b^2\ge0$, so
+$q=a^2+b^2\ge a^2>0$. From $0<a\le s$ we get $s+a\ge2a>0$.
+
+\emph{Step 1: the lower bound.} We have $b^2\ge0$, $s-a\ge0$ by hypothesis, and
+$q>0$ by Step 0, so $b^2(s-a)\ge0$ and hence $b^2(s-a)/q\ge0$.
+
+\emph{Step 2: two identities.} First,
+\begin{equation}\label{eq:ab-sa}
+  s^2-a^2=(s^2+b^2)-(a^2+b^2)=1-q ,
+\end{equation}
+using both $s^2+b^2=1$ and $q=a^2+b^2$. Second, $b^2=q-a^2$, again from
+$q=a^2+b^2$. Therefore, multiplying numerator and denominator by $s+a>0$ and
+using \eqref{eq:ab-sa},
+\begin{equation}\label{eq:ab-rewrite}
+  \frac{b^2(s-a)}{q}
+  =\frac{b^2(s-a)(s+a)}{q\,(s+a)}
+  =\frac{b^2(s^2-a^2)}{q\,(s+a)}
+  =\frac{(q-a^2)(1-q)}{q\,(s+a)}
+  =\frac{1+a^2-q-a^2/q}{s+a},
+\end{equation}
+the last equality because multiplying $1+a^2-q-a^2/q$ by $q>0$ gives
+\[
+  q+a^2q-q^2-a^2=q(1-q)+a^2(q-1)=(1-q)(q-a^2),
+\]
+so that $1+a^2-q-a^2/q=(1-q)(q-a^2)/q$. This is the paper's rewriting of
+$b^2(s-a)/q$.
+
+\emph{Step 3: the numerator is at most $(1-a)^2$.} Since $q>0$,
+\[
+  q+\frac{a^2}{q}-2a=\frac{q^2-2aq+a^2}{q}=\frac{(q-a)^2}{q}\ \ge\ 0,
+\]
+i.e. $q+a^2/q\ge2a$. Hence
+\[
+  1+a^2-q-\frac{a^2}{q}
+  =1+a^2-\Bigl(q+\frac{a^2}{q}\Bigr)
+  \ \le\ 1+a^2-2a=(1-a)^2 .
+\]
+
+\emph{Step 4: the upper bound.} Dividing the inequality of Step 3 by the
+positive number $s+a$ (Step 0) and using \eqref{eq:ab-rewrite},
+\[
+  \frac{b^2(s-a)}{q}=\frac{1+a^2-q-a^2/q}{s+a}\ \le\ \frac{(1-a)^2}{s+a}.
+\]
+Finally $(1-a)^2\ge0$ and $0<2a\le s+a$ by Step 0, so
+$(1-a)^2/(s+a)\le(1-a)^2/(2a)$. Combining the last two displays gives
+$b^2(s-a)/q\le(1-a)^2/(2a)$, which together with Step 1 is the assertion.
+\end{proof}

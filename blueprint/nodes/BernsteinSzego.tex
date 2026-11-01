@@ -1,0 +1,215 @@
+\begin{theorem}[Bernstein--Szeg\H{o} inequality]
+Let $m\ge1$ be an integer and let $T:\mathbb{R}\to\mathbb{R}$ be a real
+trigonometric polynomial of degree at most $m$ with
+$\lvert T(t)\rvert\le1$ for every $t\in\mathbb{R}$. Then
+\[
+  T(t)^2+\frac{\bigl(T'(t)\bigr)^2}{m^2}\le1
+  \qquad\text{for every }t\in\mathbb{R},
+\]
+where $T'$ denotes the pointwise derivative of $T$.
+\end{theorem}
+\begin{proof}
+Since $m\ge1$, the real number $m$ satisfies $m>0$; in particular $m\ne0$, so
+all divisions by $m$ below are legitimate. By \noderef{TrigPolySmooth}, $T$ is
+real-analytic on $\mathbb{R}$, in particular differentiable at every point, so
+$T'$ is the genuine pointwise derivative of $T$.
+
+Assume, towards a contradiction, that the conclusion fails: there is
+$t_*\in\mathbb{R}$ with
+\[
+  T(t_*)^2+\frac{\bigl(T'(t_*)\bigr)^2}{m^2}>1 .
+\]
+Put
+\[
+  \lambda=\sqrt{\,T(t_*)^2+\frac{\bigl(T'(t_*)\bigr)^2}{m^2}\,},
+\]
+so that $\lambda^2=T(t_*)^2+\bigl(T'(t_*)\bigr)^2/m^2>1$ and hence
+$\lambda>1>0$.
+
+\emph{Step 1: a phase $\alpha$ with $T(t_*)=\lambda\cos\alpha$ and
+$T'(t_*)=-\lambda m\sin\alpha$.} Put
+\[
+  x=\frac{T(t_*)}{\lambda},\qquad y=-\frac{T'(t_*)}{\lambda m} .
+\]
+Then
+\[
+  x^2+y^2=\frac{1}{\lambda^2}\left(T(t_*)^2+\frac{\bigl(T'(t_*)\bigr)^2}{m^2}\right)
+  =\frac{\lambda^2}{\lambda^2}=1 .
+\]
+In particular $x^2\le1$, i.e. $x\in[-1,1]$, so $\beta=\arccos x$ is defined and
+lies in $[0,\pi]$, with $\cos\beta=x$. Since $\sin\beta\ge0$ on $[0,\pi]$ and
+$\sin^2\beta=1-\cos^2\beta=1-x^2=y^2$, we get $\sin\beta=\lvert y\rvert$. Define
+\[
+  \alpha=\begin{cases}\beta,&y\ge0,\\-\beta,&y<0.\end{cases}
+\]
+If $y\ge0$ then $\cos\alpha=\cos\beta=x$ and
+$\sin\alpha=\sin\beta=\lvert y\rvert=y$. If $y<0$ then, since $\cos$ is even and
+$\sin$ is odd, $\cos\alpha=\cos\beta=x$ and
+$\sin\alpha=-\sin\beta=-\lvert y\rvert=y$. In both cases $\cos\alpha=x$ and
+$\sin\alpha=y$, which by the definitions of $x$ and $y$ reads
+\begin{equation}\label{eq:bs-phase}
+  T(t_*)=\lambda\cos\alpha,
+  \qquad
+  T'(t_*)=-\lambda m\sin\alpha .
+\end{equation}
+
+\emph{Step 2: the comparison function.} Define, for $t\in\mathbb{R}$,
+\[
+  S(t)=\lambda\cos\bigl(m(t-t_*)+\alpha\bigr),
+  \qquad
+  D(t)=S(t)-T(t).
+\]
+
+\emph{Step 2a: $S$ is a real trigonometric polynomial of degree at most $m$.}
+For every $t$ we have $m(t-t_*)+\alpha=mt+(\alpha-mt_*)$, so the cosine
+addition formula gives
+\[
+  S(t)=\lambda\Bigl(\cos(mt)\cos(\alpha-mt_*)-\sin(mt)\sin(\alpha-mt_*)\Bigr)
+      =A\cos(mt)+B\sin(mt),
+\]
+where $A=\lambda\cos(\alpha-mt_*)$ and $B=-\lambda\sin(\alpha-mt_*)$ are
+constants. Define $a,b:\mathbb{N}\to\mathbb{R}$ by $a_m=A$, $b_m=B$ and
+$a_k=b_k=0$ for $k\ne m$. Since $m\in\{0,\dots,m\}$, in the sum
+$\sum_{k=0}^{m}\bigl(a_k\cos(kt)+b_k\sin(kt)\bigr)$ every term with $k\ne m$
+vanishes and the term with $k=m$ equals $A\cos(mt)+B\sin(mt)=S(t)$. Hence the
+pair $(a,b)$ witnesses that $S$ is a real trigonometric polynomial of degree at
+most $m$ in the sense of \noderef{TrigPolyLe}.
+
+\emph{Step 2b: $D$ is a real trigonometric polynomial of degree at most $m$.}
+Apply \noderef{TrigPolyLinComb} to the two functions $S$ (degree at most $m$ by
+Step 2a) and $T$ (degree at most $m$ by hypothesis) with the scalars $c=1$ and
+$d=-1$: the function $t\mapsto 1\cdot S(t)+(-1)\cdot T(t)$ is a real
+trigonometric polynomial of degree at most $m$. That function is $D$, because
+$1\cdot S(t)+(-1)\cdot T(t)=S(t)-T(t)=D(t)$ for every $t$.
+
+\emph{Step 2c: $D$ is differentiable, with
+$D'(t)=-\lambda m\sin\bigl(m(t-t_*)+\alpha\bigr)-T'(t)$.} The map
+$t\mapsto m(t-t_*)+\alpha$ is differentiable with constant derivative $m$, and
+$\cos$ is differentiable with $\cos'=-\sin$, so the chain rule gives that $S$ is
+differentiable with
+\[
+  S'(t)=-\lambda m\sin\bigl(m(t-t_*)+\alpha\bigr).
+\]
+$T$ is differentiable at every point as noted at the start, and the derivative is
+linear, so $D=S-T$ is differentiable with $D'=S'-T'$.
+
+\emph{Step 2d: $D(t_*)=0$ and $D'(t_*)=0$.} At $t=t_*$ we have
+$m(t_*-t_*)+\alpha=\alpha$, so $S(t_*)=\lambda\cos\alpha=T(t_*)$ by
+\eqref{eq:bs-phase}, whence $D(t_*)=0$; and
+$S'(t_*)=-\lambda m\sin\alpha=T'(t_*)$ by \eqref{eq:bs-phase}, whence
+$D'(t_*)=S'(t_*)-T'(t_*)=0$.
+
+\emph{Step 3: the alternation points.} For $j\in\mathbb{Z}$ put
+\[
+  \tau_j=t_*+\frac{j\pi-\alpha}{m} .
+\]
+Since $m>0$ and $\pi>0$, the sequence $j\mapsto\tau_j$ is strictly increasing
+with constant step $\tau_{j+1}-\tau_j=\pi/m>0$, and
+\begin{equation}\label{eq:bs-period}
+  \tau_{j+2m}=\tau_j+\frac{2m\pi}{m}=\tau_j+2\pi
+  \qquad(j\in\mathbb{Z}).
+\end{equation}
+Moreover $m(\tau_j-t_*)+\alpha=j\pi$, so $S(\tau_j)=\lambda\cos(j\pi)=(-1)^j\lambda$
+and therefore, for every $j\in\mathbb{Z}$,
+\[
+  (-1)^jD(\tau_j)=(-1)^j\bigl((-1)^j\lambda-T(\tau_j)\bigr)
+  =\lambda-(-1)^jT(\tau_j)
+  \ \ge\ \lambda-\bigl\lvert T(\tau_j)\bigr\rvert
+  \ \ge\ \lambda-1,
+\]
+using $\bigl((-1)^j\bigr)^2=1$, then $(-1)^jT(\tau_j)\le\lvert T(\tau_j)\rvert$,
+then the hypothesis $\lvert T(\tau_j)\rvert\le1$. Since $\lambda>1$ we conclude
+\begin{equation}\label{eq:bs-alt}
+  (-1)^jD(\tau_j)\ \ge\ \lambda-1\ >\ 0
+  \qquad(j\in\mathbb{Z}).
+\end{equation}
+In particular $D(\tau_j)\ne0$ for every $j$, and $D(\tau_j)$ and
+$D(\tau_{j+1})$ are nonzero of strictly opposite signs.
+
+\emph{Step 4: locating $t_*$ between two consecutive alternation points.} For
+$j\in\mathbb{Z}$ we have, since $m>0$ and $\pi>0$,
+\[
+  \tau_j\le t_*
+  \iff \frac{j\pi-\alpha}{m}\le0
+  \iff j\pi\le\alpha
+  \iff j\le\frac{\alpha}{\pi}.
+\]
+Let $j_0=\lfloor\alpha/\pi\rfloor\in\mathbb{Z}$, so that
+$j_0\le\alpha/\pi<j_0+1$. By the displayed equivalence this gives
+$\tau_{j_0}\le t_*$ and $\tau_{j_0+1}>t_*$. Furthermore $t_*\ne\tau_{j_0}$,
+because $D(t_*)=0$ by Step 2d while $D(\tau_{j_0})\ne0$ by \eqref{eq:bs-alt}.
+Hence
+\begin{equation}\label{eq:bs-locate}
+  \tau_{j_0}<t_*<\tau_{j_0+1}.
+\end{equation}
+
+\emph{Step 5: the intermediate-value zeros.} By Step 2b and
+\noderef{TrigPolySmooth} applied to $D$, the function $D$ is real-analytic on
+$\mathbb{R}$ and in particular infinitely differentiable, hence continuous. Fix an integer $j$ with
+$j_0+1\le j\le j_0+2m-1$ (such $j$ exist since $m\ge1$, and there are exactly
+$(j_0+2m-1)-(j_0+1)+1=2m-1$ of them). By \eqref{eq:bs-alt} the numbers
+$D(\tau_j)$ and $D(\tau_{j+1})$ are nonzero with strictly opposite signs, so the
+intermediate value theorem applied to the continuous function $D$ on the
+interval $[\tau_j,\tau_{j+1}]$ produces a point $\zeta_j\in[\tau_j,\tau_{j+1}]$
+with $D(\zeta_j)=0$; and since $D(\tau_j)\ne0$ and $D(\tau_{j+1})\ne0$ we must
+have
+\begin{equation}\label{eq:bs-zero}
+  \tau_j<\zeta_j<\tau_{j+1}.
+\end{equation}
+Put
+\[
+  Z=\bigl\{\zeta_j:\ j\in\mathbb{Z},\ j_0+1\le j\le j_0+2m-1\bigr\}.
+\]
+
+\emph{Step 5a: $\#Z=2m-1$.} The open intervals $(\tau_j,\tau_{j+1})$ for
+distinct integers $j$ are pairwise disjoint, because $j\mapsto\tau_j$ is
+strictly increasing. By \eqref{eq:bs-zero} the point $\zeta_j$ lies in
+$(\tau_j,\tau_{j+1})$, so the $2m-1$ points $\zeta_j$,
+$j_0+1\le j\le j_0+2m-1$, are pairwise distinct. Hence $Z$ is a finite set with
+exactly $2m-1$ elements.
+
+\emph{Step 5b: $Z\subseteq[\tau_{j_0},\tau_{j_0}+2\pi)$.} Let
+$j_0+1\le j\le j_0+2m-1$. By \eqref{eq:bs-zero} and monotonicity of
+$j\mapsto\tau_j$,
+\[
+  \zeta_j>\tau_j\ \ge\ \tau_{j_0+1}\ >\ \tau_{j_0},
+  \qquad
+  \zeta_j<\tau_{j+1}\ \le\ \tau_{j_0+2m}=\tau_{j_0}+2\pi,
+\]
+the last equality being \eqref{eq:bs-period}. So
+$\zeta_j\in(\tau_{j_0},\tau_{j_0}+2\pi)\subseteq[\tau_{j_0},\tau_{j_0}+2\pi)$.
+
+\emph{Step 5c: $D$ vanishes on $Z$.} Immediate from the construction of
+$\zeta_j$ in Step 5.
+
+\emph{Step 5d: $t_*\in[\tau_{j_0},\tau_{j_0}+2\pi)$ and $t_*\notin Z$.} By
+\eqref{eq:bs-locate}, $\tau_{j_0}<t_*<\tau_{j_0+1}$, and
+$\tau_{j_0+1}\le\tau_{j_0+2m}=\tau_{j_0}+2\pi$ because $1\le 2m$ and
+$j\mapsto\tau_j$ is increasing; hence
+$t_*\in(\tau_{j_0},\tau_{j_0}+2\pi)\subseteq[\tau_{j_0},\tau_{j_0}+2\pi)$. For
+the second claim, every element of $Z$ is some $\zeta_j$ with $j\ge j_0+1$, and
+by \eqref{eq:bs-zero} and monotonicity $\zeta_j>\tau_j\ge\tau_{j_0+1}>t_*$; so
+no element of $Z$ equals $t_*$.
+
+\emph{Step 5e: $D$ does not vanish identically.} By \eqref{eq:bs-alt},
+$D(\tau_{j_0})\ne0$, so there is a real number $s$ (namely $s=\tau_{j_0}$) with
+$D(s)\ne0$.
+
+\emph{Step 6: the zero count gives the contradiction.} Collecting the facts
+just proved: $D$ is a real trigonometric polynomial of degree at most $m$
+(Step 2b); there is $s$ with $D(s)\ne0$ (Step 5e); $Z$ is a finite set of real
+numbers contained in $[\tau_{j_0},\tau_{j_0}+2\pi)$ (Step 5b) with $D(z)=0$ for
+every $z\in Z$ (Step 5c); and $t_*\in[\tau_{j_0},\tau_{j_0}+2\pi)$ with
+$t_*\notin Z$ (Step 5d), $D(t_*)=0$ and $D'(t_*)=0$ (Step 2d). These are
+precisely the hypotheses of \noderef{TrigPolyZeroCount} for the degree $m$, the
+function $D$, the window start $\tau_{j_0}$, the finite set $Z$ and the
+distinguished point $t_*$. That lemma therefore yields
+\[
+  \#Z+2\ \le\ 2m .
+\]
+By Step 5a, $\#Z=2m-1$, so this reads $(2m-1)+2\le2m$, i.e. $2m+1\le2m$, which
+is false.
+
+This contradiction shows that no such $t_*$ exists. Hence
+$T(t)^2+\bigl(T'(t)\bigr)^2/m^2\le1$ for every $t\in\mathbb{R}$.
+\end{proof}

@@ -1,0 +1,211 @@
+\begin{lemma}[Tangential bound and the Laplacian in the adapted frame]
+Let $n,m\in\mathbb{N}$ with $n\ge3$ and $m\ge2$, let
+$P\in\mathbb{R}[X_1,\dots,X_n]$ be homogeneous of degree $m$, let $\mathbb{R}^n$
+carry the Euclidean inner product and let $u(y)=P(y)$. Put $\theta_0=\pi/m$. Let
+$e,v_0\in\mathbb{R}^n$ satisfy $\lVert e\rVert=\lVert v_0\rVert=1$ and
+$\langle e,v_0\rangle=0$, and assume that $v_0$ maximizes the function
+$v\mapsto u(\cos(\theta_0)e+\sin(\theta_0)v)$ over all unit vectors $v$ with
+$\langle e,v\rangle=0$, i.e.
+\[
+  u\bigl(\cos(\theta_0)e+\sin(\theta_0)v\bigr)
+   \le u\bigl(\cos(\theta_0)e+\sin(\theta_0)v_0\bigr)
+  \qquad\text{for every such }v .
+\]
+Write $F(s)=u(\cos(s)e+\sin(s)v_0)$ and
+$x_0=\cos(\theta_0)e+\sin(\theta_0)v_0$. Then for every unit vector $w$ with
+$\langle e,w\rangle=\langle v_0,w\rangle=0$,
+\[
+  \bigl\langle\nabla u(x_0),w\bigr\rangle=0,
+  \qquad
+  D^2u(x_0)[w,w]\le m\,F(\theta_0)+F'(\theta_0)\,
+    \frac{\cos\theta_0}{\sin\theta_0},
+\]
+and moreover
+\[
+  \Delta u(x_0)\ \le\ m(m+n-2)\,F(\theta_0)+F''(\theta_0)
+    +(n-2)\,F'(\theta_0)\,\frac{\cos\theta_0}{\sin\theta_0}.
+\]
+\end{lemma}
+\begin{proof}
+Put $e_r=x_0=\cos(\theta_0)e+\sin(\theta_0)v_0$ and
+$e_\theta=-\sin(\theta_0)e+\cos(\theta_0)v_0$.
+
+\emph{Step 0: elementary facts.} Since $m\ge2$ and $\pi>0$ we have
+$0<\theta_0=\pi/m\le\pi/2$, so $\sin\theta_0>0$ ($\sin$ is strictly positive on
+$(0,\pi)$). Expanding inner products and using
+$\lVert e\rVert=\lVert v_0\rVert=1$, $\langle e,v_0\rangle=0$:
+\begin{equation}\label{eq:tlb-frame}
+  \lVert e_r\rVert^2=\cos^2\theta_0+\sin^2\theta_0=1,
+  \quad
+  \lVert e_\theta\rVert^2=\sin^2\theta_0+\cos^2\theta_0=1,
+  \quad
+  \langle e_r,e_\theta\rangle=-\cos\theta_0\sin\theta_0+\sin\theta_0\cos\theta_0=0,
+\end{equation}
+so $(e_r,e_\theta)$ is an orthonormal pair. Also, directly,
+\begin{equation}\label{eq:tlb-decomp}
+  \sin(\theta_0)\,e_r+\cos(\theta_0)\,e_\theta=v_0,
+  \qquad
+  \cos(\theta_0)\,e_r-\sin(\theta_0)\,e_\theta=e ,
+\end{equation}
+as one checks by expanding and using $\cos^2\theta_0+\sin^2\theta_0=1$.
+
+\emph{Step 1: the comparison curves.} Fix a unit vector $w$ with
+$\langle e,w\rangle=\langle v_0,w\rangle=0$ and set, for $\sigma\in\mathbb{R}$,
+\[
+  v_\sigma=\cos(\sigma)v_0+\sin(\sigma)w,
+  \qquad
+  \eta(\sigma)=\cos(\theta_0)e+\sin(\theta_0)\,v_\sigma .
+\]
+Expanding and using that $v_0,w$ are unit and mutually orthogonal, and that both
+are orthogonal to $e$,
+\[
+  \lVert v_\sigma\rVert^2=\cos^2\sigma+\sin^2\sigma=1,
+  \qquad
+  \langle e,v_\sigma\rangle=\cos(\sigma)\langle e,v_0\rangle+\sin(\sigma)\langle e,w\rangle=0 .
+\]
+So each $v_\sigma$ is a unit vector orthogonal to $e$. Note also
+$v_0$ corresponds to $\sigma=0$, hence $\eta(0)=x_0$. Finally, writing
+\[
+  C=\cos(\theta_0)\,e,\qquad A=\sin(\theta_0)\,v_0,\qquad B=\sin(\theta_0)\,w,
+\]
+we have $\eta(\sigma)=C+\cos(\sigma)A+\sin(\sigma)B$, which is exactly the curve
+shape of \noderef{GreatCircleSecondDeriv}; its derivative at $\sigma$ is
+$-\sin(\sigma)A+\cos(\sigma)B$, so at $\sigma=0$ it equals
+$B=\sin(\theta_0)w$.
+
+\emph{Step 2: $h(\sigma)=u(\eta(\sigma))$ has a maximum at $\sigma=0$.} By
+Step 1 each $v_\sigma$ is a unit vector orthogonal to $e$, so the maximality
+hypothesis applies to it and gives
+\[
+  h(\sigma)=u\bigl(\cos(\theta_0)e+\sin(\theta_0)v_\sigma\bigr)
+  \le u\bigl(\cos(\theta_0)e+\sin(\theta_0)v_0\bigr)=u(x_0)=h(0).
+\]
+
+\emph{Step 3: the first-order condition.} By \noderef{MvPolyFDeriv} applied to
+$P$ at the point $\eta(0)=x_0$, the polynomial function $z\mapsto P(z)$ on the
+coordinate space is Frechet differentiable at $x_0$ with derivative
+$z\mapsto\sum_i(\partial_iP)(x_0)z_i$; composing with the identity map of
+$\mathbb{R}^n$ read from the Euclidean to the coordinate norm, which is a
+continuous linear isomorphism because any two norms on a finite-dimensional
+space are equivalent, the chain rule makes $u$ Frechet differentiable at $x_0$
+with $Du(x_0)(z)=\sum_i(\partial_iP)(x_0)z_i$, and by \noderef{MvPolyGradient}
+together with the coordinate formula for the inner product this equals
+$\langle\nabla u(x_0),z\rangle$. The curve $\eta$ is differentiable (its
+coordinates are constants plus linear combinations of $\cos$ and $\sin$), so by
+the chain rule $h$ is differentiable at $0$ with
+\[
+  h'(0)=Du(x_0)\bigl(\sin(\theta_0)w\bigr)=\sin(\theta_0)\,\langle\nabla u(x_0),w\rangle .
+\]
+By Step 2 the differentiable function $h$ has an interior maximum at $0$, so
+$h'(0)=0$; dividing by $\sin\theta_0>0$ gives
+\begin{equation}\label{eq:tlb-first}
+  \bigl\langle\nabla u(x_0),w\rangle=0 ,
+\end{equation}
+which is the first assertion.
+
+\emph{Step 4: the second-order condition.} By \noderef{GreatCircleSecondDeriv}
+applied with the $C,A,B$ of Step 1 at the parameter $\sigma=0$, and using
+$\eta(0)=x_0$ and $\cos(0)A+\sin(0)B=A=\sin(\theta_0)v_0$,
+\[
+  h''(0)=D^2u(x_0)\bigl[\sin(\theta_0)w,\sin(\theta_0)w\bigr]
+   -\bigl\langle\nabla u(x_0),\,\sin(\theta_0)v_0\bigr\rangle .
+\]
+By \noderef{MvPolyHessian}, $D^2u(x_0)[z,z']=\sum_i\sum_j z_i z'_j(\partial_i\partial_jP)(x_0)$
+is linear in each argument separately, so the first term equals
+$\sin^2(\theta_0)\,D^2u(x_0)[w,w]$; and the inner product is linear in its second
+argument, so
+\begin{equation}\label{eq:tlb-second}
+  h''(0)=\sin^2(\theta_0)\,D^2u(x_0)[w,w]
+   -\sin(\theta_0)\,\langle\nabla u(x_0),v_0\rangle .
+\end{equation}
+The function $h$ is in fact twice differentiable at $0$. Indeed, by
+\noderef{MvPolyContDiff} the function $u$ is of class $C^k$ on $\mathbb{R}^n$ for
+every smoothness exponent $k$, and the curve $\eta$ is infinitely
+differentiable, since each of its coordinates is a constant plus a linear
+combination of $\cos$ and $\sin$ and a map into a finite-dimensional space is
+$C^k$ exactly when its coordinates are; so $h=u\circ\eta$ is infinitely
+differentiable by the chain rule. (This is what makes $h''(0)$ in
+\eqref{eq:tlb-second} the genuine second derivative of $h$ at $0$.) By Step 2
+the function $h$ has a maximum at the interior point $0$, and a function that is
+twice differentiable at an interior maximum has nonpositive second derivative
+there. Hence $h''(0)\le0$, and \eqref{eq:tlb-second} gives
+\[
+  \sin^2(\theta_0)\,D^2u(x_0)[w,w]\le\sin(\theta_0)\,\langle\nabla u(x_0),v_0\rangle .
+\]
+Dividing by $\sin^2(\theta_0)>0$,
+\begin{equation}\label{eq:tlb-div}
+  D^2u(x_0)[w,w]\le\frac{\langle\nabla u(x_0),v_0\rangle}{\sin\theta_0}.
+\end{equation}
+
+\emph{Step 5: evaluating $\langle\nabla u(x_0),v_0\rangle$.} By
+\eqref{eq:tlb-decomp} and linearity of the inner product in its second
+argument,
+\[
+  \langle\nabla u(x_0),v_0\rangle
+  =\sin(\theta_0)\,\langle\nabla u(x_0),e_r\rangle
+   +\cos(\theta_0)\,\langle\nabla u(x_0),e_\theta\rangle .
+\]
+By \noderef{FrameHessian} applied with this $e$, this $v_0$ and $t=\theta_0$
+(its hypotheses are $m\ge1$, which follows from $m\ge2$, and the homogeneity of
+$P$), the first two of its five identities give
+$\langle\nabla u(x_0),e_r\rangle=m\,F(\theta_0)$ and
+$\langle\nabla u(x_0),e_\theta\rangle=F'(\theta_0)$. Hence
+\[
+  \langle\nabla u(x_0),v_0\rangle
+  =\sin(\theta_0)\,m\,F(\theta_0)+\cos(\theta_0)\,F'(\theta_0),
+\]
+and substituting into \eqref{eq:tlb-div} and dividing through by
+$\sin\theta_0>0$,
+\begin{equation}\label{eq:tlb-tang}
+  D^2u(x_0)[w,w]\ \le\ m\,F(\theta_0)
+    +F'(\theta_0)\,\frac{\cos\theta_0}{\sin\theta_0},
+\end{equation}
+which is the second assertion.
+
+\emph{Step 6: the adapted orthonormal basis.} By \eqref{eq:tlb-frame} the pair
+$(e_r,e_\theta)$ is an orthonormal family of two vectors in $\mathbb{R}^n$, and
+$n\ge3\ge2$, so by the background proposition on extending an orthonormal family
+there is an orthonormal basis $(b_i)_{i=1}^{n}$ of $\mathbb{R}^n$ and two
+distinct indices $i_0\ne i_1$ with $b_{i_0}=e_r$ and $b_{i_1}=e_\theta$. Let
+$i\notin\{i_0,i_1\}$. Then $b_i$ is a unit vector with
+$\langle e_r,b_i\rangle=\langle e_\theta,b_i\rangle=0$, so by
+\eqref{eq:tlb-decomp} and linearity,
+\[
+  \langle e,b_i\rangle=\cos(\theta_0)\langle e_r,b_i\rangle-\sin(\theta_0)\langle e_\theta,b_i\rangle=0,
+  \qquad
+  \langle v_0,b_i\rangle=\sin(\theta_0)\langle e_r,b_i\rangle+\cos(\theta_0)\langle e_\theta,b_i\rangle=0 .
+\]
+So each such $b_i$ is a unit vector orthogonal to both $e$ and $v_0$, i.e. an
+admissible choice of $w$ in \eqref{eq:tlb-tang}.
+
+\emph{Step 7: summing the frame.} By the background proposition computing the
+Laplacian from an orthonormal basis, applied with $(b_i)_{i=1}^{n}$,
+\[
+  \Delta u(x_0)=\sum_{i=1}^{n}D^2u(x_0)[b_i,b_i]
+  =D^2u(x_0)[e_r,e_r]+D^2u(x_0)[e_\theta,e_\theta]
+   +\sum_{i\notin\{i_0,i_1\}}D^2u(x_0)[b_i,b_i],
+\]
+splitting off the two indices $i_0\ne i_1$ and using $b_{i_0}=e_r$,
+$b_{i_1}=e_\theta$. By \noderef{FrameHessian} at $t=\theta_0$, the third and
+fifth of its identities give
+\[
+  D^2u(x_0)[e_r,e_r]=m(m-1)F(\theta_0),
+  \qquad
+  D^2u(x_0)[e_\theta,e_\theta]=F''(\theta_0)+m\,F(\theta_0).
+\]
+By Step 6 and \eqref{eq:tlb-tang}, each of the remaining $n-2$ summands (the
+index set $\{i:i\notin\{i_0,i_1\}\}$ has exactly $n-2$ elements) is at most
+$m\,F(\theta_0)+F'(\theta_0)\cos\theta_0/\sin\theta_0$, so their sum is at most
+$(n-2)$ times that. Combining,
+\[
+  \Delta u(x_0)\le m(m-1)F(\theta_0)+F''(\theta_0)+m\,F(\theta_0)
+    +(n-2)\Bigl(m\,F(\theta_0)+F'(\theta_0)\frac{\cos\theta_0}{\sin\theta_0}\Bigr).
+\]
+Collecting the coefficients of $F(\theta_0)$, namely
+$m(m-1)+m+(n-2)m=m\bigl((m-1)+1+(n-2)\bigr)=m(m+n-2)$, this is exactly
+\[
+  \Delta u(x_0)\le m(m+n-2)F(\theta_0)+F''(\theta_0)
+    +(n-2)F'(\theta_0)\frac{\cos\theta_0}{\sin\theta_0},
+\]
+the third assertion.
+\end{proof}

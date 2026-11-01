@@ -1,0 +1,67 @@
+\begin{lemma}[The analytic and algebraic forms of $\mathcal{E}_p$ agree]
+Let $n\in\mathbb{N}$, let $p\in\mathbb{R}$, let $P\in\mathbb{R}[X_1,\dots,X_n]$
+and let $u:\mathbb{R}^n\to\mathbb{R}$ be the polynomial function
+$u(y)=P(y_1,\dots,y_n)$, where $\mathbb{R}^n$ carries the Euclidean inner
+product. Then for every $x\in\mathbb{R}^n$
+\[
+  \mathcal{E}_p(u)(x)=\bigl(\mathcal{E}^{\mathrm{alg}}_p(P)\bigr)(x).
+\]
+\end{lemma}
+\begin{proof}
+Write $g=\nabla u(x)\in\mathbb{R}^n$.
+
+\emph{Step 1: the coordinates of the gradient.} By \noderef{MvPolyGradient},
+the $i$-th coordinate of $g$ is
+\begin{equation}\label{eq:eoep-grad}
+  g_i=(\partial_iP)(x)\qquad(1\le i\le n).
+\end{equation}
+
+\emph{Step 2: $\lvert g\rvert^2=\sum_i\bigl((\partial_iP)(x)\bigr)^2$.} For the
+Euclidean norm, $\lvert g\rvert^2=\langle g,g\rangle=\sum_{i=1}^{n}g_i\,g_i$,
+and substituting \eqref{eq:eoep-grad} gives
+\[
+  \lvert g\rvert^2=\sum_{i=1}^{n}\bigl((\partial_iP)(x)\bigr)^2 .
+\]
+
+\emph{Step 3: the Laplacian.} By \noderef{MvPolyLaplacian},
+\[
+  \Delta u(x)=\sum_{i=1}^{n}\bigl(\partial_i\partial_iP\bigr)(x).
+\]
+
+\emph{Step 4: the Hessian term.} By \noderef{MvPolyHessian} applied with
+$v=w=g$,
+\[
+  \bigl\langle D^2u(x)\,g,\,g\bigr\rangle=D^2u(x)[g,g]
+  =\sum_{i=1}^{n}\sum_{j=1}^{n}g_i\,g_j\,\bigl(\partial_i\partial_jP\bigr)(x),
+\]
+and substituting \eqref{eq:eoep-grad} and reordering the three real factors in
+each summand,
+\[
+  \bigl\langle D^2u(x)\,Du(x),\,Du(x)\bigr\rangle
+  =\sum_{i=1}^{n}\sum_{j=1}^{n}
+     \bigl(\partial_i\partial_jP\bigr)(x)\,\bigl(\partial_iP\bigr)(x)\,
+     \bigl(\partial_jP\bigr)(x).
+\]
+
+\emph{Step 5: the right-hand side.} Evaluation at $x$ is a ring homomorphism
+$\mathbb{R}[X_1,\dots,X_n]\to\mathbb{R}$: it is additive and multiplicative,
+sends a constant polynomial to its value, and therefore commutes with finite
+sums, finite products and powers. Applying it to the definition in
+\noderef{EpAlg},
+\[
+  \bigl(\mathcal{E}^{\mathrm{alg}}_p(P)\bigr)(x)
+  =\Bigl(\sum_{i}\bigl((\partial_iP)(x)\bigr)^2\Bigr)
+    \Bigl(\sum_{i}\bigl(\partial_i\partial_iP\bigr)(x)\Bigr)
+   +(p-2)\sum_{i}\sum_{j}
+      \bigl(\partial_i\partial_jP\bigr)(x)\bigl(\partial_iP\bigr)(x)
+      \bigl(\partial_jP\bigr)(x).
+\]
+
+\emph{Step 6: conclusion.} By the definition in \noderef{EpOp},
+\[
+  \mathcal{E}_p(u)(x)=\lvert Du(x)\rvert^2\,\Delta u(x)
+    +(p-2)\bigl\langle D^2u(x)\,Du(x),Du(x)\bigr\rangle .
+\]
+Substituting Steps 2, 3 and 4 into this expression turns it termwise into the
+right-hand side of Step 5, which proves the claim.
+\end{proof}

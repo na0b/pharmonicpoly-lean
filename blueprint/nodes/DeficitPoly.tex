@@ -1,0 +1,97 @@
+\begin{lemma}[Deficit estimate, algebraic form]
+Let $m\ge2$ be an integer, let $S=\{0,1,\dots,m\}$ and let
+$x_j=x^{(m)}_j=\cos(j\pi/m)$ be the Chebyshev extremal nodes of order $m$. Let
+$P\in\mathbb{R}[X]$ satisfy
+\[
+  \deg P\le m,\qquad \lvert P(x)\rvert\le1\ \text{ for all }x\in[-1,1],\qquad
+  P(1)=1 .
+\]
+Then
+\[
+  2\bigl(1+P(x_1)\bigr)\ \le\ \bigl(m^2-P'(1)\bigr)\,(1-x_1),
+\]
+where $P'$ is the formal derivative of $P$.
+\end{lemma}
+\begin{proof}
+For $i\in S$ put
+\[
+  c_i=\Biggl(\prod_{j\in S\setminus\{i\}}(x_i-x_j)\Biggr)^{-1}
+    \sum_{\substack{t\subseteq S\setminus\{i\}\\ \lvert t\rvert=m-1}}
+      \ \prod_{a\in t}(1-x_a).
+\]
+
+\emph{Step 1: the interpolation formula.} The index set $S$ has
+$\lvert S\rvert=m+1$ elements, and by the background proposition on strict
+monotonicity of the extremal nodes the map $i\mapsto x_i$ is injective on $S$.
+Let $Q\in\mathbb{R}[X]$ with $\deg Q\le m$, i.e. $\deg Q<\lvert S\rvert$. The
+background Lagrange formula for an iterated derivative, applied with this $S$,
+the node map $i\mapsto x_i$, the polynomial $Q$, the order $k=1$ (legitimate
+since $1<m+1$) and the evaluation point $z=1$, gives, using $1!=1$ and
+$\lvert S\rvert-(k+1)=(m+1)-2=m-1$,
+\begin{equation}\label{eq:dp-interp}
+  Q'(1)=\sum_{i\in S}
+    \frac{Q(x_i)}{\prod_{j\in S\setminus\{i\}}(x_i-x_j)}
+    \sum_{\substack{t\subseteq S\setminus\{i\}\\ \lvert t\rvert=m-1}}
+      \ \prod_{a\in t}(1-x_a)
+  =\sum_{i\in S}Q(x_i)\,c_i .
+\end{equation}
+
+\emph{Step 2: applying it to $P$ and to $T_m$.} The hypothesis $\deg P\le m$
+lets us use \eqref{eq:dp-interp} for $Q=P$. The $m$-th Chebyshev polynomial
+$T_m$ has $\deg T_m=m$ by the background Chebyshev proposition, so
+\eqref{eq:dp-interp} also applies to $Q=T_m$. By the background propositions
+$T_m(x_i)=(-1)^i$ for $i\in S$ and $T_m'(1)=m^2$. Subtracting the two instances
+of \eqref{eq:dp-interp},
+\begin{equation}\label{eq:dp-diff}
+  m^2-P'(1)=T_m'(1)-P'(1)
+   =\sum_{i\in S}\bigl((-1)^i-P(x_i)\bigr)c_i
+   =\sum_{i\in S}\bigl(1-(-1)^iP(x_i)\bigr)\bigl((-1)^ic_i\bigr),
+\end{equation}
+the last equality holding term by term because $\bigl((-1)^i\bigr)^2=1$:
+\[
+  \bigl(1-(-1)^iP(x_i)\bigr)\bigl((-1)^ic_i\bigr)
+  =(-1)^ic_i-\bigl((-1)^i\bigr)^2P(x_i)c_i
+  =\bigl((-1)^i-P(x_i)\bigr)c_i .
+\]
+
+\emph{Step 3: every summand is nonnegative.} Fix $i\in S$. By the background
+proposition on the extremal nodes, $x_i\in[-1,1]$, so the hypothesis gives
+$\lvert P(x_i)\rvert\le1$; since
+$(-1)^iP(x_i)\le\lvert(-1)^iP(x_i)\rvert=\lvert P(x_i)\rvert\le1$, we get
+\[
+  1-(-1)^iP(x_i)\ \ge\ 0 .
+\]
+By \noderef{LagrangeDerivSigns}, applied with this $m$, this $i$ (note $i\le m$)
+and $k=m-1$, we have $(-1)^ic_i\ge0$. Hence each summand of \eqref{eq:dp-diff}
+is a product of two nonnegative reals and so is nonnegative.
+
+\emph{Step 4: the $i=0$ summand vanishes.} Since $x_0=\cos0=1$ and $(-1)^0=1$,
+the $i=0$ summand of \eqref{eq:dp-diff} equals
+$\bigl(1-P(1)\bigr)c_0=(1-1)c_0=0$ by the hypothesis $P(1)=1$. (This is the
+paper's observation that the $j=0$ term of the sum vanishes because
+$(T_m-P)(1)=0$.)
+
+\emph{Step 5: dropping all summands but $i=1$.} By Steps 3 and 4,
+\eqref{eq:dp-diff} is a sum over $S$ of nonnegative terms, so it is at least any
+one of them. Note $1\in S$ because $m\ge2\ge1$. Taking the summand $i=1$, and
+using $(-1)^1=-1$,
+\[
+  m^2-P'(1)\ \ge\ \bigl(1-(-1)P(x_1)\bigr)\bigl((-1)c_1\bigr)
+   =\bigl(1+P(x_1)\bigr)\,(-c_1).
+\]
+By \noderef{LagrangeDerivCoeffOne} we have $c_1=\dfrac{-2}{1-x_1}$, hence
+$-c_1=\dfrac{2}{1-x_1}$ and
+\begin{equation}\label{eq:dp-key}
+  m^2-P'(1)\ \ge\ \frac{2\bigl(1+P(x_1)\bigr)}{1-x_1}.
+\end{equation}
+
+\emph{Step 6: clearing the denominator.} Since $m\ge2$ we have
+$0<\pi/m\le\pi/2$, and by the background proposition on strict monotonicity of
+the extremal nodes $x_1<x_0=1$; hence $1-x_1>0$. Multiplying
+\eqref{eq:dp-key} by the positive number $1-x_1$ preserves the inequality and
+gives
+\[
+  \bigl(m^2-P'(1)\bigr)(1-x_1)\ \ge\ 2\bigl(1+P(x_1)\bigr),
+\]
+which is the assertion.
+\end{proof}

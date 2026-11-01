@@ -1,0 +1,93 @@
+\begin{lemma}[Products of trigonometric polynomials]
+Let $m,l\in\mathbb{N}$, let $S:\mathbb{R}\to\mathbb{R}$ be a real
+trigonometric polynomial of degree at most $m$ and let
+$T:\mathbb{R}\to\mathbb{R}$ be a real trigonometric polynomial of degree at
+most $l$. Then the pointwise product $t\mapsto S(t)T(t)$ is a real
+trigonometric polynomial of degree at most $m+l$.
+\end{lemma}
+\begin{proof}
+For $N\in\mathbb{N}$ let $V_N$ denote the set of functions
+$f:\mathbb{R}\to\mathbb{R}$ that are real trigonometric polynomials of degree at
+most $N$ in the sense of \noderef{TrigPolyLe}; thus $f\in V_N$ exactly when
+there are $\alpha,\beta:\mathbb{N}\to\mathbb{R}$ with
+$f(t)=\sum_{k=0}^{N}\bigl(\alpha_k\cos(kt)+\beta_k\sin(kt)\bigr)$ for all
+$t\in\mathbb{R}$.
+
+\emph{Step 1: $V_N$ is an $\mathbb{R}$-linear subspace of the space of all
+functions $\mathbb{R}\to\mathbb{R}$.} The zero function lies in $V_N$, witnessed
+by $\alpha=\beta=0$. Let $f,g\in V_N$ with witnesses
+$(\alpha,\beta)$ and $(\gamma,\delta)$, and let $\lambda,\mu\in\mathbb{R}$. Then
+for every $t\in\mathbb{R}$,
+\begin{align*}
+  \lambda f(t)+\mu g(t)
+  &=\lambda\sum_{k=0}^{N}\bigl(\alpha_k\cos(kt)+\beta_k\sin(kt)\bigr)
+   +\mu\sum_{k=0}^{N}\bigl(\gamma_k\cos(kt)+\delta_k\sin(kt)\bigr)\\
+  &=\sum_{k=0}^{N}\Bigl(\bigl(\lambda\alpha_k+\mu\gamma_k\bigr)\cos(kt)
+    +\bigl(\lambda\beta_k+\mu\delta_k\bigr)\sin(kt)\Bigr),
+\end{align*}
+where the second equality is obtained by distributing the scalars over the
+finite sums and grouping the two sums term by term. Hence
+$\lambda f+\mu g\in V_N$, witnessed by
+$(\lambda\alpha+\mu\gamma,\ \lambda\beta+\mu\delta)$.
+
+\emph{Step 2: $V_N$ is closed under finite sums.} Let $I$ be a finite index set
+and $f_i\in V_N$ for $i\in I$. We show $\sum_{i\in I}f_i\in V_N$ by induction on
+$\lvert I\rvert$. If $I=\emptyset$ the sum is the zero function, which lies in
+$V_N$ by Step 1. If $I=I_0\cup\{i_0\}$ with $i_0\notin I_0$, then
+$\sum_{i\in I}f_i=\bigl(\sum_{i\in I_0}f_i\bigr)+f_{i_0}$, which lies in $V_N$
+by the induction hypothesis and Step 1 (with $\lambda=\mu=1$).
+
+\emph{Step 3: the generators lie in $V_N$.} Let $r\in\mathbb{N}$ with
+$r\le N$. Taking $\alpha_k=1$ for $k=r$ and $\alpha_k=0$ otherwise, and
+$\beta=0$, the sum $\sum_{k=0}^{N}(\alpha_k\cos(kt)+\beta_k\sin(kt))$ collapses
+to the single term $\cos(rt)$, so $t\mapsto\cos(rt)$ lies in $V_N$. Symmetrically
+(taking $\alpha=0$ and $\beta_k=1$ exactly at $k=r$), $t\mapsto\sin(rt)$ lies in
+$V_N$.
+
+\emph{Step 4: expanding the product.} Fix witnesses $(a,b)$ for $S$ in $V_m$ and
+$(c,d)$ for $T$ in $V_l$, so that for every $t\in\mathbb{R}$
+\[
+  S(t)=\sum_{j=0}^{m}\bigl(a_j\cos(jt)+b_j\sin(jt)\bigr),\qquad
+  T(t)=\sum_{k=0}^{l}\bigl(c_k\cos(kt)+d_k\sin(kt)\bigr).
+\]
+Multiplying out the two finite sums gives, for every $t\in\mathbb{R}$,
+\begin{equation}\label{eq:tpm-expand}
+  S(t)T(t)=\sum_{j=0}^{m}\sum_{k=0}^{l}\Bigl(
+    a_jc_k\cos(jt)\cos(kt)+a_jd_k\cos(jt)\sin(kt)
+   +b_jc_k\sin(jt)\cos(kt)+b_jd_k\sin(jt)\sin(kt)\Bigr).
+\end{equation}
+
+\emph{Step 5: product-to-sum identities.} Fix $0\le j\le m$ and $0\le k\le l$,
+and set $r=j+k\in\mathbb{N}$, $s=\lvert j-k\rvert\in\mathbb{N}$, and
+$\sigma=+1$ if $j\ge k$, $\sigma=-1$ if $j<k$, so that $j-k=\sigma s$ as
+integers. From the addition formulas for $\cos$ and $\sin$ one gets, for every
+$t\in\mathbb{R}$,
+\begin{align*}
+  \cos(jt)\cos(kt)&=\tfrac12\bigl(\cos((j+k)t)+\cos((j-k)t)\bigr),&
+  \sin(jt)\sin(kt)&=\tfrac12\bigl(\cos((j-k)t)-\cos((j+k)t)\bigr),\\
+  \cos(jt)\sin(kt)&=\tfrac12\bigl(\sin((j+k)t)-\sin((j-k)t)\bigr),&
+  \sin(jt)\cos(kt)&=\tfrac12\bigl(\sin((j+k)t)+\sin((j-k)t)\bigr).
+\end{align*}
+Since $\cos$ is even and $\sin$ is odd, and $(j-k)t=\sigma st$, we have
+$\cos((j-k)t)=\cos(st)$ and $\sin((j-k)t)=\sigma\sin(st)$. Hence each of the
+four products above is an $\mathbb{R}$-linear combination of the four functions
+$t\mapsto\cos(rt)$, $t\mapsto\cos(st)$, $t\mapsto\sin(rt)$,
+$t\mapsto\sin(st)$, with coefficients in $\{\pm\tfrac12,0\}$.
+
+\emph{Step 6: degree bookkeeping.} We have $r=j+k\le m+l$, and
+$s=\lvert j-k\rvert\le\max(j,k)\le\max(m,l)\le m+l$. Therefore, by Step 3
+applied with $N=m+l$, all four functions $t\mapsto\cos(rt)$,
+$t\mapsto\cos(st)$, $t\mapsto\sin(rt)$, $t\mapsto\sin(st)$ lie in $V_{m+l}$.
+
+\emph{Step 7: conclusion.} By Steps 5 and 6 and Step 1, each of the four
+products $\cos(j\cdot)\cos(k\cdot)$, $\cos(j\cdot)\sin(k\cdot)$,
+$\sin(j\cdot)\cos(k\cdot)$, $\sin(j\cdot)\sin(k\cdot)$ lies in $V_{m+l}$, and
+hence so does each scalar multiple of it appearing in
+\eqref{eq:tpm-expand}, and hence so does each of the $(m+1)(l+1)$ bracketed
+summands of \eqref{eq:tpm-expand} (again by Step 1). By Step 2, applied to the
+finite index set $\{0,\dots,m\}\times\{0,\dots,l\}$, the whole double sum on the
+right-hand side of \eqref{eq:tpm-expand} lies in $V_{m+l}$. By
+\eqref{eq:tpm-expand} the function $t\mapsto S(t)T(t)$ agrees with that double
+sum at every $t\in\mathbb{R}$, hence equals it, and therefore lies in
+$V_{m+l}$. That is exactly the assertion.
+\end{proof}

@@ -1,0 +1,91 @@
+\begin{lemma}[Trigonometric polynomials as polynomials on the unit circle]
+Let $m\in\mathbb{N}$ and let $T:\mathbb{R}\to\mathbb{R}$ be a real
+trigonometric polynomial of degree at most $m$. Then there is a polynomial
+$Q\in\mathbb{C}[X]$ with $\deg Q\le 2m$ such that
+\[
+  Q\bigl(e^{it}\bigr)=e^{imt}\,T(t)\qquad\text{for every }t\in\mathbb{R},
+\]
+where $T(t)$ is read as a complex number through the inclusion
+$\mathbb{R}\subseteq\mathbb{C}$.
+\end{lemma}
+\begin{proof}
+Throughout, $i\in\mathbb{C}$ is the imaginary unit and real numbers are read as
+complex numbers through the inclusion $\mathbb{R}\subseteq\mathbb{C}$, which is
+a ring homomorphism.
+
+\emph{Step 1: the representation of $T$.} By the definition in
+\noderef{TrigPolyLe} there are sequences $a,b:\mathbb{N}\to\mathbb{R}$ with
+\begin{equation}\label{eq:tpcp-rep}
+  T(t)=\sum_{k=0}^{m}\bigl(a_k\cos(kt)+b_k\sin(kt)\bigr)
+  \qquad\text{for every }t\in\mathbb{R}.
+\end{equation}
+
+\emph{Step 2: the polynomial.} For every index $k$ with $0\le k\le m$ both
+$m+k$ and $m-k$ are natural numbers, so the exponents below are legitimate.
+Define
+\begin{equation}\label{eq:tpcp-Q}
+  Q=\sum_{k=0}^{m}\left(
+      \frac{a_k}{2}\bigl(X^{m+k}+X^{m-k}\bigr)
+      +\frac{b_k}{2i}\bigl(X^{m+k}-X^{m-k}\bigr)
+    \right)\ \in\ \mathbb{C}[X],
+\end{equation}
+the scalars $a_k/2$ and $b_k/(2i)$ being complex numbers (the division by
+$2i\ne0$ is legitimate).
+
+\emph{Step 3: the degree bound.} Let $0\le k\le m$. Then $m+k\le 2m$ and
+$m-k\le m\le 2m$, so $\deg X^{m+k}=m+k\le2m$ and $\deg X^{m-k}=m-k\le2m$. The
+degree of a sum of polynomials is at most the maximum of their degrees, and
+$\deg(cR)\le\deg R$ for every scalar $c$ and every $R\in\mathbb{C}[X]$. Applying
+these two facts finitely many times to \eqref{eq:tpcp-Q} — first inside each of
+the two brackets, then to each of the $m+1$ summands, then to the sum over $k$ —
+gives $\deg Q\le 2m$.
+
+\emph{Step 4: Euler's formulas and the powers of $z$.} Fix $t\in\mathbb{R}$ and
+put $z=e^{it}\in\mathbb{C}$. Euler's formula $e^{i\theta}=\cos\theta+i\sin\theta$
+applied at $\theta=kt$ and at $\theta=-kt$, together with $\cos(-kt)=\cos(kt)$
+and $\sin(-kt)=-\sin(kt)$, gives for every $k\in\mathbb{N}$
+\[
+  e^{ikt}=\cos(kt)+i\sin(kt),\qquad e^{-ikt}=\cos(kt)-i\sin(kt),
+\]
+hence, by adding and subtracting these two identities,
+\begin{equation}\label{eq:tpcp-euler}
+  \cos(kt)=\frac{e^{ikt}+e^{-ikt}}{2},\qquad
+  \sin(kt)=\frac{e^{ikt}-e^{-ikt}}{2i}.
+\end{equation}
+Also, since $e^{w}e^{w'}=e^{w+w'}$ for all $w,w'\in\mathbb{C}$, induction on
+$j$ gives $z^{j}=\bigl(e^{it}\bigr)^{j}=e^{ijt}$ for every $j\in\mathbb{N}$. In
+particular, for $0\le k\le m$,
+\begin{equation}\label{eq:tpcp-pow}
+  z^{m+k}=e^{i(m+k)t}=e^{imt}e^{ikt},
+  \qquad
+  z^{m-k}=e^{i(m-k)t}=e^{imt}e^{-ikt},
+\end{equation}
+the second identity because $(m-k)+k=m$ (as $k\le m$), so that
+$e^{i(m-k)t}e^{ikt}=e^{imt}$, and $e^{ikt}\ne0$ allows division by it.
+
+\emph{Step 5: each summand of $Q$ at $z$.} Fix $0\le k\le m$. By
+\eqref{eq:tpcp-pow} and then \eqref{eq:tpcp-euler},
+\begin{align*}
+  \frac{a_k}{2}\bigl(z^{m+k}+z^{m-k}\bigr)
+   &=e^{imt}\,a_k\,\frac{e^{ikt}+e^{-ikt}}{2}=e^{imt}\,a_k\cos(kt),\\
+  \frac{b_k}{2i}\bigl(z^{m+k}-z^{m-k}\bigr)
+   &=e^{imt}\,b_k\,\frac{e^{ikt}-e^{-ikt}}{2i}=e^{imt}\,b_k\sin(kt).
+\end{align*}
+Adding the two lines, the $k$-th summand of \eqref{eq:tpcp-Q}, evaluated at
+$z$, equals $e^{imt}\bigl(a_k\cos(kt)+b_k\sin(kt)\bigr)$.
+
+\emph{Step 6: conclusion.} Evaluation at $z$ is a ring homomorphism
+$\mathbb{C}[X]\to\mathbb{C}$: it is additive, sends $X^{j}$ to $z^{j}$ and sends
+a constant polynomial to its value. Hence, evaluating \eqref{eq:tpcp-Q} at $z$
+and using Step 5 termwise,
+\[
+  Q(z)=\sum_{k=0}^{m}e^{imt}\bigl(a_k\cos(kt)+b_k\sin(kt)\bigr)
+      =e^{imt}\sum_{k=0}^{m}\bigl(a_k\cos(kt)+b_k\sin(kt)\bigr)
+      =e^{imt}\,T(t),
+\]
+where the middle step pulls the constant $e^{imt}$ out of the finite sum and the
+last step is \eqref{eq:tpcp-rep}, the finite real sum and the products
+$a_k\cos(kt)$, $b_k\sin(kt)$ being preserved by the ring homomorphism
+$\mathbb{R}\to\mathbb{C}$. Since $t\in\mathbb{R}$ was arbitrary and
+$\deg Q\le 2m$ by Step 3, this $Q$ has the required properties.
+\end{proof}

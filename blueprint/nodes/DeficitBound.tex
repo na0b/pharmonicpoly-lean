@@ -1,0 +1,107 @@
+\begin{lemma}[Deficit estimate at the first Chebyshev node]
+Let $m\ge2$ be an integer, and let $T$ be a real trigonometric polynomial of
+degree at most $m$ with $\lvert T(t)\rvert\le1$ for every $t\in\mathbb{R}$ and
+$T(0)=1$. Put $d=m^2+T''(0)$. Then
+\[
+  0\le1+T(\pm\pi/m)\le d\bigl(1-\cos(\pi/m)\bigr)\le\frac{\pi^2d}{2m^2},
+\]
+that is: $0\le1+T(\pi/m)$ and $0\le1+T(-\pi/m)$; both $1+T(\pi/m)$ and
+$1+T(-\pi/m)$ are at most $d\bigl(1-\cos(\pi/m)\bigr)$; and
+$d\bigl(1-\cos(\pi/m)\bigr)\le\pi^2d/(2m^2)$.
+\end{lemma}
+\begin{proof}
+Write $h=\pi/m$. By \noderef{TrigPolySmooth}, $T$ is real-analytic on
+$\mathbb{R}$, hence infinitely differentiable; in particular $T''$ exists
+everywhere and $d=m^2+T''(0)$ is a well-defined real number.
+
+\emph{Step 1: the two nonnegativity statements.} For every $t\in\mathbb{R}$ the
+hypothesis $\lvert T(t)\rvert\le1$ gives $-1\le T(t)$, i.e. $1+T(t)\ge0$.
+Applying this at $t=h$ and at $t=-h$ gives $0\le1+T(h)$ and $0\le1+T(-h)$.
+
+\emph{Step 2: the even part as a polynomial in $\cos t$.} By
+\noderef{TrigPolyEvenPart} there is $P\in\mathbb{R}[X]$ with $\deg P\le m$ and
+\begin{equation}\label{eq:db-evenpart}
+  P(\cos t)=\frac{T(t)+T(-t)}{2}\qquad\text{for every }t\in\mathbb{R}.
+\end{equation}
+
+\emph{Step 2a: $\lvert P\rvert\le1$ on $[-1,1]$.} Let $x\in[-1,1]$ and set
+$t=\arccos x$, so that $\cos t=x$. By \eqref{eq:db-evenpart},
+\[
+  \lvert P(x)\rvert=\left\lvert\frac{T(t)+T(-t)}{2}\right\rvert
+  \le\frac{\lvert T(t)\rvert+\lvert T(-t)\rvert}{2}\le\frac{1+1}{2}=1 .
+\]
+
+\emph{Step 2b: $P(1)=1$.} Taking $t=0$ in \eqref{eq:db-evenpart} and using
+$\cos0=1$ and $T(-0)=T(0)=1$ gives $P(1)=\bigl(T(0)+T(0)\bigr)/2=1$.
+
+\emph{Step 2c: $P'(1)=-T''(0)$, hence $m^2-P'(1)=d$.} Define
+$G(t)=P(\cos t)$ and $E(t)=\bigl(T(t)+T(-t)\bigr)/2$ for $t\in\mathbb{R}$. By
+\eqref{eq:db-evenpart} we have $G(t)=E(t)$ for every $t$, i.e. $G=E$ as
+functions on $\mathbb{R}$, and therefore $G''(0)=E''(0)$.
+
+On the one hand, \noderef{PolyCosSecondDeriv} applied to this $P$ gives
+$G''(0)=-P'(1)$.
+
+On the other hand, put $R(t)=T(-t)$. Since $T$ is twice differentiable (Step 0
+above), so is $R$, and the chain rule applied to the composition of $T$ with the
+map $t\mapsto-t$, whose derivative is the constant $-1$, gives
+$R'(t)=-T'(-t)$ for every $t$. Applying the chain rule once more to
+$t\mapsto -T'(-t)$ yields $R''(t)=-\bigl(-T''(-t)\bigr)=T''(-t)$. Since
+$E=\tfrac12(T+R)$ and the derivative is linear, $E''=\tfrac12\bigl(T''+R''\bigr)$,
+so
+\[
+  E''(0)=\tfrac12\bigl(T''(0)+R''(0)\bigr)=\tfrac12\bigl(T''(0)+T''(0)\bigr)=T''(0).
+\]
+Combining, $-P'(1)=G''(0)=E''(0)=T''(0)$, i.e. $P'(1)=-T''(0)$, and therefore
+\begin{equation}\label{eq:db-deficit}
+  m^2-P'(1)=m^2+T''(0)=d .
+\end{equation}
+
+\emph{Step 3: the algebraic estimate.} Let $x_1=x^{(m)}_1=\cos(\pi/m)=\cos h$ be
+the first Chebyshev extremal node of order $m$. By Step 2 ($\deg P\le m$), Step
+2a and Step 2b, the hypotheses of \noderef{DeficitPoly} hold for this $m\ge2$ and
+this $P$, so
+\[
+  2\bigl(1+P(x_1)\bigr)\le\bigl(m^2-P'(1)\bigr)(1-x_1)
+  =d\,\bigl(1-\cos h\bigr),
+\]
+the last equality by \eqref{eq:db-deficit} and $x_1=\cos h$. Thus
+\begin{equation}\label{eq:db-sum}
+  2\bigl(1+P(\cos h)\bigr)\le d\,\bigl(1-\cos h\bigr).
+\end{equation}
+
+\emph{Step 4: splitting across the two signs.} Taking $t=h$ in
+\eqref{eq:db-evenpart} gives $P(\cos h)=\bigl(T(h)+T(-h)\bigr)/2$, hence
+\begin{equation}\label{eq:db-split}
+  2\bigl(1+P(\cos h)\bigr)=2+T(h)+T(-h)
+  =\bigl(1+T(h)\bigr)+\bigl(1+T(-h)\bigr).
+\end{equation}
+By Step 1 both summands on the right are nonnegative, so each of them is at most
+their sum. Combining with \eqref{eq:db-split} and \eqref{eq:db-sum},
+\[
+  1+T(h)\ \le\ \bigl(1+T(h)\bigr)+\bigl(1+T(-h)\bigr)
+  \ =\ 2\bigl(1+P(\cos h)\bigr)\ \le\ d\,\bigl(1-\cos h\bigr),
+\]
+and in exactly the same way
+$1+T(-h)\le\bigl(1+T(h)\bigr)+\bigl(1+T(-h)\bigr)\le d\bigl(1-\cos h\bigr)$.
+These are the two middle inequalities of the statement.
+
+\emph{Step 5: $d\ge0$.} Since $m\ge2$ we have $0<h=\pi/m\le\pi/2$. As $\cos$ is
+strictly decreasing on $[0,\pi]$ and $\cos0=1$, it follows that $\cos h<1$, i.e.
+$1-\cos h>0$. By Step 1 and Step 4,
+\[
+  0\ \le\ 1+T(h)\ \le\ d\,\bigl(1-\cos h\bigr),
+\]
+so $d\bigl(1-\cos h\bigr)\ge0$; dividing by the positive number $1-\cos h$ gives
+$d\ge0$.
+
+\emph{Step 6: the last inequality.} By the background elementary cosine bound,
+$1-\varphi^2/2\le\cos\varphi$ for every real $\varphi$; applied with
+$\varphi=h$ this reads $1-\cos h\le h^2/2=\pi^2/(2m^2)$. Multiplying this
+inequality by $d\ge0$ (Step 5), which preserves the inequality, gives
+\[
+  d\,\bigl(1-\cos h\bigr)\ \le\ d\cdot\frac{\pi^2}{2m^2}
+  =\frac{\pi^2d}{2m^2},
+\]
+which is the final inequality of the statement.
+\end{proof}

@@ -1,0 +1,48 @@
+\begin{lemma}[Partial differentiation drops total degree]
+Let $\sigma$ be any index type, let $\varphi\in\mathbb{R}[X_a:a\in\sigma]$ and
+let $i\in\sigma$. Then
+\[
+  \deg(\partial_i\varphi)\ \le\ \deg\varphi-1,
+\]
+where $\deg$ denotes total degree and the subtraction is truncated at $0$
+(i.e. $\deg\varphi-1$ means $0$ when $\deg\varphi=0$).
+\end{lemma}
+\begin{proof}
+If $\partial_i\varphi=0$ then $\deg(\partial_i\varphi)=0$ and the inequality is
+immediate, since the right-hand side is a natural number. So assume
+$\partial_i\varphi\ne0$. The total degree of a nonzero polynomial is the maximum
+of $\sum_a s_a$ over the exponent tuples $s$ in its support, so it suffices to
+show
+\begin{equation}\label{eq:tdp-goal}
+  \sum_a s_a\ \le\ \deg\varphi-1
+  \qquad\text{for every }s\in\operatorname{supp}(\partial_i\varphi).
+\end{equation}
+
+Fix such an $s$, so $\operatorname{coeff}_s(\partial_i\varphi)\ne0$. Let
+$\delta_i\in\mathbb{N}^{\sigma}$ be the tuple with $i$-th entry $1$ and all
+other entries $0$. The coefficients of a formal partial derivative are given by
+\[
+  \operatorname{coeff}_s\bigl(\partial_i\varphi\bigr)
+  =\operatorname{coeff}_{s+\delta_i}(\varphi)\cdot\bigl(s_i+1\bigr),
+\]
+which is the defining formula for $\partial_i$ read coefficientwise. Since the
+left-hand side is nonzero, the factor $\operatorname{coeff}_{s+\delta_i}(\varphi)$
+must be nonzero as well, i.e.
+\[
+  s+\delta_i\in\operatorname{supp}\varphi .
+\]
+Consequently, by the background proposition bounding the exponent sums on the
+support by the total degree,
+\begin{equation}\label{eq:tdp-bound}
+  \sum_a\bigl(s+\delta_i\bigr)_a\ \le\ \deg\varphi .
+\end{equation}
+Finally the exponent sums are related by
+\[
+  \sum_a\bigl(s+\delta_i\bigr)_a=\sum_a s_a+\sum_a(\delta_i)_a=\sum_a s_a+1,
+\]
+because the two tuples are added entrywise and $\delta_i$ has entry sum $1$.
+Substituting this into \eqref{eq:tdp-bound} gives
+$\sum_a s_a+1\le\deg\varphi$, hence $\sum_a s_a\le\deg\varphi-1$ (and the
+truncated subtraction causes no difficulty, since $\deg\varphi\ge1$ here). This
+is \eqref{eq:tdp-goal}, and the lemma follows.
+\end{proof}

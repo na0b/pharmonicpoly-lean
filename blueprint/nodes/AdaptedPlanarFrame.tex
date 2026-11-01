@@ -1,0 +1,104 @@
+\begin{lemma}[An orthonormal basis adapted to a planar rotated frame]
+Let $n\ge 2$, let $e,v\in\mathbb{R}^n$ satisfy $\lVert e\rVert=\lVert v\rVert=1$ and
+$\langle e,v\rangle=0$, and let $\theta\in\mathbb{R}$. Put
+\[
+  e_r=\cos\theta\,e+\sin\theta\,v,
+  \qquad
+  e_\theta=-\sin\theta\,e+\cos\theta\,v .
+\]
+Then there are indices $i_0\ne i_1$ in $\{1,\dots,n\}$ and an orthonormal basis
+$(b_i)_{i=1}^{n}$ of $\mathbb{R}^n$ with
+\[
+  b_{i_0}=e_r,\qquad b_{i_1}=e_\theta,
+\]
+and such that every remaining basis vector is orthogonal to the whole plane
+$\Pi=\operatorname{span}\{e,v\}$: for every $i$ with $i\ne i_0$ and $i\ne i_1$,
+\[
+  \langle e,b_i\rangle=0
+  \qquad\text{and}\qquad
+  \langle v,b_i\rangle=0 .
+\]
+\end{lemma}
+\begin{proof}
+Throughout we use that $\langle e,e\rangle=\lVert e\rVert^2=1$,
+$\langle v,v\rangle=\lVert v\rVert^2=1$, and $\langle e,v\rangle=\langle v,e\rangle=0$,
+the last by symmetry of the real inner product, together with
+$\cos^2\theta+\sin^2\theta=1$.
+
+\emph{Step 1: $\{e_r,e_\theta\}$ is an orthonormal pair.} Expanding by
+bilinearity,
+\[
+  \langle e_r,e_r\rangle
+  =\cos^2\theta\,\langle e,e\rangle+2\cos\theta\sin\theta\,\langle e,v\rangle
+    +\sin^2\theta\,\langle v,v\rangle
+  =\cos^2\theta+\sin^2\theta=1 ,
+\]
+and likewise
+\[
+  \langle e_\theta,e_\theta\rangle
+  =\sin^2\theta\,\langle e,e\rangle-2\sin\theta\cos\theta\,\langle e,v\rangle
+    +\cos^2\theta\,\langle v,v\rangle
+  =\sin^2\theta+\cos^2\theta=1 .
+\]
+Since a norm is nonnegative and $t\mapsto t^2$ is injective on $[0,\infty)$,
+$\lVert e_r\rVert^2=1$ gives $\lVert e_r\rVert=1$, and similarly $\lVert e_\theta\rVert=1$.
+Finally
+\[
+  \langle e_r,e_\theta\rangle
+  =-\cos\theta\sin\theta\,\langle e,e\rangle+\cos^2\theta\,\langle e,v\rangle
+    -\sin^2\theta\,\langle v,e\rangle+\sin\theta\cos\theta\,\langle v,v\rangle
+  =-\cos\theta\sin\theta+\sin\theta\cos\theta=0 ,
+\]
+and $\langle e_\theta,e_r\rangle=0$ by symmetry.
+
+\emph{Step 2: extension to an orthonormal basis.} Since $n\ge 2$ the index set
+$\{1,\dots,n\}$ contains two distinct indices; fix $i_0\ne i_1$. Define a
+family on the two-element subset $s=\{i_0,i_1\}$ by sending $i_0$ to $e_r$ and
+$i_1$ to $e_\theta$. By Step 1 this family is orthonormal: each member is a unit
+vector, and the two distinct members are mutually orthogonal. The index type has
+exactly $n$ elements and $\dim\mathbb{R}^n=n$, so an orthonormal family indexed
+by a subset of it extends to an orthonormal basis $(b_i)_{i=1}^{n}$ of
+$\mathbb{R}^n$ agreeing with the given family on $s$. Hence $b_{i_0}=e_r$ and
+$b_{i_1}=e_\theta$.
+
+\emph{Step 3: the planar frame spans $\Pi$.} Inverting the rotation, we claim
+\begin{equation}\label{eq:apf-dec}
+  e=\cos\theta\,e_r+(-\sin\theta)\,e_\theta,
+  \qquad
+  v=\sin\theta\,e_r+\cos\theta\,e_\theta .
+\end{equation}
+Both are identities between linear combinations of $e$ and $v$, so it suffices
+to compare coefficients. For the first, the coefficient of $e$ on the right is
+$\cos\theta\cdot\cos\theta+(-\sin\theta)\cdot(-\sin\theta)
+=\cos^2\theta+\sin^2\theta=1$, and the coefficient of $v$ is
+$\cos\theta\sin\theta+(-\sin\theta)\cos\theta=0$. For the second, the
+coefficient of $e$ is $\sin\theta\cos\theta+\cos\theta(-\sin\theta)=0$ and the
+coefficient of $v$ is $\sin^2\theta+\cos^2\theta=1$. This proves
+\eqref{eq:apf-dec}.
+
+\emph{Step 4: the remaining basis vectors are orthogonal to $\Pi$.} Let $i$
+satisfy $i\ne i_0$ and $i\ne i_1$. Since $(b_j)_j$ is orthonormal, distinct
+indices give orthogonal vectors, so
+\[
+  \langle b_i,e_r\rangle=\langle b_i,b_{i_0}\rangle=0,
+  \qquad
+  \langle b_i,e_\theta\rangle=\langle b_i,b_{i_1}\rangle=0 ,
+\]
+using $b_{i_0}=e_r$ and $b_{i_1}=e_\theta$ from Step 2. Now pair $b_i$ with the
+first identity of \eqref{eq:apf-dec} and use linearity of the inner product in
+its second argument:
+\[
+  \langle b_i,e\rangle
+  =\cos\theta\,\langle b_i,e_r\rangle+(-\sin\theta)\,\langle b_i,e_\theta\rangle
+  =\cos\theta\cdot 0+(-\sin\theta)\cdot 0=0 ,
+\]
+and with the second identity,
+\[
+  \langle b_i,v\rangle
+  =\sin\theta\,\langle b_i,e_r\rangle+\cos\theta\,\langle b_i,e_\theta\rangle
+  =0 .
+\]
+By symmetry of the real inner product, $\langle e,b_i\rangle=\langle b_i,e\rangle=0$
+and $\langle v,b_i\rangle=\langle b_i,v\rangle=0$. This is the last assertion,
+and the lemma is proved.
+\end{proof}

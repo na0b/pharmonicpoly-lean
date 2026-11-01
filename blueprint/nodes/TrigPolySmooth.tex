@@ -1,0 +1,46 @@
+\begin{lemma}[Trigonometric polynomials are real-analytic]
+Let $m\in\mathbb{N}$ and let $T:\mathbb{R}\to\mathbb{R}$ be a real
+trigonometric polynomial of degree at most $m$. Then $T$ is real-analytic on
+$\mathbb{R}$; in particular $T$ is infinitely differentiable on $\mathbb{R}$.
+\end{lemma}
+\begin{proof}
+By the definition in \noderef{TrigPolyLe} there are sequences
+$a,b:\mathbb{N}\to\mathbb{R}$ with
+\begin{equation}\label{eq:tps-rep}
+  T(t)=\sum_{k=0}^{m}\bigl(a_k\cos(kt)+b_k\sin(kt)\bigr)
+  \qquad\text{for every }t\in\mathbb{R}.
+\end{equation}
+
+Denote by $\mathcal{A}$ the set of real-analytic functions $\mathbb{R}\to\mathbb{R}$.
+
+\emph{Step 1: $\cos$ and $\sin$ belong to $\mathcal{A}$.} Both are given by
+power series with infinite radius of convergence,
+$\cos z=\sum_{j\ge0}(-1)^jz^{2j}/(2j)!$ and
+$\sin z=\sum_{j\ge0}(-1)^jz^{2j+1}/(2j+1)!$, hence they are real-analytic at
+every point of $\mathbb{R}$.
+
+\emph{Step 2: for each fixed $k\in\mathbb{N}$, the functions
+$t\mapsto\cos(kt)$ and $t\mapsto\sin(kt)$ belong to $\mathcal{A}$.} The map
+$\lambda_k:t\mapsto kt$ is $\mathbb{R}$-linear, hence real-analytic, and a
+composition of real-analytic maps is real-analytic; so
+$\cos\circ\lambda_k$ and $\sin\circ\lambda_k$ lie in $\mathcal{A}$.
+
+\emph{Step 3: $\mathcal{A}$ is closed under scalar multiples and finite sums.}
+If $f,g\in\mathcal{A}$ and $\lambda,\mu\in\mathbb{R}$, then $\lambda f+\mu g$ is
+real-analytic, since at each point the sum of two convergent power series,
+scaled by constants, is again a convergent power series representing the
+combination on a common neighbourhood. By induction on the number of summands,
+any finite $\mathbb{R}$-linear combination of elements of $\mathcal{A}$ lies in
+$\mathcal{A}$.
+
+\emph{Step 4: conclusion.} The right-hand side of \eqref{eq:tps-rep} is a finite
+$\mathbb{R}$-linear combination (with the $2(m+1)$ coefficients
+$a_0,\dots,a_m,b_0,\dots,b_m$) of the functions $t\mapsto\cos(kt)$ and
+$t\mapsto\sin(kt)$ for $0\le k\le m$, each of which lies in $\mathcal{A}$ by
+Step 2. By Step 3 that right-hand side defines a function in $\mathcal{A}$. By
+\eqref{eq:tps-rep} the function $T$ agrees with it at every point of
+$\mathbb{R}$, hence $T$ equals it as a function and therefore $T\in\mathcal{A}$.
+
+Finally, a real-analytic function on $\mathbb{R}$ is infinitely differentiable,
+which gives the last assertion.
+\end{proof}

@@ -1,0 +1,122 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "p-harmonic homogeneous polynomials"
+  description: >-
+    A complete Lean 4 / Mathlib formalization of Theorem 1.1 and Lemma 2.1 of Manfredi and
+    Sobral, "p-harmonic homogeneous polynomials". Theorem 1.1: for n ≥ 3 and p ≥ n − 1/13,
+    every real polynomial u on ℝⁿ with E_p(u) = |Du|²Δu + (p−2)⟨D²u Du, Du⟩ ≡ 0 is affine.
+    Lemma 2.1 (deficit estimate at the first Chebyshev node): a real trigonometric
+    polynomial T of degree at most m ≥ 2 with ‖T‖∞ ≤ 1 and T(0) = 1 satisfies
+    0 ≤ 1 + T(±π/m) ≤ d(1 − cos(π/m)) ≤ π²d/(2m²), where d = m² + T''(0). Mathlib lacks the
+    Bernstein–Szegő inequality T² + (T'/m)² ≤ 1 for trigonometric polynomials, which the
+    paper cites; it is proved here (via zero counting for trigonometric polynomials), together
+    with the multivariate-polynomial calculus the proof uses. There is no sorry and no axiom
+    beyond propext, Classical.choice and Quot.sound.
+  authors:
+    - "Juan J. Manfredi"
+    - "Aelson Sobral"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Juan J. Manfredi"
+
+classification:
+  arxiv: [math.AP, math.CA]
+  msc2020: [35J92, 26D05, 41A17, 42A05, 68V20]
+
+sources:
+  - title: "p-harmonic homogeneous polynomials"
+    authors:
+      - "Juan J. Manfredi"
+      - "Aelson Sobral"
+    type: paper
+    relationship: formalizes
+    note: >-
+      Manuscript, 2026. Theorem 1.1 (the E_p statement) and Lemma 2.1 are formalized; the
+      paper's authors are the authors of this formalization.
+    author_endorsement: participated
+
+related_formalizations: []
+
+status:
+  scope: >-
+    Formalized in full, with everything their proofs use: Theorem 1.1, in the form "every real
+    polynomial with E_p(u) ≡ 0 is affine", and Lemma 2.1. Not formalized: the final sentence
+    of Theorem 1.1 ("In particular, every polynomial p-harmonic function on ℝⁿ is affine"),
+    which passes from weak solutions of Δ_p u = 0 to E_p(u) ≡ 0 through regularity theory that
+    the paper cites rather than proves; and the paper's remarks.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: agent
+      models: ["Claude Opus 5 (Anthropic)"]
+      framework: "Trellis (https://github.com/wpegden/trellis)"
+      tool_setup: >-
+        Trellis multi-agent formalization pipeline: planner, reviewer and worker agents write a
+        dependency graph of natural-language nodes (a blueprint) and their Lean proofs; separate
+        verifier agents check each node's natural-language proof for soundness, its faithfulness
+        to the paper, and agreement between its Lean and natural-language statements; the Lean
+        kernel checks every proof. A human approves the phase gates.
+      cost:
+        wall_time: "about 14 hours (2026-10-31 to 2026-11-01), 30 cycles"
+        spend_usd: "subscription-based"
+        hardware: "local machine (Linux workstation) plus subscription model access"
+      prompting_notes: "Standard Trellis prompts; the input was the paper's LaTeX source and the choice of target results."
+    - method: agent
+      models: ["Claude Opus 5.5 (Anthropic)"]
+      framework: "Claude Code"
+      tool_setup: >-
+        Export from the Trellis workspace to this repository, the port to Lean v4.35.0-rc2 and
+        the module system, and the Challenge/Solution/Comparator packaging for Palomar, done by
+        Claude Code under the maintainer's direction.
+      cost:
+        wall_time: "a few hours"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+      prompting_notes: "n/a"
+  spend_usd: "subscription-based"
+  notes: >-
+    The Lean proofs and the blueprint were written by AI agents under the Trellis protocol.
+    Juan J. Manfredi chose the targets, supervised the run and approved the phase gates; he is
+    responsible for the repository.
+
+fidelity:
+  divergences: >-
+    No deviation from the paper was authorized during the run. Scope: the weak-solution
+    corollary at the end of Theorem 1.1 is not formalized (see status.scope); this was decided by
+    the maintainer at the Trellis Advance gate. Representation choices: a polynomial is an element
+    of MvPolynomial (Fin n) ℝ evaluated on EuclideanSpace ℝ (Fin n); E_p is computed with Mathlib's
+    gradient, Laplacian and second Fréchet derivative; "affine" is u(x) = ⟨w, x⟩ + c; a real
+    trigonometric polynomial of degree at most m is a function t ↦ Σ_{k≤m} (a_k cos kt + b_k sin kt);
+    T''(0) is iteratedDeriv 2 T 0; the ± in Lemma 2.1 is stated as two separate inequalities. The
+    Bernstein–Szegő inequality, cited in the paper, is proved rather than assumed.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "Trellis verifier agents (soundness, paper-faithfulness and statement-correspondence checks on every node)"
+  notes: >-
+    Every node passed Trellis's automated soundness, paper-faithfulness and Lean/natural-language
+    correspondence reviews. The maintainer reviewed the two target statements at the Trellis
+    Advance gate; no human review of Challenge.lean has been recorded yet.
+
+alignment:
+  namespace: "PHarmonicPoly"
+  statements:
+    - source: "Theorem 1.1 (thm:main), first sentence"
+      lean: "PHarmonicPoly.main_theorem"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved from MainTheorem. The weak-solution sentence of Theorem 1.1 is not formalized."
+    - source: "Lemma 2.1 (lem:deficit)"
+      lean: "PHarmonicPoly.deficit_bound"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved from DeficitBound."
+
+acknowledgements: >-
+  Built on Mathlib. Produced with Trellis (github.com/wpegden/trellis) and Claude (Anthropic).

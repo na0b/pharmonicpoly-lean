@@ -1,0 +1,65 @@
+\begin{theorem}[Polynomial $p$-harmonic functions are affine]
+Let $n\ge3$ be an integer and let $p\in\mathbb{R}$ with $p\ge n-\tfrac1{13}$.
+Let $P\in\mathbb{R}[X_1,\dots,X_n]$ and let $u:\mathbb{R}^n\to\mathbb{R}$ be the
+polynomial function $u(y)=P(y_1,\dots,y_n)$, where $\mathbb{R}^n$ carries the
+Euclidean inner product. If
+\[
+  \mathcal{E}_p(u)(x)=0\qquad\text{for every }x\in\mathbb{R}^n,
+\]
+then $u$ is affine: there are $w\in\mathbb{R}^n$ and $c\in\mathbb{R}$ with
+\[
+  u(x)=\langle w,x\rangle+c\qquad\text{for every }x\in\mathbb{R}^n .
+\]
+\end{theorem}
+\begin{proof}
+\emph{Step 1: the hypothesis in algebraic form.} By \noderef{EpOpEvalPoly},
+applied at an arbitrary point $x\in\mathbb{R}^n$,
+\[
+  \mathcal{E}_p(u)(x)=\bigl(\mathcal{E}^{\mathrm{alg}}_p(P)\bigr)(x).
+\]
+By hypothesis the left-hand side is $0$ for every $x$, so the polynomial
+$\mathcal{E}^{\mathrm{alg}}_p(P)$ induces the zero function on $\mathbb{R}^n$.
+By the background proposition that polynomials are determined by their values,
+\begin{equation}\label{eq:mt-alg}
+  \mathcal{E}^{\mathrm{alg}}_p(P)=0 .
+\end{equation}
+
+\emph{Step 2: splitting on the total degree.} Exactly one of $\deg P\le1$ and
+$\deg P\ge2$ holds, where $\deg$ is the total degree.
+
+\emph{Case A: $\deg P\le1$.} Then \noderef{AffineOfTotalDegreeLeOne}, applied to
+this $P$, provides $w\in\mathbb{R}^n$ and $c\in\mathbb{R}$ with
+$P(x)=\langle w,x\rangle+c$ for every $x\in\mathbb{R}^n$. Since $u(x)=P(x)$ by
+definition, this is exactly the assertion.
+
+\emph{Case B: $\deg P\ge2$.} We show this case is impossible. Put
+$m=\deg P$, so $m\ge2$.
+
+First, $P\ne0$: the zero polynomial has total degree $0$, and $0\le1<2\le m$, so
+$P=0$ would contradict $\deg P=m\ge2$.
+
+Next, by \noderef{TopComponent}, applied with this $p$ and $P$ --- its two
+hypotheses are $2\le\deg P$, which is $m\ge2$, and
+$\mathcal{E}^{\mathrm{alg}}_p(P)=0$, which is \eqref{eq:mt-alg} ---
+\begin{equation}\label{eq:mt-top}
+  \mathcal{E}^{\mathrm{alg}}_p\bigl(H_m(P)\bigr)=0 ,
+\end{equation}
+where $H_m(P)$ is the $m$-th homogeneous component of $P$ and $m=\deg P$.
+
+Next, $H_m(P)\ne0$ by \noderef{TopComponentNeZero}, applied to this $P$, whose
+single hypothesis $P\ne0$ was just established. And $H_m(P)$ is homogeneous of
+degree $m$ by the background proposition on properties of homogeneous
+components.
+
+Now apply \noderef{HomogeneousCase} with this $n\ge3$, this $m\ge2$, this $p$
+(with $n-\tfrac1{13}\le p$) and the polynomial $H_m(P)$, which is nonzero and
+homogeneous of degree $m$ as just shown. It gives
+\[
+  \mathcal{E}^{\mathrm{alg}}_p\bigl(H_m(P)\bigr)\ne0 ,
+\]
+contradicting \eqref{eq:mt-top}. So Case B cannot occur.
+
+\emph{Step 3: conclusion.} By Step 2 the two cases are exhaustive and Case B is
+impossible, so $\deg P\le1$ and Case A applies, producing $w$ and $c$ with
+$u(x)=\langle w,x\rangle+c$ for every $x\in\mathbb{R}^n$, as asserted.
+\end{proof}

@@ -1,0 +1,32 @@
+\begin{lemma}[The unit-circle angle parametrization]
+Let $x,y\in\mathbb{R}$ satisfy $x^2+y^2=1$. Then there exists
+$\alpha\in\mathbb{R}$ with $\cos\alpha=x$ and $\sin\alpha=y$.
+\end{lemma}
+\begin{proof}
+\emph{Step 1: $x$ lies in $[-1,1]$.} Since $y^2\ge 0$, the hypothesis gives
+$x^2=1-y^2\le 1$. Expanding $(x+1)^2\ge 0$ gives $2x\ge -1-x^2$, and combining
+with $x^2\le 1$ yields $2x\ge -2$, i.e.\ $-1\le x$. Expanding $(x-1)^2\ge 0$
+gives $2x\le 1+x^2$, and combining with $x^2\le 1$ yields $2x\le 2$, i.e.\
+$x\le 1$. Hence $\arccos x$ is defined and $\cos(\arccos x)=x$.
+
+We also record that $1-x^2=y^2$, which is the hypothesis rearranged, and that
+$\sin(\arccos x)=\sqrt{1-x^2}$ for $x\in[-1,1]$; so
+$\sin(\arccos x)=\sqrt{y^2}$.
+
+\emph{Step 2: the case $y\ge 0$.} Take $\alpha=\arccos x$. Then
+$\cos\alpha=x$ by Step 1. For the sine, $\sin\alpha=\sqrt{y^2}$, and since
+$y\ge 0$ we have $\sqrt{y^2}=y$. Hence $\sin\alpha=y$, and $\alpha$ is as
+required.
+
+\emph{Step 3: the case $y<0$.} Take $\alpha=-\arccos x$. The cosine is even, so
+$\cos\alpha=\cos(\arccos x)=x$ by Step 1. The sine is odd, so
+\[
+  \sin\alpha=-\sin(\arccos x)=-\sqrt{1-x^2}=-\sqrt{y^2}=-\lvert y\rvert ,
+\]
+using $\sqrt{t^2}=\lvert t\rvert$ for every real $t$. Since $y<0$ we have
+$\lvert y\rvert=-y$, so $\sin\alpha=-(-y)=y$. Hence $\alpha$ is again as
+required.
+
+Every real $y$ satisfies either $y\ge 0$ or $y<0$, so one of Steps 2 and 3
+applies and the angle exists in all cases.
+\end{proof}

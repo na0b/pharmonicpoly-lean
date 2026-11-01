@@ -1,0 +1,75 @@
+\begin{lemma}[The second derivative of a polynomial function]
+Let $n\in\mathbb{N}$, let $P\in\mathbb{R}[X_1,\dots,X_n]$, let $\mathbb{R}^n$
+carry the Euclidean inner product, and let $u:\mathbb{R}^n\to\mathbb{R}$ be the
+polynomial function $u(y)=P(y_1,\dots,y_n)$. Then for all
+$x,v,w\in\mathbb{R}^n$
+\[
+  D^2u(x)[v,w]
+  =\sum_{i=1}^{n}\sum_{j=1}^{n}v_i\,w_j\,\bigl(\partial_i\partial_jP\bigr)(x).
+\]
+\end{lemma}
+\begin{proof}
+Write $E$ for $\mathbb{R}^n$ with the Euclidean inner product. Define the
+\emph{gradient map}
+\[
+  G:E\to E,\qquad
+  G(y)=\bigl((\partial_1P)(y),\dots,(\partial_nP)(y)\bigr),
+\]
+and let $\Phi:E\to\operatorname{Hom}(E,\mathbb{R})$ be the map
+$\Phi(g)=\langle g,\cdot\rangle$. The map $\Phi$ is linear (the inner product is
+linear in its first argument) and continuous, and it is injective: if
+$\Phi(g)=0$ then $\langle g,g\rangle=0$, so $g=0$.
+
+\emph{Step 1: $Du(y)=\Phi(G(y))$ for every $y\in E$.} By
+\noderef{MvPolyGradient} applied at the point $y$, the $i$-th coordinate of
+$\nabla u(y)$ is $(\partial_iP)(y)$ for every $i$; that is, $\nabla u(y)=G(y)$.
+By the background proposition that the gradient represents the derivative,
+$Du(y)=\langle\nabla u(y),\cdot\rangle=\Phi(G(y))$.
+
+\emph{Step 2: $G$ is differentiable at $x$, with
+$\bigl(DG(x)(v)\bigr)_i=\sum_{j=1}^{n}(\partial_j\partial_iP)(x)\,v_j$.} Fix
+$1\le i\le n$. The $i$-th coordinate function of $G$ is $y\mapsto(\partial_iP)(y)$,
+i.e. the polynomial function attached to the polynomial $\partial_iP$. By
+\noderef{MvPolyFDeriv} applied to the polynomial $\partial_iP$ at the point $x$,
+that function is Frechet differentiable at $x$ as a function on the coordinate
+space $\mathbb{R}^n$, with derivative
+$v\mapsto\sum_{j=1}^{n}\bigl(\partial_j(\partial_iP)\bigr)(x)v_j$. Composing with
+the identity map of $\mathbb{R}^n$ read from the Euclidean norm to the coordinate
+norm, which is a continuous linear isomorphism because the two norms on a
+finite-dimensional space are equivalent, the chain rule gives that the same
+function, now viewed on $E$, is differentiable at $x$ with derivative
+\[
+  v\ \longmapsto\ \sum_{j=1}^{n}\bigl(\partial_j(\partial_iP)\bigr)(x)\,v_j
+  =\sum_{j=1}^{n}(\partial_j\partial_iP)(x)\,v_j .
+\]
+A map into the finite-dimensional space $E\cong\mathbb{R}^n$ is differentiable at
+a point if and only if each of its $n$ coordinate functions is, and in that case
+its derivative is the map assembled from the coordinate derivatives. Hence $G$ is
+differentiable at $x$ and, for every $v\in E$, the $i$-th coordinate of
+$DG(x)(v)$ is $\sum_{j=1}^{n}(\partial_j\partial_iP)(x)v_j$, as claimed.
+
+\emph{Step 3: $D(Du)(x)(v)=\Phi\bigl(DG(x)(v)\bigr)$.} By Step 1 the first
+derivative map $Du:E\to\operatorname{Hom}(E,\mathbb{R})$ equals $\Phi\circ G$. By
+Step 2 the map $G$ is differentiable at $x$, and $\Phi$ is continuous and linear,
+hence differentiable at every point with derivative $\Phi$ itself. The chain rule
+therefore gives that $Du$ is differentiable at $x$ with
+$D(Du)(x)(v)=\Phi\bigl(DG(x)(v)\bigr)$ for every $v\in E$.
+
+\emph{Step 4: conclusion.} By the background proposition expressing the second
+derivative as an iterated derivative, for all $v,w\in E$
+\[
+  D^2u(x)[v,w]=\bigl(D(Du)(x)(v)\bigr)(w).
+\]
+Substituting Step 3 and then unfolding $\Phi$ and Step 2,
+\[
+  D^2u(x)[v,w]
+  =\bigl\langle DG(x)(v),\,w\bigr\rangle
+  =\sum_{i=1}^{n}\bigl(DG(x)(v)\bigr)_i\,w_i
+  =\sum_{i=1}^{n}\Bigl(\sum_{j=1}^{n}(\partial_j\partial_iP)(x)\,v_j\Bigr)w_i
+  =\sum_{i=1}^{n}\sum_{j=1}^{n}v_j\,w_i\,(\partial_j\partial_iP)(x).
+\]
+Finally, interchanging the names of the two summation indices $i$ and $j$ (a
+relabelling of a finite double sum) turns the right-hand side into
+$\sum_{i=1}^{n}\sum_{j=1}^{n}v_i\,w_j\,(\partial_i\partial_jP)(x)$, which is the
+assertion.
+\end{proof}

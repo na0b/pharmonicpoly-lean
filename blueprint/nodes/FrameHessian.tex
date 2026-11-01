@@ -1,0 +1,80 @@
+\begin{lemma}[The polar frame entries of the gradient and Hessian]
+Let $n,m\in\mathbb{N}$ with $m\ge1$, let $P\in\mathbb{R}[X_1,\dots,X_n]$ be
+homogeneous of degree $m$, let $\mathbb{R}^n$ carry the Euclidean inner product
+and let $u(y)=P(y)$. Let $e,v\in\mathbb{R}^n$ and $t\in\mathbb{R}$, and set
+\[
+  F(s)=u\bigl(\cos(s)e+\sin(s)v\bigr),\qquad
+  x=\cos(t)e+\sin(t)v,\qquad
+  e_r=x,\qquad e_\theta=-\sin(t)e+\cos(t)v .
+\]
+Then
+\[
+  \langle\nabla u(x),e_r\rangle=m\,F(t),
+  \qquad
+  \langle\nabla u(x),e_\theta\rangle=F'(t),
+\]
+\[
+  D^2u(x)[e_r,e_r]=m(m-1)F(t),
+  \qquad
+  D^2u(x)[e_r,e_\theta]=(m-1)F'(t),
+  \qquad
+  D^2u(x)[e_\theta,e_\theta]=F''(t)+m\,F(t).
+\]
+\end{lemma}
+\begin{proof}
+Write $\gamma(s)=\cos(s)e+\sin(s)v$, so $F(s)=u(\gamma(s))$, $\gamma(t)=x=e_r$
+and $\gamma'(s)=-\sin(s)e+\cos(s)v$, so $\gamma'(t)=e_\theta$. Note $F(t)=u(x)$.
+
+\emph{Step 1: $\langle\nabla u(x),e_r\rangle=m\,F(t)$.} This is the first
+conclusion of \noderef{GradientEuler} applied at the point $x$ (with any second
+argument), which gives $\langle\nabla u(x),x\rangle=m\,u(x)$; and $e_r=x$,
+$u(x)=F(t)$.
+
+\emph{Step 2: $\langle\nabla u(x),e_\theta\rangle=F'(t)$.} By
+\noderef{MvPolyFDeriv} applied to $P$ at the point $\gamma(t)=x$, the polynomial
+function $z\mapsto P(z)$ on the coordinate space $\mathbb{R}^n$ is Frechet
+differentiable at $x$ with derivative $w\mapsto\sum_i(\partial_iP)(x)w_i$.
+Composing with the identity map of $\mathbb{R}^n$ read from the Euclidean to the
+coordinate norm --- a continuous linear isomorphism, since any two norms on a
+finite-dimensional space are equivalent --- the chain rule makes $u$ Frechet
+differentiable at $x$ with $Du(x)(w)=\sum_i(\partial_iP)(x)w_i$. By
+\noderef{MvPolyGradient} the $i$-th coordinate of $\nabla u(x)$ is
+$(\partial_iP)(x)$, so by the coordinate formula for the inner product
+$Du(x)(w)=\langle\nabla u(x),w\rangle$ for every $w$. The curve $\gamma$ is
+differentiable (each coordinate is a linear combination of $\cos$ and $\sin$, and
+a map into a finite-dimensional space is differentiable exactly when its
+coordinates are), so by the chain rule $F=u\circ\gamma$ is differentiable at $t$
+with
+\[
+  F'(t)=Du(x)\bigl(\gamma'(t)\bigr)=\langle\nabla u(x),e_\theta\rangle .
+\]
+
+\emph{Step 3: $D^2u(x)[e_r,w]=(m-1)\langle\nabla u(x),w\rangle$ for every $w$.}
+This is the second conclusion of \noderef{GradientEuler} applied at the point
+$x$ with the second argument $w$, together with $e_r=x$.
+
+\emph{Step 4: the two entries involving $e_r$.} Taking $w=e_r$ in Step 3 and
+then using Step 1,
+\[
+  D^2u(x)[e_r,e_r]=(m-1)\langle\nabla u(x),e_r\rangle=(m-1)\,m\,F(t)=m(m-1)F(t).
+\]
+Taking $w=e_\theta$ in Step 3 and then using Step 2,
+\[
+  D^2u(x)[e_r,e_\theta]=(m-1)\langle\nabla u(x),e_\theta\rangle=(m-1)F'(t).
+\]
+
+\emph{Step 5: the polar--polar entry.} Apply \noderef{GreatCircleSecondDeriv}
+with $C=0$, $A=e$, $B=v$ at the parameter $t$. Its curve is
+$s\mapsto 0+\cos(s)e+\sin(s)v=\gamma(s)$, so its conclusion reads
+\[
+  F''(t)=D^2u\bigl(\gamma(t)\bigr)\bigl[\gamma'(t),\gamma'(t)\bigr]
+   -\bigl\langle\nabla u(\gamma(t)),\,\cos(t)e+\sin(t)v\bigr\rangle
+  =D^2u(x)[e_\theta,e_\theta]-\langle\nabla u(x),e_r\rangle ,
+\]
+using $\gamma(t)=x$, $\gamma'(t)=e_\theta$ and $\cos(t)e+\sin(t)v=x=e_r$. By
+Step 1 the subtracted term is $m\,F(t)$, so rearranging,
+\[
+  D^2u(x)[e_\theta,e_\theta]=F''(t)+m\,F(t).
+\]
+Steps 1, 2, 4 and 5 are the five asserted identities.
+\end{proof}

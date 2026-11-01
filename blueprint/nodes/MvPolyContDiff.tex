@@ -1,0 +1,31 @@
+\begin{lemma}[Polynomial functions are smooth]
+Let $n\in\mathbb{N}$, let $P\in\mathbb{R}[X_1,\dots,X_n]$ and let
+$u:\mathbb{R}^n\to\mathbb{R}$ be the associated polynomial function
+$u(x)=P(x_1,\dots,x_n)$, where $\mathbb{R}^n$ carries the Euclidean inner
+product. Then $u$ is of class $C^k$ on $\mathbb{R}^n$ for every smoothness
+exponent $k$ (including $k=\infty$ and $k=\omega$, i.e. $u$ is real-analytic).
+\end{lemma}
+\begin{proof}
+Let $V=\mathbb{R}^n$ carry the product topology and norm (i.e. the coordinate
+space), and let $E=\mathbb{R}^n$ carry the Euclidean norm. Write
+$\widehat{u}:V\to\mathbb{R}$, $\widehat{u}(v)=P(v)$, for the polynomial function
+on the coordinate space, so that $u=\widehat{u}\circ\iota$ where
+$\iota:E\to V$ is the identity map on $\mathbb{R}^n$ regarded as a map from the
+Euclidean norm to the product norm.
+
+\emph{Step 1: $\widehat{u}$ is real-analytic on $V$.} This is the background
+proposition on analyticity of polynomial evaluation.
+
+\emph{Step 2: $\widehat{u}$ is of class $C^k$ for every $k$.} A function that is
+real-analytic on a neighbourhood of every point of a set is of class $C^k$ there
+for every smoothness exponent $k$ (and $V$, being finite-dimensional, is
+complete, which is what licenses this passage). Applying this on the whole of
+$V$ gives $\widehat{u}\in C^k(V)$ for every $k$.
+
+\emph{Step 3: transfer to the Euclidean norm.} On the finite-dimensional space
+$\mathbb{R}^n$ the product norm and the Euclidean norm are equivalent, so
+$\iota$ is a linear homeomorphism; in particular $\iota$ is a continuous linear
+map and hence of class $C^k$ for every $k$. Since a composition of $C^k$ maps is
+$C^k$, we conclude $u=\widehat{u}\circ\iota\in C^k(E)$ for every smoothness
+exponent $k$.
+\end{proof}

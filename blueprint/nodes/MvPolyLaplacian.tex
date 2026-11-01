@@ -1,0 +1,36 @@
+\begin{lemma}[The Laplacian of a polynomial function]
+Let $n\in\mathbb{N}$, let $P\in\mathbb{R}[X_1,\dots,X_n]$, let $\mathbb{R}^n$
+carry the Euclidean inner product, and let $u:\mathbb{R}^n\to\mathbb{R}$ be the
+polynomial function $u(y)=P(y_1,\dots,y_n)$. Then for every $x\in\mathbb{R}^n$
+\[
+  \Delta u(x)=\sum_{i=1}^{n}\bigl(\partial_i\partial_iP\bigr)(x).
+\]
+\end{lemma}
+\begin{proof}
+Let $e_1,\dots,e_n$ be the standard orthonormal basis of $\mathbb{R}^n$, so that
+$(e_k)_i=1$ when $i=k$ and $(e_k)_i=0$ otherwise. By the background proposition
+computing the Laplacian from an orthonormal basis, applied with this basis,
+\begin{equation}\label{eq:mpl-basis}
+  \Delta u(x)=\sum_{k=1}^{n}D^2u(x)[e_k,e_k].
+\end{equation}
+
+Fix $1\le k\le n$. By \noderef{MvPolyHessian} applied with $v=w=e_k$,
+\[
+  D^2u(x)[e_k,e_k]
+  =\sum_{i=1}^{n}\sum_{j=1}^{n}(e_k)_i\,(e_k)_j\,(\partial_i\partial_jP)(x).
+\]
+In this double sum the factor $(e_k)_i$ vanishes unless $i=k$, and the factor
+$(e_k)_j$ vanishes unless $j=k$; so every term with $(i,j)\ne(k,k)$ is zero, and
+the single surviving term, at $i=j=k$, equals
+$1\cdot1\cdot(\partial_k\partial_kP)(x)$. Hence
+\begin{equation}\label{eq:mpl-diag}
+  D^2u(x)[e_k,e_k]=(\partial_k\partial_kP)(x)
+  \qquad(1\le k\le n).
+\end{equation}
+
+Substituting \eqref{eq:mpl-diag} into \eqref{eq:mpl-basis} gives
+\[
+  \Delta u(x)=\sum_{k=1}^{n}(\partial_k\partial_kP)(x),
+\]
+which is the assertion (the summation index being a dummy).
+\end{proof}

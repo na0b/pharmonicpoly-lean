@@ -1,0 +1,76 @@
+\begin{lemma}[The Lagrange derivative coefficient at the first node]
+Let $m\ge2$ be an integer, let $S=\{0,1,\dots,m\}$ and let
+$x_j=x^{(m)}_j=\cos(j\pi/m)$ be the Chebyshev extremal nodes of order $m$. Then
+\[
+  \Biggl(\prod_{j\in S\setminus\{1\}}(x_1-x_j)\Biggr)^{-1}
+  \sum_{\substack{t\subseteq S\setminus\{1\}\\ \lvert t\rvert=m-1}}
+    \ \prod_{a\in t}(1-x_a)
+  \;=\;\frac{-2}{1-x_1}.
+\]
+\end{lemma}
+\begin{proof}
+Throughout, $S\setminus\{1\}=\{0\}\cup\{2,3,\dots,m\}$, a set with exactly $m$
+elements.
+
+\emph{Step 1: only one subset contributes.} Let $t\subseteq S\setminus\{1\}$ with
+$\lvert t\rvert=m-1$. We claim
+\[
+  \prod_{a\in t}(1-x_a)=
+  \begin{cases}
+    \prod_{a=2}^{m}(1-x_a), & t=\{2,\dots,m\},\\[2pt]
+    0, & \text{otherwise.}
+  \end{cases}
+\]
+Indeed, if $0\notin t$ then $t\subseteq\{2,\dots,m\}$, and since
+$\lvert\{2,\dots,m\}\rvert=m-1=\lvert t\rvert$ this forces $t=\{2,\dots,m\}$,
+giving the first case. If $0\in t$, then the factor with $a=0$ is
+$1-x_0=1-\cos0=1-1=0$, so the whole product vanishes.
+
+Hence, summing over all such $t$, all terms but one vanish and
+\begin{equation}\label{eq:ldco-sum}
+  \sum_{\substack{t\subseteq S\setminus\{1\}\\ \lvert t\rvert=m-1}}
+    \ \prod_{a\in t}(1-x_a)=\prod_{a=2}^{m}(1-x_a).
+\end{equation}
+
+\emph{Step 2: factoring the Vandermonde product.} Splitting off the index
+$j=0$,
+\begin{equation}\label{eq:ldco-prod}
+  \prod_{j\in S\setminus\{1\}}(x_1-x_j)
+  =(x_1-x_0)\prod_{a=2}^{m}(x_1-x_a)
+  =(x_1-1)\prod_{a=2}^{m}(x_1-x_a),
+\end{equation}
+using $x_0=\cos0=1$.
+
+\emph{Step 3: the factors are nonzero.} By the background proposition on strict
+monotonicity of the extremal nodes, $j\mapsto x_j$ is strictly decreasing on
+$S$, so $x_1>x_a$ for every $2\le a\le m$ and $x_1<x_0=1$. Hence
+$x_1-x_a>0$ for $2\le a\le m$, so $\prod_{a=2}^{m}(x_1-x_a)>0$; and
+$x_1-1<0$, so $x_1-1\ne0$ and, by \eqref{eq:ldco-prod}, the product
+$\prod_{j\in S\setminus\{1\}}(x_1-x_j)$ is nonzero. In particular its inverse is
+defined.
+
+\emph{Step 4: using the telescoping identity.} By \noderef{ChebNodeTelescope},
+\[
+  \prod_{a=2}^{m}\frac{1-x_a}{x_1-x_a}=2 .
+\]
+Since every denominator $x_1-x_a$ ($2\le a\le m$) is nonzero by Step 3, the
+left-hand side equals
+$\Bigl(\prod_{a=2}^{m}(1-x_a)\Bigr)\Bigl/\Bigl(\prod_{a=2}^{m}(x_1-x_a)\Bigr)$,
+and therefore
+\begin{equation}\label{eq:ldco-tel}
+  \prod_{a=2}^{m}(1-x_a)=2\prod_{a=2}^{m}(x_1-x_a).
+\end{equation}
+
+\emph{Step 5: conclusion.} Combining \eqref{eq:ldco-sum},
+\eqref{eq:ldco-prod} and \eqref{eq:ldco-tel}, and writing
+$\Pi=\prod_{a=2}^{m}(x_1-x_a)\ne0$,
+\[
+  \Biggl(\prod_{j\in S\setminus\{1\}}(x_1-x_j)\Biggr)^{-1}
+  \sum_{\substack{t\subseteq S\setminus\{1\}\\ \lvert t\rvert=m-1}}
+    \ \prod_{a\in t}(1-x_a)
+  =\frac{2\,\Pi}{(x_1-1)\,\Pi}
+  =\frac{2}{x_1-1}
+  =\frac{-2}{1-x_1},
+\]
+where we cancelled $\Pi\ne0$ and used $x_1-1\ne0$.
+\end{proof}

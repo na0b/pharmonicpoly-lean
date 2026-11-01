@@ -1,0 +1,57 @@
+\begin{lemma}[The Frechet derivative of a polynomial function on Euclidean space]
+Let $n\in\mathbb{N}$, let $Q\in\mathbb{R}[X_1,\dots,X_n]$ and let
+$y\in\mathbb{R}^n$, where $\mathbb{R}^n$ carries the Euclidean inner product.
+Then the polynomial function $z\mapsto Q(z)$ is Frechet differentiable at $y$,
+and its derivative is the continuous linear form
+\[
+  w\ \longmapsto\ \sum_{i=1}^{n}(\partial_iQ)(y)\,w_i ,
+\]
+that is, the linear combination $\sum_{i=1}^{n}(\partial_iQ)(y)\,\pi_i$ of the
+Euclidean coordinate projections $\pi_i\colon w\mapsto w_i$.
+\end{lemma}
+\begin{proof}
+Write $E=\mathbb{R}^n$ for the Euclidean space, i.e.\ the space of functions
+$\mathrm{Fin}\,n\to\mathbb{R}$ normed by $\|z\|^2=\sum_i z_i^2$, and write
+$C=\mathbb{R}^n$ for the same underlying space of functions normed as the finite
+product of copies of $\mathbb{R}$. Let $\Phi\colon E\to C$ be the map that sends
+a point to its own coordinate function. Then $\Phi$ is a linear bijection, and
+it is continuous with continuous inverse, because on a finite-dimensional
+coordinate space the Euclidean norm and the product (sup) norm are equivalent;
+concretely $\max_i|z_i|\le\|z\|\le\sqrt{n}\max_i|z_i|$. Thus $\Phi$ is a
+continuous linear equivalence, and $\Phi(z)_i=z_i$ for every index $i$.
+
+Let $\widehat{Q}_E\colon E\to\mathbb{R}$, $\widehat{Q}_E(z)=Q(z)$, denote the
+polynomial function on $E$, and $\widehat{Q}_C\colon C\to\mathbb{R}$,
+$\widehat{Q}_C(v)=Q(v)$, the polynomial function on $C$. Since $\Phi$ does not
+change coordinates, the two agree after composition:
+\begin{equation}\label{eq:mpfde-comp}
+  \widehat{Q}_E=\widehat{Q}_C\circ\Phi .
+\end{equation}
+Indeed, for $z\in E$ both sides evaluate $Q$ at the same coordinate tuple
+$(z_1,\dots,z_n)$.
+
+By \noderef{MvPolyFDeriv}, applied to the polynomial $Q$ and the point
+$\Phi(y)\in C$ (whose coordinates are $y_1,\dots,y_n$), the map
+$\widehat{Q}_C$ is Frechet differentiable at $\Phi(y)$, with derivative the
+continuous linear form
+\[
+  L\colon C\to\mathbb{R},\qquad L(w)=\sum_{i=1}^{n}(\partial_iQ)(y)\,w_i .
+\]
+Being a continuous linear map, $\Phi$ is Frechet differentiable at $y$ with
+derivative $\Phi$ itself. Hence by the chain rule and \eqref{eq:mpfde-comp},
+$\widehat{Q}_E$ is Frechet differentiable at $y$ with derivative the composite
+continuous linear map $L\circ\Phi\colon E\to\mathbb{R}$.
+
+Finally we identify $L\circ\Phi$ with the asserted form. For $w\in E$ we have
+$\Phi(w)_i=w_i$, so
+\[
+  (L\circ\Phi)(w)=\sum_{i=1}^{n}(\partial_iQ)(y)\,\Phi(w)_i
+  =\sum_{i=1}^{n}(\partial_iQ)(y)\,w_i
+  =\Bigl(\sum_{i=1}^{n}(\partial_iQ)(y)\,\pi_i\Bigr)(w),
+\]
+where $\pi_i\colon E\to\mathbb{R}$ is the $i$-th Euclidean coordinate
+projection. Two continuous linear maps that agree at every point are equal, so
+$L\circ\Phi=\sum_{i=1}^{n}(\partial_iQ)(y)\,\pi_i$. Since the Frechet derivative
+is characterised by the limit condition it satisfies, replacing it by an equal
+continuous linear map preserves differentiability, and the lemma follows.
+\end{proof}

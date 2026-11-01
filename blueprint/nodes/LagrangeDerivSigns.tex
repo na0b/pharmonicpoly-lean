@@ -1,0 +1,36 @@
+\begin{lemma}[Sign of the Lagrange derivative coefficients]
+Let $m,i,k\in\mathbb{N}$ with $i\le m$, let $S=\{0,1,\dots,m\}$ and let
+$x_j=x^{(m)}_j=\cos(j\pi/m)$ be the Chebyshev extremal nodes of order $m$. Put
+\[
+  c_i^{(k)}=\Biggl(\prod_{j\in S\setminus\{i\}}(x_i-x_j)\Biggr)^{-1}
+    \sum_{\substack{t\subseteq S\setminus\{i\}\\ \lvert t\rvert=k}}
+      \ \prod_{a\in t}(1-x_a).
+\]
+Then $(-1)^i\,c_i^{(k)}\ge0$.
+\end{lemma}
+\begin{proof}
+Write $Q=\prod_{j\in S\setminus\{i\}}(x_i-x_j)$ and
+$\Sigma=\sum_{\lvert t\rvert=k,\ t\subseteq S\setminus\{i\}}\prod_{a\in t}(1-x_a)$,
+so that $c_i^{(k)}=Q^{-1}\Sigma$ and, since $((-1)^i)$ is a scalar,
+\begin{equation}\label{eq:lds-split}
+  (-1)^i c_i^{(k)}=\bigl((-1)^iQ^{-1}\bigr)\,\Sigma .
+\end{equation}
+
+\emph{Step 1: $(-1)^iQ^{-1}\ge0$.} By the background proposition on the sign of
+the node Vandermonde product, $(-1)^iQ>0$; in particular $Q\ne0$, so $Q^{-1}$ is
+defined. If $i$ is even then $(-1)^i=1$, so $Q>0$, hence $Q^{-1}>0$ and
+$(-1)^iQ^{-1}=Q^{-1}>0$. If $i$ is odd then $(-1)^i=-1$, so $-Q>0$, i.e. $Q<0$,
+hence $Q^{-1}<0$ and $(-1)^iQ^{-1}=-Q^{-1}>0$. In both cases
+$(-1)^iQ^{-1}>0\ge0$.
+
+\emph{Step 2: $\Sigma\ge0$.} For every $a\in\mathbb{N}$ we have
+$x_a=\cos(a\pi/m)\le1$, hence $1-x_a\ge0$. Therefore, for every subset
+$t\subseteq S\setminus\{i\}$, the product $\prod_{a\in t}(1-x_a)$ is a finite
+product of nonnegative reals and so is nonnegative (the empty product being
+$1\ge0$). Consequently $\Sigma$, a finite sum of nonnegative reals, is
+nonnegative.
+
+\emph{Step 3: conclusion.} By \eqref{eq:lds-split} and Steps 1 and 2,
+$(-1)^ic_i^{(k)}$ is a product of two nonnegative reals, hence
+$(-1)^ic_i^{(k)}\ge0$.
+\end{proof}

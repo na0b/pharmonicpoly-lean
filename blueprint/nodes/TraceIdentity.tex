@@ -1,0 +1,87 @@
+\begin{lemma}[The trace identity]
+Let $n,m\in\mathbb{N}$ with $m\ge1$, let $p\in\mathbb{R}$, let
+$P\in\mathbb{R}[X_1,\dots,X_n]$ be homogeneous of degree $m$, let $\mathbb{R}^n$
+carry the Euclidean inner product and let $u(y)=P(y)$. Let $e\in\mathbb{R}^n$
+satisfy $\lVert e\rVert=1$, $u(e)=1$ and $\lvert u(y)\rvert\le1$ for every unit
+$y$, and assume $\mathcal{E}^{\mathrm{alg}}_p(P)=0$. Let $(b_i)_{i=1}^{n}$ be an
+orthonormal basis of $\mathbb{R}^n$ with $b_{i_0}=e$ for some index $i_0$. Then,
+writing $d_v=D^2u(e)[v,v]+m(m-1)$,
+\[
+  \sum_{i\ne i_0}d_{b_i}=(n-p)\,m(m-1).
+\]
+\end{lemma}
+\begin{proof}
+\emph{Step 1: the first and radial second derivatives at $e$.} By
+\noderef{MaxPointDerivatives}, whose three hypotheses on $e$ are ours,
+\begin{equation}\label{eq:ti-max}
+  \nabla u(e)=m\,e,
+  \qquad
+  D^2u(e)[e,e]=m(m-1).
+\end{equation}
+
+\emph{Step 2: $\lvert\nabla u(e)\rvert^2=m^2$.} By \eqref{eq:ti-max} and
+$\lVert e\rVert=1$, $\lvert\nabla u(e)\rvert^2=m^2\lVert e\rVert^2=m^2$.
+
+\emph{Step 3: $\langle D^2u(e)\,\nabla u(e),\nabla u(e)\rangle=m^3(m-1)$.} By
+\noderef{MvPolyHessian}, for all $v,w$,
+$D^2u(e)[v,w]=\sum_i\sum_j v_i\,w_j\,(\partial_i\partial_jP)(e)$, which is
+visibly linear in $v$ and in $w$ separately. Hence, using
+$\nabla u(e)=m\,e$ from \eqref{eq:ti-max},
+\[
+  D^2u(e)\bigl[\nabla u(e),\nabla u(e)\bigr]
+  =D^2u(e)[m\,e,\,m\,e]=m^2\,D^2u(e)[e,e]=m^2\cdot m(m-1)=m^3(m-1),
+\]
+the last equality again by \eqref{eq:ti-max}.
+
+\emph{Step 4: splitting the Laplacian over the basis.} By the background
+proposition computing the Laplacian from an orthonormal basis, applied with the
+basis $(b_i)_{i=1}^{n}$,
+\[
+  \Delta u(e)=\sum_{i=1}^{n}D^2u(e)[b_i,b_i].
+\]
+Splitting off the index $i_0$ and using $b_{i_0}=e$ together with
+\eqref{eq:ti-max},
+\begin{equation}\label{eq:ti-lap}
+  \Delta u(e)=D^2u(e)[e,e]+\sum_{i\ne i_0}D^2u(e)[b_i,b_i]
+  =m(m-1)+\sum_{i\ne i_0}D^2u(e)[b_i,b_i].
+\end{equation}
+
+\emph{Step 5: the equation at $e$.} By \noderef{EpOpEvalPoly} applied at the
+point $e$,
+\[
+  \mathcal{E}_p(u)(e)=\bigl(\mathcal{E}^{\mathrm{alg}}_p(P)\bigr)(e),
+\]
+and the right-hand side is $0$ because $\mathcal{E}^{\mathrm{alg}}_p(P)$ is the
+zero polynomial by hypothesis, and the zero polynomial takes the value $0$.
+Hence, by the definition in \noderef{EpOp},
+\begin{equation}\label{eq:ti-eq}
+  0=\lvert\nabla u(e)\rvert^2\,\Delta u(e)
+    +(p-2)\bigl\langle D^2u(e)\,\nabla u(e),\nabla u(e)\bigr\rangle .
+\end{equation}
+
+\emph{Step 6: solving for the tangential sum.} Write
+$\Sigma=\sum_{i\ne i_0}D^2u(e)[b_i,b_i]$. Substituting Steps 2, 3 and
+\eqref{eq:ti-lap} into \eqref{eq:ti-eq},
+\[
+  0=m^2\bigl(m(m-1)+\Sigma\bigr)+(p-2)\,m^3(m-1).
+\]
+Since $m\ge1$ we have $m^2>0$, so we may divide by $m^2$:
+\[
+  0=m(m-1)+\Sigma+(p-2)\,m(m-1),
+\]
+and therefore
+\begin{equation}\label{eq:ti-sigma}
+  \Sigma=-\bigl(1+(p-2)\bigr)m(m-1)=-(p-1)\,m(m-1).
+\end{equation}
+
+\emph{Step 7: conclusion.} The index set $\{i:i\ne i_0\}$ has exactly $n-1$
+elements, so, by the definition of $d_v$ and \eqref{eq:ti-sigma},
+\[
+  \sum_{i\ne i_0}d_{b_i}
+  =\sum_{i\ne i_0}\Bigl(D^2u(e)[b_i,b_i]+m(m-1)\Bigr)
+  =\Sigma+(n-1)\,m(m-1)
+  =\bigl(-(p-1)+(n-1)\bigr)m(m-1).
+\]
+Finally $-(p-1)+(n-1)=n-p$, which gives
+$\sum_{i\ne i_0}d_{b_i}=(n-p)\,m(m-1)$, as asserted.
+\end{proof}

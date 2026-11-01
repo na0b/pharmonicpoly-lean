@@ -1,0 +1,49 @@
+\begin{lemma}[Pairing the gradient of a polynomial function against a vector]
+Let $n\in\mathbb{N}$, let $P\in\mathbb{R}[X_1,\dots,X_n]$ and let
+$y,z\in\mathbb{R}^n$, where $\mathbb{R}^n$ carries the Euclidean inner product.
+Write $\widehat{P}(q)=P(q)$ for the polynomial function and $\pi_i\colon
+\mathbb{R}^n\to\mathbb{R}$, $\pi_i(w)=w_i$, for the $i$-th coordinate
+projection. Then
+\[
+  \bigl\langle\nabla\widehat{P}(y),\,z\bigr\rangle
+    =\sum_{i=1}^{n}(\partial_iP)(y)\,z_i ,
+\]
+and, with the same right-hand side read as the value at $z$ of the continuous
+linear form $\sum_{i=1}^{n}(\partial_iP)(y)\,\pi_i$,
+\[
+  \Bigl(\sum_{i=1}^{n}(\partial_iP)(y)\,\pi_i\Bigr)(z)
+    =\bigl\langle\nabla\widehat{P}(y),\,z\bigr\rangle .
+\]
+\end{lemma}
+\begin{proof}
+We prove the first identity and then deduce the second from it.
+
+\emph{First identity.} By \noderef{MvPolyGradient}, the gradient of
+$\widehat{P}$ at $y$ is the vector of partial derivatives,
+\[
+  \nabla\widehat{P}(y)=\bigl((\partial_1P)(y),\dots,(\partial_nP)(y)\bigr)
+    \in\mathbb{R}^n .
+\]
+Substituting this into the left-hand side and expanding the Euclidean inner
+product of two vectors coordinatewise --- for $a,b\in\mathbb{R}^n$ one has
+$\langle a,b\rangle=\sum_{i=1}^{n}a_i\,b_i$, the conjugation in the general
+definition being trivial over $\mathbb{R}$ --- gives
+\[
+  \bigl\langle\nabla\widehat{P}(y),\,z\bigr\rangle
+    =\sum_{i=1}^{n}(\partial_iP)(y)\,z_i ,
+\]
+which is the asserted identity; the two sums agree term by term, each pair of
+terms differing at most by the commutativity of multiplication in $\mathbb{R}$.
+
+\emph{Second identity.} The map $L=\sum_{i=1}^{n}(\partial_iP)(y)\,\pi_i$ is a
+finite linear combination of the coordinate projections, so it is a continuous
+linear form on $\mathbb{R}^n$, and evaluating a linear combination of maps at a
+point evaluates each summand there:
+\[
+  L(z)=\sum_{i=1}^{n}(\partial_iP)(y)\,\pi_i(z)
+    =\sum_{i=1}^{n}(\partial_iP)(y)\,z_i .
+\]
+By the first identity this last sum equals
+$\langle\nabla\widehat{P}(y),z\rangle$, so
+$L(z)=\langle\nabla\widehat{P}(y),z\rangle$, as claimed.
+\end{proof}

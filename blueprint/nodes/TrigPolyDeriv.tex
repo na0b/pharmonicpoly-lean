@@ -1,0 +1,49 @@
+\begin{lemma}[Derivative of a trigonometric polynomial]
+Let $m\in\mathbb{N}$ and let $T:\mathbb{R}\to\mathbb{R}$ be a real
+trigonometric polynomial of degree at most $m$. Then its pointwise derivative
+$T'$ is again a real trigonometric polynomial of degree at most $m$.
+\end{lemma}
+\begin{proof}
+By \noderef{TrigPolySmooth}, $T$ is real-analytic on $\mathbb{R}$, in
+particular differentiable at every point, so the pointwise derivative $T'$ is
+the genuine derivative of $T$ everywhere. It remains to identify it.
+
+By the definition in \noderef{TrigPolyLe} there are sequences
+$a,b:\mathbb{N}\to\mathbb{R}$ with
+\begin{equation}\label{eq:tpd-rep}
+  T(t)=\sum_{k=0}^{m}\bigl(a_k\cos(kt)+b_k\sin(kt)\bigr)
+  \qquad\text{for every }t\in\mathbb{R}.
+\end{equation}
+Write $g_k(t)=a_k\cos(kt)+b_k\sin(kt)$ for $0\le k\le m$, so that
+$T=\sum_{k=0}^{m}g_k$ as functions on $\mathbb{R}$.
+
+\emph{Step 1: each $g_k$ is differentiable, with
+$g_k'(t)=k\,b_k\cos(kt)-k\,a_k\sin(kt)$.} The map $t\mapsto kt$ is
+differentiable with derivative the constant $k$, and $\cos$ and $\sin$ are
+differentiable with $\cos'=-\sin$ and $\sin'=\cos$. By the chain rule
+$\frac{d}{dt}\cos(kt)=-k\sin(kt)$ and $\frac{d}{dt}\sin(kt)=k\cos(kt)$. By
+linearity of the derivative,
+\[
+  g_k'(t)=a_k\bigl(-k\sin(kt)\bigr)+b_k\bigl(k\cos(kt)\bigr)
+        =k\,b_k\cos(kt)+(-k\,a_k)\sin(kt).
+\]
+
+\emph{Step 2: $T'=\sum_{k=0}^{m}g_k'$.} A finite sum of differentiable
+functions is differentiable and its derivative is the sum of the derivatives;
+applying this to the $m+1$ functions $g_0,\dots,g_m$ shows that the function
+$t\mapsto\sum_{k=0}^{m}g_k(t)$ is differentiable with derivative
+$t\mapsto\sum_{k=0}^{m}g_k'(t)$. By \eqref{eq:tpd-rep} that function is $T$
+itself, so its derivative is $T'$ and, for every $t\in\mathbb{R}$,
+\[
+  T'(t)=\sum_{k=0}^{m}g_k'(t)
+       =\sum_{k=0}^{m}\Bigl(\bigl(k\,b_k\bigr)\cos(kt)
+         +\bigl(-k\,a_k\bigr)\sin(kt)\Bigr).
+\]
+
+\emph{Step 3: conclusion.} Define $a',b':\mathbb{N}\to\mathbb{R}$ by
+$a'_k=k\,b_k$ and $b'_k=-k\,a_k$. By Step 2,
+$T'(t)=\sum_{k=0}^{m}\bigl(a'_k\cos(kt)+b'_k\sin(kt)\bigr)$ for every
+$t\in\mathbb{R}$, so the pair $(a',b')$ witnesses that $T'$ is a real
+trigonometric polynomial of degree at most $m$ in the sense of
+\noderef{TrigPolyLe}.
+\end{proof}

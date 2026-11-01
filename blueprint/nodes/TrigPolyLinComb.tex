@@ -1,0 +1,51 @@
+\begin{lemma}[Linear combinations of trigonometric polynomials]
+Let $m\in\mathbb{N}$ and let $S,T:\mathbb{R}\to\mathbb{R}$ be real
+trigonometric polynomials of degree at most $m$. Then for every pair of real
+numbers $c,d$ the pointwise linear combination $t\mapsto c\,S(t)+d\,T(t)$ is
+again a real trigonometric polynomial of degree at most $m$.
+\end{lemma}
+\begin{proof}
+By the definition in \noderef{TrigPolyLe} there are sequences
+$\alpha,\beta:\mathbb{N}\to\mathbb{R}$ with
+\begin{equation}\label{eq:tplc-S}
+  S(t)=\sum_{k=0}^{m}\bigl(\alpha_k\cos(kt)+\beta_k\sin(kt)\bigr)
+  \qquad\text{for every }t\in\mathbb{R},
+\end{equation}
+and sequences $\gamma,\delta:\mathbb{N}\to\mathbb{R}$ with
+\begin{equation}\label{eq:tplc-T}
+  T(t)=\sum_{k=0}^{m}\bigl(\gamma_k\cos(kt)+\delta_k\sin(kt)\bigr)
+  \qquad\text{for every }t\in\mathbb{R}.
+\end{equation}
+Fix $c,d\in\mathbb{R}$ and define $\alpha',\beta':\mathbb{N}\to\mathbb{R}$ by
+\[
+  \alpha'_k=c\,\alpha_k+d\,\gamma_k,
+  \qquad
+  \beta'_k=c\,\beta_k+d\,\delta_k
+  \qquad(k\in\mathbb{N}).
+\]
+
+Let $t\in\mathbb{R}$. Using \eqref{eq:tplc-S} and \eqref{eq:tplc-T},
+\begin{align*}
+  c\,S(t)+d\,T(t)
+  &=c\sum_{k=0}^{m}\bigl(\alpha_k\cos(kt)+\beta_k\sin(kt)\bigr)
+   +d\sum_{k=0}^{m}\bigl(\gamma_k\cos(kt)+\delta_k\sin(kt)\bigr)\\
+  &=\sum_{k=0}^{m}c\bigl(\alpha_k\cos(kt)+\beta_k\sin(kt)\bigr)
+   +\sum_{k=0}^{m}d\bigl(\gamma_k\cos(kt)+\delta_k\sin(kt)\bigr)\\
+  &=\sum_{k=0}^{m}\Bigl(c\bigl(\alpha_k\cos(kt)+\beta_k\sin(kt)\bigr)
+     +d\bigl(\gamma_k\cos(kt)+\delta_k\sin(kt)\bigr)\Bigr)\\
+  &=\sum_{k=0}^{m}\Bigl(\bigl(c\,\alpha_k+d\,\gamma_k\bigr)\cos(kt)
+     +\bigl(c\,\beta_k+d\,\delta_k\bigr)\sin(kt)\Bigr)
+  =\sum_{k=0}^{m}\bigl(\alpha'_k\cos(kt)+\beta'_k\sin(kt)\bigr).
+\end{align*}
+The second equality distributes the scalar $c$ (respectively $d$) over a finite
+sum; the third combines two finite sums over the same index set
+$\{0,\dots,m\}$ into a single sum, term by term; the fourth regroups each term
+by the commutative-ring identities
+$c(\alpha_k u+\beta_k v)+d(\gamma_k u+\delta_k v)
+ =(c\alpha_k+d\gamma_k)u+(c\beta_k+d\delta_k)v$
+with $u=\cos(kt)$ and $v=\sin(kt)$.
+
+Since $t\in\mathbb{R}$ was arbitrary, the pair $(\alpha',\beta')$ witnesses that
+$t\mapsto c\,S(t)+d\,T(t)$ is a real trigonometric polynomial of degree at most
+$m$ in the sense of \noderef{TrigPolyLe}.
+\end{proof}

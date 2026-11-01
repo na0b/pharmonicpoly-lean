@@ -79,7 +79,7 @@ theorem GreatCircleTrigPoly {n m : ℕ} {P : MvPolynomial (Fin n) ℝ}
       refine htr _ _ _ (TrigPolyMul (hpow _ (e i) (hg1 i)) (ih e)) (fun t => ?_)
       rw [Finset.prod_insert hi]
   refine htr _ _ _ (hsum m P.support
-    (fun dd t => MvPolynomial.coeff dd P * ∏ i,
+    (fun dd t => P.coeff dd * ∏ i,
       ((Real.cos t • A + Real.sin t • B : EuclideanSpace ℝ (Fin n)) i) ^ dd i) ?_)
     (fun t => by rw [MvPolynomial.eval_eq'])
   intro dd hdd
@@ -90,4 +90,4 @@ theorem GreatCircleTrigPoly {n m : ℕ} {P : MvPolynomial (Fin n) ℝ}
   exact htr _ _ _ (TrigPolyLinComb
     (hmono _ _ _ (hprod Finset.univ (fun i => dd i)) hdegsum)
     (hmono _ _ _ (hprod Finset.univ (fun i => dd i)) hdegsum)
-    (MvPolynomial.coeff dd P) 0) (fun t => by ring)
+    (P.coeff dd) 0) (fun t => by ring)

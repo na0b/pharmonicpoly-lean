@@ -1,0 +1,10 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "PHarmonicPoly.main_theorem",
+    "PHarmonicPoly.deficit_bound"
+  ],
+  "definition_names": [],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+}

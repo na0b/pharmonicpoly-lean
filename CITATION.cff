@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this formalization, please cite the paper and this repository."
+title: "Lean 4 formalization of: p-harmonic homogeneous polynomials"
+type: software
+license: Apache-2.0
+authors:
+  - family-names: Manfredi
+    given-names: Juan J.
+    affiliation: University of Pittsburgh
+  - family-names: Sobral
+    given-names: Aelson
+    affiliation: King Abdullah University of Science and Technology (KAUST)
+preferred-citation:
+  type: article
+  title: "p-harmonic homogeneous polynomials"
+  authors:
+    - family-names: Manfredi
+      given-names: Juan J.
+    - family-names: Sobral
+      given-names: Aelson
+  year: 2026

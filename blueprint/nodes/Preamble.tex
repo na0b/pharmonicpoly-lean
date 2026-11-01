@@ -1,0 +1,197 @@
+\begin{definition}[Chebyshev polynomials of the first kind]
+For $k\in\mathbb{N}$, $T_k\in\mathbb{R}[X]$ denotes the $k$-th Chebyshev
+polynomial of the first kind, i.e. the unique real polynomial satisfying
+$T_k(\cos\theta)=\cos(k\theta)$ for every $\theta\in\mathbb{R}$.
+\end{definition}
+
+\begin{definition}[Chebyshev extremal nodes]
+For integers $m\ge 1$ and $0\le i\le m$, the $i$-th extremal node of order $m$
+is
+\[
+  x^{(m)}_i=\cos\!\left(\frac{i\pi}{m}\right).
+\]
+When $m$ is fixed by the context we write $x_i$ for $x^{(m)}_i$. In particular
+$x_0=1$ and $x_m=-1$.
+\end{definition}
+
+\begin{proposition}[Chebyshev characterisation and degree]
+For every $k\in\mathbb{N}$ and every $\theta\in\mathbb{R}$ one has
+$T_k(\cos\theta)=\cos(k\theta)$, and $\deg T_k=k$.
+\end{proposition}
+
+\begin{proposition}[Chebyshev values at the extremal nodes]
+Let $m\ge 1$ be an integer. For every $0\le i\le m$ one has
+$T_m\!\left(x^{(m)}_i\right)=(-1)^i$.
+\end{proposition}
+
+\begin{proposition}[Chebyshev derivative at $1$]
+For every $k\in\mathbb{N}$ one has $T_k'(1)=k^2$, where $T_k'$ is the formal
+derivative of $T_k$.
+\end{proposition}
+
+\begin{proposition}[Strict monotonicity of the extremal nodes]
+Let $m\ge 1$ be an integer. The map $i\mapsto x^{(m)}_i$ is strictly decreasing
+on $\{0,1,\dots,m\}$; in particular the nodes $x^{(m)}_0,\dots,x^{(m)}_m$ are
+pairwise distinct and all lie in $[-1,1]$.
+\end{proposition}
+
+\begin{proposition}[Sign of the node Vandermonde product]
+Let $m\ge 1$ be an integer, let $S=\{0,1,\dots,m\}$ and let $i\in S$. Then
+\[
+  0<(-1)^i\prod_{j\in S\setminus\{i\}}\bigl(x^{(m)}_i-x^{(m)}_j\bigr).
+\]
+\end{proposition}
+
+\begin{proposition}[Lagrange formula for an iterated derivative]
+Let $S$ be a finite index set, let $v:S\to\mathbb{R}$ be injective, let
+$Q\in\mathbb{R}[X]$ with $\deg Q<\lvert S\rvert$, let $k\in\mathbb{N}$ with
+$k<\lvert S\rvert$, and let $z\in\mathbb{R}$. Then
+\[
+  Q^{(k)}(z)=k!\sum_{i\in S}
+    \frac{Q(v(i))}{\prod_{j\in S\setminus\{i\}}\bigl(v(i)-v(j)\bigr)}
+    \sum_{\substack{t\subseteq S\setminus\{i\}\\ \lvert t\rvert=\lvert S\rvert-(k+1)}}
+      \ \prod_{a\in t}\bigl(z-v(a)\bigr).
+\]
+\end{proposition}
+
+\begin{proposition}[Elementary cosine bound]
+For every $\varphi\in\mathbb{R}$ one has $1-\varphi^2/2\le\cos\varphi$.
+\end{proposition}
+
+\begin{definition}[Partial derivatives of a multivariate polynomial]
+For $P\in\mathbb{R}[X_1,\dots,X_n]$ and $1\le i\le n$, $\partial_iP$ denotes the
+formal partial derivative of $P$ with respect to $X_i$. For $x\in\mathbb{R}^n$
+we write $(\partial_iP)(x)$ for its value at $x$.
+\end{definition}
+
+\begin{definition}[The standard orthonormal basis of $\mathbb{R}^n$]
+$e_1,\dots,e_n$ denotes the standard orthonormal basis of $\mathbb{R}^n$ with
+the Euclidean inner product, so that $(e_k)_i=1$ if $i=k$ and $(e_k)_i=0$
+otherwise.
+\end{definition}
+
+\begin{proposition}[Analyticity of polynomial evaluation]
+For every $P\in\mathbb{R}[X_1,\dots,X_n]$ the function
+$v\mapsto P(v)$ is real-analytic on all of $\mathbb{R}^n$.
+\end{proposition}
+
+\begin{proposition}[The second derivative as an iterated derivative]
+Let $f:E\to F$ be a map between normed real vector spaces and let $z\in E$.
+Then, as a bilinear form, the second derivative of $f$ at $z$ satisfies
+\[
+  D^2f(z)[v,w]=\bigl(D(Df)(z)(v)\bigr)(w)
+  \qquad(v,w\in E),
+\]
+where $Df:E\to\operatorname{Hom}(E,F)$ is the first derivative map.
+\end{proposition}
+
+\begin{proposition}[The gradient represents the derivative]
+Let $E$ be a finite-dimensional real inner product space, let $f:E\to\mathbb{R}$
+and let $x\in E$. Then $Df(x)=\langle\nabla f(x),\cdot\rangle$, i.e. the
+derivative of $f$ at $x$ is the linear form represented by the gradient
+$\nabla f(x)$ through the inner product.
+\end{proposition}
+
+\begin{proposition}[The Laplacian from an orthonormal basis]
+Let $E$ be a finite-dimensional real inner product space, let $f:E\to\mathbb{R}$
+and let $(b_i)_{i\in I}$ be any orthonormal basis of $E$. Then
+\[
+  \Delta f(x)=\sum_{i\in I}D^2f(x)[b_i,b_i]
+  \qquad(x\in E).
+\]
+\end{proposition}
+
+\begin{proposition}[Monomial expansion of evaluation]
+Let $P\in\mathbb{R}[X_1,\dots,X_n]$. Write $\operatorname{supp}P$ for the
+(finite) set of exponent tuples $d\in\mathbb{N}^n$ with $\operatorname{coeff}_d P\ne0$.
+Then for every $x\in\mathbb{R}^n$
+\[
+  P(x)=\sum_{d\in\operatorname{supp}P}\bigl(\operatorname{coeff}_dP\bigr)
+        \prod_{a=1}^{n}x_a^{\,d_a},
+\]
+and every $d\in\operatorname{supp}P$ satisfies $\sum_{a=1}^{n}d_a\le\deg P$,
+where $\deg$ denotes the total degree.
+\end{proposition}
+
+\begin{proposition}[Total degree of sums and products]
+For $Q,R\in\mathbb{R}[X_1,\dots,X_n]$ one has
+$\deg(QR)\le\deg Q+\deg R$ and $\deg(Q+R)\le\max(\deg Q,\deg R)$; the latter
+extends to finite sums. Moreover $\deg(cQ)\le\deg Q$ for every
+$c\in\mathbb{R}$, and $\deg 0=0$. A polynomial $Q$ has $\deg Q=0$ if and only if
+$Q$ is constant.
+\end{proposition}
+
+\begin{proposition}[Formal partial derivatives are additive]
+For every index $i$ the operator $\partial_i$ is $\mathbb{R}$-linear on
+$\mathbb{R}[X_1,\dots,X_n]$; in particular $\partial_i(Q+R)=\partial_iQ+\partial_iR$
+and $\partial_i(cQ)=c\,\partial_iQ$. Also $\partial_iQ=0$ whenever $Q$ is constant.
+\end{proposition}
+
+\begin{definition}[Homogeneous polynomials and homogeneous components]
+$Q\in\mathbb{R}[X_1,\dots,X_n]$ is \emph{homogeneous of degree $d$} if every
+exponent tuple in $\operatorname{supp}Q$ has $\sum_a d_a=d$. For
+$P\in\mathbb{R}[X_1,\dots,X_n]$ and $d\in\mathbb{N}$, the \emph{$d$-th
+homogeneous component} $H_d(P)$ is the polynomial obtained from $P$ by keeping
+exactly the monomials of total degree $d$.
+\end{definition}
+
+\begin{proposition}[Properties of homogeneous components]
+Let $P,Q\in\mathbb{R}[X_1,\dots,X_n]$ and $d\in\mathbb{N}$. Then:
+$H_d(P)$ is homogeneous of degree $d$; $P=\sum_{d=0}^{\deg P}H_d(P)$;
+$H_d$ is $\mathbb{R}$-linear; $H_d(Q)=Q$ if $Q$ is homogeneous of degree $d$;
+and $H_d(Q)=0$ if $\deg Q<d$.
+\end{proposition}
+
+\begin{proposition}[Products and derivatives of homogeneous polynomials]
+If $Q$ is homogeneous of degree $d$ and $R$ is homogeneous of degree $e$, then
+$QR$ is homogeneous of degree $d+e$, and $cQ$ is homogeneous of degree $d$ for
+every $c\in\mathbb{R}$; a finite sum of polynomials homogeneous of degree $d$ is
+homogeneous of degree $d$. If $Q$ is homogeneous of degree $d$ then
+$\partial_iQ$ is homogeneous of degree $d-1$ (with $d-1$ read as $0$ when
+$d=0$), and in particular $\deg(\partial_iQ)\le d-1$ when $d\ge1$.
+\end{proposition}
+
+\begin{proposition}[Homogeneous scaling]
+If $Q\in\mathbb{R}[X_1,\dots,X_n]$ is homogeneous of degree $d$, then
+$Q(rx)=r^{d}Q(x)$ for every $r\in\mathbb{R}$ and $x\in\mathbb{R}^n$. In
+particular, if $d\ge1$ then $Q(0)=0$.
+\end{proposition}
+
+\begin{proposition}[Polynomials are determined by their values]
+If $Q,R\in\mathbb{R}[X_1,\dots,X_n]$ satisfy $Q(x)=R(x)$ for every
+$x\in\mathbb{R}^n$, then $Q=R$. In particular a polynomial inducing the zero
+function on $\mathbb{R}^n$ is the zero polynomial.
+\end{proposition}
+
+\begin{proposition}[Euler's identity]
+If $Q\in\mathbb{R}[X_1,\dots,X_n]$ is homogeneous of degree $d$, then
+\[
+  \sum_{i=1}^{n}X_i\,\partial_iQ=d\,Q
+\]
+as polynomials.
+\end{proposition}
+
+\begin{proposition}[Compactness of the unit sphere]
+The unit sphere $\{y\in\mathbb{R}^n:\lVert y\rVert=1\}$ is compact, and it is
+nonempty when $n\ge1$. Consequently a continuous real-valued function on
+$\mathbb{R}^n$ attains a maximum on it when $n\ge1$.
+\end{proposition}
+
+\begin{proposition}[Extending an orthonormal family to a basis]
+Let $n\ge1$, let $I\subseteq\{1,\dots,n\}$ and let $(v_i)_{i\in I}$ be an
+orthonormal family in $\mathbb{R}^n$. Then there is an orthonormal basis
+$(b_i)_{i=1}^{n}$ of $\mathbb{R}^n$ with $b_i=v_i$ for every $i\in I$.
+\end{proposition}
+
+\begin{proposition}[Numerical bounds for $\pi$]
+One has $3<\pi<3.15$; consequently $\pi^2<10$.
+\end{proposition}
+
+\begin{proposition}[Orthonormal expansion]
+Let $(b_i)_{i=1}^{n}$ be an orthonormal basis of $\mathbb{R}^n$ with the
+Euclidean inner product. Then for every $x\in\mathbb{R}^n$
+\[
+  x=\sum_{i=1}^{n}\langle b_i,x\rangle\,b_i .
+\]
+\end{proposition}
+

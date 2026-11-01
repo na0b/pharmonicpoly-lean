@@ -1,0 +1,47 @@
+\begin{lemma}[$\mathcal{E}^{\mathrm{alg}}_p$ of a homogeneous polynomial]
+Let $n\in\mathbb{N}$, $p\in\mathbb{R}$, let $m\ge2$ be an integer and let
+$P\in\mathbb{R}[X_1,\dots,X_n]$ be homogeneous of degree $m$. Then
+$\mathcal{E}^{\mathrm{alg}}_p(P)$ is homogeneous of degree $3m-4$.
+\end{lemma}
+\begin{proof}
+Throughout we use the background proposition on products, scalar multiples, sums
+and derivatives of homogeneous polynomials. Since $m\ge2$, all the subtractions
+below are genuine.
+
+\emph{Step 1: the derivative factors.} For every $i$, the polynomial
+$\partial_iP$ is homogeneous of degree $m-1$. Applying this again, for all $i,j$
+the polynomial $\partial_i(\partial_jP)$ is homogeneous of degree
+$(m-1)-1=m-2$.
+
+\emph{Step 2: the first block.} For each $i$,
+$(\partial_iP)^2=(\partial_iP)(\partial_iP)$ is homogeneous of degree
+$(m-1)+(m-1)=2(m-1)$. A finite sum of polynomials homogeneous of degree
+$2(m-1)$ is homogeneous of degree $2(m-1)$, so
+$\sum_i(\partial_iP)^2$ is homogeneous of degree $2(m-1)$. Likewise each
+$\partial_i\partial_iP$ is homogeneous of degree $m-2$ by Step 1, so
+$\sum_i\partial_i\partial_iP$ is homogeneous of degree $m-2$. Their product is
+therefore homogeneous of degree
+\[
+  2(m-1)+(m-2)=2m-2+m-2=3m-4 .
+\]
+
+\emph{Step 3: the second block.} Fix $i,j$. By Step 1 the three factors
+$\partial_i\partial_jP$, $\partial_iP$, $\partial_jP$ are homogeneous of degrees
+$m-2$, $m-1$, $m-1$ respectively, so their product
+$(\partial_i\partial_jP)(\partial_iP)(\partial_jP)$ is homogeneous of degree
+\[
+  (m-2)+(m-1)+(m-1)=3m-4 .
+\]
+Summing first over $j$ and then over $i$, and using again that a finite sum of
+polynomials homogeneous of one and the same degree is homogeneous of that
+degree, the double sum
+$\sum_i\sum_j(\partial_i\partial_jP)(\partial_iP)(\partial_jP)$ is homogeneous of
+degree $3m-4$. Multiplying by the scalar $p-2$ preserves homogeneity of degree
+$3m-4$.
+
+\emph{Step 4: conclusion.} By the definition in \noderef{EpAlg},
+$\mathcal{E}^{\mathrm{alg}}_p(P)$ is the sum of the polynomial of Step 2 and the
+polynomial of Step 3, both homogeneous of degree $3m-4$. A sum of two
+polynomials homogeneous of degree $3m-4$ is homogeneous of degree $3m-4$, which
+is the assertion.
+\end{proof}

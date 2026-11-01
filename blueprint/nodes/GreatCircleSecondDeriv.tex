@@ -1,0 +1,127 @@
+\begin{lemma}[Second derivative along a circle]
+Let $n\in\mathbb{N}$, let $P\in\mathbb{R}[X_1,\dots,X_n]$, let $\mathbb{R}^n$
+carry the Euclidean inner product, and let $u:\mathbb{R}^n\to\mathbb{R}$ be the
+polynomial function $u(y)=P(y_1,\dots,y_n)$. Let $C,A,B\in\mathbb{R}^n$ and set
+\[
+  \gamma(s)=C+\cos(s)\,A+\sin(s)\,B\qquad(s\in\mathbb{R}).
+\]
+Then for every $t\in\mathbb{R}$ the function $s\mapsto u(\gamma(s))$ has second
+derivative at $t$ given by
+\[
+  \frac{d^2}{ds^2}\Big|_{s=t}u(\gamma(s))
+  =D^2u\bigl(\gamma(t)\bigr)\bigl[\gamma'(t),\gamma'(t)\bigr]
+   -\bigl\langle\nabla u(\gamma(t)),\,\cos(t)A+\sin(t)B\bigr\rangle ,
+\]
+where $\gamma(t)=C+\cos(t)A+\sin(t)B$ and $\gamma'(t)=-\sin(t)A+\cos(t)B$.
+\end{lemma}
+\begin{proof}
+Write $E$ for $\mathbb{R}^n$ with the Euclidean inner product, and
+$f(s)=u(\gamma(s))=P(\gamma(s))$ for $s\in\mathbb{R}$. Coordinatewise,
+\begin{equation}\label{eq:gcsd-coord}
+  \gamma(s)_i=C_i+\cos(s)A_i+\sin(s)B_i\qquad(1\le i\le n).
+\end{equation}
+
+\emph{Step 1: $\gamma$ is twice differentiable, with
+$\gamma''=-(\gamma-C)$.} By \eqref{eq:gcsd-coord} each coordinate function
+$s\mapsto\gamma(s)_i$ is a constant plus a linear combination of $\cos$ and
+$\sin$, hence infinitely differentiable, with
+\[
+  \frac{d}{ds}\gamma(s)_i=-\sin(s)A_i+\cos(s)B_i,
+  \qquad
+  \frac{d^2}{ds^2}\gamma(s)_i=-\cos(s)A_i-\sin(s)B_i,
+\]
+using $\cos'=-\sin$, $\sin'=\cos$ and that the constant $C_i$ differentiates to
+$0$. A map into the finite-dimensional space $E$ is differentiable at a point
+exactly when each of its $n$ coordinate functions is, and its derivative is then
+assembled coordinatewise; applying this twice gives that $\gamma$ is twice
+differentiable with
+\begin{equation}\label{eq:gcsd-gamma}
+  \gamma'(s)=-\sin(s)A+\cos(s)B,
+  \qquad
+  \gamma''(s)=-\bigl(\cos(s)A+\sin(s)B\bigr).
+\end{equation}
+
+\emph{Step 2: $u$ is differentiable along $\gamma$, with
+$f'(s)=\sum_{i=1}^{n}(\partial_iP)(\gamma(s))\,\gamma'(s)_i$.} Fix
+$s\in\mathbb{R}$. By \noderef{MvPolyFDeriv} applied to $P$ at the point
+$\gamma(s)$, the polynomial function $v\mapsto P(v)$ on the coordinate space
+$\mathbb{R}^n$ is Frechet differentiable at $\gamma(s)$ with derivative
+$w\mapsto\sum_{i=1}^{n}(\partial_iP)(\gamma(s))w_i$. The identity map of
+$\mathbb{R}^n$, read from the Euclidean norm to the coordinate norm, is a
+continuous linear isomorphism, because any two norms on a finite-dimensional
+real vector space are equivalent; composing with it, the chain rule gives that
+$u$ is Frechet differentiable at $\gamma(s)$ with
+\[
+  Du(\gamma(s))(w)=\sum_{i=1}^{n}(\partial_iP)(\gamma(s))\,w_i\qquad(w\in E).
+\]
+Since $\gamma$ is differentiable at $s$ by Step 1, the chain rule applied to
+$f=u\circ\gamma$ gives that $f$ is differentiable at $s$ with
+\begin{equation}\label{eq:gcsd-first}
+  f'(s)=Du(\gamma(s))\bigl(\gamma'(s)\bigr)
+      =\sum_{i=1}^{n}(\partial_iP)(\gamma(s))\,\gamma'(s)_i .
+\end{equation}
+
+\emph{Step 3: each coefficient in \eqref{eq:gcsd-first} is differentiable in
+$s$.} Fix $1\le i\le n$ and $s\in\mathbb{R}$. Repeating Step 2 verbatim with $P$
+replaced by the polynomial $\partial_iP$ --- that is, by \noderef{MvPolyFDeriv}
+applied to $\partial_iP$ at $\gamma(s)$, the same norm-equivalence transfer, and
+the chain rule along $\gamma$ --- the function $s\mapsto(\partial_iP)(\gamma(s))$
+is differentiable with
+\begin{equation}\label{eq:gcsd-coeff}
+  \frac{d}{ds}(\partial_iP)(\gamma(s))
+  =\sum_{j=1}^{n}\bigl(\partial_j\partial_iP\bigr)(\gamma(s))\,\gamma'(s)_j .
+\end{equation}
+
+\emph{Step 4: differentiating \eqref{eq:gcsd-first}.} The right-hand side of
+\eqref{eq:gcsd-first} is a sum of $n$ products, the $i$-th being
+$(\partial_iP)(\gamma(s))\cdot\gamma'(s)_i$. Its first factor is differentiable
+in $s$ by Step 3 and its second factor is differentiable in $s$ by Step 1, with
+derivative $\gamma''(s)_i$. By the product rule and then the sum rule, $f'$ is
+differentiable and
+\begin{align*}
+  f''(s)&=\sum_{i=1}^{n}\left(
+      \Bigl(\frac{d}{ds}(\partial_iP)(\gamma(s))\Bigr)\gamma'(s)_i
+      +(\partial_iP)(\gamma(s))\,\gamma''(s)_i\right)\\
+   &=\sum_{i=1}^{n}\sum_{j=1}^{n}
+       \bigl(\partial_j\partial_iP\bigr)(\gamma(s))\,\gamma'(s)_j\,\gamma'(s)_i
+     +\sum_{i=1}^{n}(\partial_iP)(\gamma(s))\,\gamma''(s)_i ,
+\end{align*}
+using \eqref{eq:gcsd-coeff} and splitting the resulting finite sum into two.
+
+\emph{Step 5: the double sum is the Hessian term.} By \noderef{MvPolyHessian}
+applied at the point $\gamma(s)$ with $v=w=\gamma'(s)$,
+\[
+  D^2u(\gamma(s))\bigl[\gamma'(s),\gamma'(s)\bigr]
+  =\sum_{i=1}^{n}\sum_{j=1}^{n}\gamma'(s)_i\,\gamma'(s)_j\,
+     \bigl(\partial_i\partial_jP\bigr)(\gamma(s)).
+\]
+Interchanging the names of the two summation indices in the double sum of
+Step 4 --- a relabelling of a finite double sum --- turns it into exactly this
+expression.
+
+\emph{Step 6: the single sum is the gradient term.} By
+\noderef{MvPolyGradient} applied at the point $\gamma(s)$, the $i$-th coordinate
+of $\nabla u(\gamma(s))$ is $(\partial_iP)(\gamma(s))$ for every $i$. Hence, by
+the coordinate formula for the Euclidean inner product,
+\[
+  \sum_{i=1}^{n}(\partial_iP)(\gamma(s))\,\gamma''(s)_i
+  =\sum_{i=1}^{n}\bigl(\nabla u(\gamma(s))\bigr)_i\,\gamma''(s)_i
+  =\bigl\langle\nabla u(\gamma(s)),\,\gamma''(s)\bigr\rangle .
+\]
+By \eqref{eq:gcsd-gamma} we have $\gamma''(s)=-\bigl(\cos(s)A+\sin(s)B\bigr)$,
+so, the inner product being linear in its second argument,
+\[
+  \sum_{i=1}^{n}(\partial_iP)(\gamma(s))\,\gamma''(s)_i
+  =-\bigl\langle\nabla u(\gamma(s)),\,\cos(s)A+\sin(s)B\bigr\rangle .
+\]
+
+\emph{Step 7: conclusion.} Substituting Steps 5 and 6 into Step 4 and
+specialising to $s=t$,
+\[
+  f''(t)=D^2u\bigl(\gamma(t)\bigr)\bigl[\gamma'(t),\gamma'(t)\bigr]
+   -\bigl\langle\nabla u(\gamma(t)),\,\cos(t)A+\sin(t)B\bigr\rangle .
+\]
+By Steps 2 and 4 the function $f$ is twice differentiable, so its second
+derivative at $t$ is $f''(t)$; and $\gamma(t)=C+\cos(t)A+\sin(t)B$ together with
+$\gamma'(t)=-\sin(t)A+\cos(t)B$ by \eqref{eq:gcsd-gamma}. This is the assertion.
+\end{proof}

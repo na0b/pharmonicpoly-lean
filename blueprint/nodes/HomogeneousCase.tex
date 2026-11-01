@@ -1,0 +1,144 @@
+\begin{theorem}[The homogeneous case]
+Let $n,m\in\mathbb{N}$ with $n\ge3$ and $m\ge2$, let $p\in\mathbb{R}$ with
+$n-\tfrac1{13}\le p$, and let $P\in\mathbb{R}[X_1,\dots,X_n]$ be nonzero and
+homogeneous of degree $m$. Then
+\[
+  \mathcal{E}^{\mathrm{alg}}_p(P)\ne0 .
+\]
+\end{theorem}
+\begin{proof}
+Suppose, for contradiction, that $\mathcal{E}^{\mathrm{alg}}_p(P)=0$. Put
+$\theta_0=\pi/m$; since $m\ge2$ and $\pi>0$ we have $0<\theta_0\le\pi/2$, so
+$\sin\theta_0>0$.
+
+\emph{Step 1: normalizing.} By \noderef{SphereMaxNormalize}, applied with this
+$n\ge3\ge1$, this $m\ge2\ge1$, this $p$, and $P$ nonzero and homogeneous of
+degree $m$, there are $c_0\in\mathbb{R}$ and $e\in\mathbb{R}^n$ with
+\[
+  c_0\ne0,\quad\lVert e\rVert=1,\quad(c_0P)(e)=1,\quad
+  \lvert(c_0P)(y)\rvert\le1\ \text{for every unit }y,
+\]
+and $\mathcal{E}^{\mathrm{alg}}_p(c_0P)=0\iff\mathcal{E}^{\mathrm{alg}}_p(P)=0$.
+Put $Q=c_0P$. By the assumption and that equivalence,
+\begin{equation}\label{eq:hc-Q}
+  \mathcal{E}^{\mathrm{alg}}_p(Q)=0 .
+\end{equation}
+Moreover $Q$ is homogeneous of degree $m$, since a scalar multiple of a
+polynomial homogeneous of degree $m$ is homogeneous of degree $m$ (background
+proposition on products and scalar multiples of homogeneous polynomials), and
+$Q(e)=1$, $\lvert Q(y)\rvert\le1$ for every unit $y$. Write $u(y)=Q(y)$.
+
+\emph{Step 2: the latitude maximizer.} Define
+$f(v)=Q\bigl(\cos(\theta_0)e+\sin(\theta_0)v\bigr)$ for $v\in\mathbb{R}^n$. The
+map $v\mapsto\cos(\theta_0)e+\sin(\theta_0)v$ is continuous (it is affine), and
+by \noderef{MvPolyContDiff} the polynomial function $y\mapsto Q(y)$ is of class
+$C^k$ for every smoothness exponent $k$, in particular continuous; so $f$ is
+continuous as a composition of continuous maps. By \noderef{LatitudeMaximizer},
+applied with $n\ge3\ge2$, $\lVert e\rVert=1$ and this $f$, there is
+$v_0\in\mathbb{R}^n$ with
+\begin{equation}\label{eq:hc-v0}
+  \lVert v_0\rVert=1,\qquad\langle e,v_0\rangle=0,\qquad
+  f(v)\le f(v_0)\ \text{ for every unit }v\text{ with }\langle e,v\rangle=0 .
+\end{equation}
+Unfolding $f$, the last clause says exactly that $v_0$ maximizes
+$v\mapsto Q(\cos(\theta_0)e+\sin(\theta_0)v)$ over the latitude set.
+
+\emph{Step 3: the scalars $a,b,c,q$.} Put
+$x_0=\cos(\theta_0)e+\sin(\theta_0)v_0$ and
+$G(t)=Q\bigl(\cos(t)e+\sin(t)v_0\bigr)$, and define
+\[
+  a=-G(\theta_0),\qquad b=\frac{G'(\theta_0)}{m},\qquad
+  c=\frac{G''(\theta_0)}{m^2},\qquad q=a^2+b^2 .
+\]
+Since $m>0$ these are well defined, and by construction
+\begin{equation}\label{eq:hc-defs}
+  Q(x_0)=G(\theta_0)=-a,\qquad G'(\theta_0)=m\,b,\qquad G''(\theta_0)=m^2c .
+\end{equation}
+
+\emph{Step 4: the bounds on $a$, and $p\le n$.} By \noderef{DeficitAtMax},
+applied with this $n\ge3$, $m\ge2$, $p$ (with $n-\tfrac1{13}\le p$), the
+polynomial $Q$ homogeneous of degree $m$, the point $e$ with
+$\lVert e\rVert=1$, $Q(e)=1$ and the unit-sphere bound, and
+\eqref{eq:hc-Q}, we get first $p\le(n:\mathbb{R})$, and second, instantiating
+its universally quantified $v$ at $v=v_0$ (legitimate by \eqref{eq:hc-v0}),
+\[
+  -1\le Q(x_0)
+  \qquad\text{and}\qquad
+  \tfrac8{13}<-Q(x_0).
+\]
+By \eqref{eq:hc-defs}, $Q(x_0)=-a$, so these read $-1\le-a$ and
+$\tfrac8{13}<a$, i.e.
+\begin{equation}\label{eq:hc-a}
+  \tfrac8{13}<a\le1 .
+\end{equation}
+In particular $a>0$, so $q=a^2+b^2\ge a^2>0$.
+
+\emph{Step 5: $q\le1$ and $b^2+c^2\le1$.} The function $G$ is a real
+trigonometric polynomial of degree at most $m$: this is
+\noderef{GreatCircleTrigPoly} applied with $A=e$, $B=v_0$ and the degree bound
+$\deg Q\le m$, which holds because $Q$ is homogeneous of degree $m$, so every
+exponent tuple in its support has entry sum $m$ and the total degree, being the
+largest such sum (or $0$ for the zero polynomial), is at most $m$. Next,
+$\lvert G(t)\rvert\le1$ for every $t$: expanding the inner product and using
+$\lVert e\rVert=\lVert v_0\rVert=1$ and $\langle e,v_0\rangle=0$,
+\[
+  \bigl\lVert\cos(t)e+\sin(t)v_0\bigr\rVert^2=\cos^2t+\sin^2t=1 ,
+\]
+so $\cos(t)e+\sin(t)v_0$ is a unit vector and the unit-sphere bound on $Q$ from
+Step 1 applies. Hence the hypotheses of \noderef{BernsteinSzego} hold for this
+$m$ (with $1\le m$ from $m\ge2$) and $T=G$, giving
+\[
+  G(t)^2+\frac{\bigl(G'(t)\bigr)^2}{m^2}\le1\qquad\text{for every }t ,
+\]
+and at $t=\theta_0$, using \eqref{eq:hc-defs},
+\begin{equation}\label{eq:hc-q1}
+  q=a^2+b^2=(-a)^2+\frac{(mb)^2}{m^2}\le1 .
+\end{equation}
+The same hypotheses feed \noderef{BernsteinSzegoSecond}, giving
+\[
+  \frac{\bigl(G'(t)\bigr)^2}{m^2}+\frac{\bigl(G''(t)\bigr)^2}{m^4}\le1
+  \qquad\text{for every }t ,
+\]
+and at $t=\theta_0$, again by \eqref{eq:hc-defs},
+\begin{equation}\label{eq:hc-bc}
+  b^2+c^2=\frac{(mb)^2}{m^2}+\frac{(m^2c)^2}{m^4}\le1 .
+\end{equation}
+(These are the two uses of eq:bernstein the paper makes in its own right; the
+nonnegativity of the deficit came from \noderef{DeficitAtMax} in Step 4, not
+from here.)
+
+\emph{Step 6: the cotangent bound.} Put
+$\kappa=\dfrac{\cos\theta_0}{\sin\theta_0\cdot m}$. By \noderef{CotBound},
+applied with this $m\ge2$,
+\begin{equation}\label{eq:hc-kappa}
+  0\le\kappa\le\frac1\pi .
+\end{equation}
+
+\emph{Step 7: the two sides of eq:polar.} All the hypotheses of
+\noderef{PolarInequality} are now in hand: $n\ge3$, $m\ge2$,
+$n-\tfrac1{13}\le p$, $Q$ homogeneous of degree $m$,
+$\lVert e\rVert=\lVert v_0\rVert=1$ and $\langle e,v_0\rangle=0$ by Step 1 and
+\eqref{eq:hc-v0}, $Q(e)=1$ and the unit-sphere bound by Step 1,
+$\mathcal{E}^{\mathrm{alg}}_p(Q)=0$ by \eqref{eq:hc-Q}, the maximality of $v_0$
+by Step 2, the four defining equations by \eqref{eq:hc-defs}, $q=a^2+b^2$ by
+definition and $0<q$ by Step 4. It therefore gives
+\begin{equation}\label{eq:hc-ge}
+  0\ \le\ c-\Bigl(p-1+\frac{n-p}{m}\Bigr)a+(n-2)\,\kappa\,b
+    +(p-2)\,\frac{b^2(c-a)}{q}.
+\end{equation}
+On the other hand all the hypotheses of \noderef{PolarContradiction} are in
+hand too: $n\ge3$, $m\ge2$, $n-\tfrac1{13}\le p$, $p\le n$ (Step 4),
+$\tfrac8{13}<a\le1$ (\eqref{eq:hc-a}), $q=a^2+b^2$ by definition, $q\le1$
+(\eqref{eq:hc-q1}), $b^2+c^2\le1$ (\eqref{eq:hc-bc}) and
+$0\le\kappa\le1/\pi$ (\eqref{eq:hc-kappa}). It therefore gives
+\begin{equation}\label{eq:hc-lt}
+  c-\Bigl(p-1+\frac{n-p}{m}\Bigr)a+(n-2)\,\kappa\,b
+    +(p-2)\,\frac{b^2(c-a)}{q}\ <\ 0 .
+\end{equation}
+
+\emph{Step 8: conclusion.} The displays \eqref{eq:hc-ge} and \eqref{eq:hc-lt}
+assert that one and the same real number is both $\ge0$ and $<0$, which is
+impossible. This contradiction refutes the assumption
+$\mathcal{E}^{\mathrm{alg}}_p(P)=0$, so
+$\mathcal{E}^{\mathrm{alg}}_p(P)\ne0$.
+\end{proof}

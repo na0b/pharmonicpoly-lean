@@ -16,7 +16,7 @@ theorem TopComponentNeZero {σ R : Type*} [CommSemiring R]
   obtain ⟨d, hd, hdeg⟩ :=
     Finset.exists_mem_eq_sup P.support hsupp (fun s => s.sum fun _ e => e)
   have hbridge : Finsupp.degree d = d.sum (fun _ e => e) := rfl
-  have hcoeff : coeff d (homogeneousComponent P.totalDegree P) = coeff d P := by
+  have hcoeff : (homogeneousComponent P.totalDegree P).coeff d = P.coeff d := by
     rw [MvPolynomial.coeff_homogeneousComponent, if_pos]
     rw [hbridge, MvPolynomial.totalDegree, hdeg]
   intro hzero

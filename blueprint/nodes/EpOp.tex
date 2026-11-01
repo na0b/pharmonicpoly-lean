@@ -1,0 +1,22 @@
+\begin{definition}[The operator $\mathcal{E}_p$]
+Let $n\in\mathbb{N}$, let $p\in\mathbb{R}$ and let $u:\mathbb{R}^n\to\mathbb{R}$,
+where $\mathbb{R}^n$ carries the Euclidean inner product
+$\langle\cdot,\cdot\rangle$. Define $\mathcal{E}_p(u):\mathbb{R}^n\to\mathbb{R}$
+by
+\[
+  \mathcal{E}_p(u)(x)
+  =\lvert Du(x)\rvert^{2}\,\Delta u(x)
+   +(p-2)\,\bigl\langle D^{2}u(x)\,Du(x),\,Du(x)\bigr\rangle .
+\]
+Here $Du(x)\in\mathbb{R}^n$ is the gradient of $u$ at $x$, i.e. the vector
+representing the first derivative of $u$ at $x$ through the inner product;
+$D^2u(x)$ is the second derivative of $u$ at $x$, regarded as a bilinear form on
+$\mathbb{R}^n$, so that
+$\langle D^{2}u(x)\,Du(x),Du(x)\rangle=D^{2}u(x)\bigl[Du(x),Du(x)\bigr]$; and
+$\Delta u(x)=\sum_{i=1}^{n}D^{2}u(x)[e_i,e_i]$ is the Laplacian of $u$ at $x$,
+whose value does not depend on the choice of orthonormal basis $(e_i)_{i=1}^n$
+of $\mathbb{R}^n$. No regularity of $u$ is assumed: at points where $u$ is not
+(twice) differentiable, $Du(x)$ and $D^2u(x)$ are the default values assigned by
+the ambient Fr\'echet calculus. This is the expression $\mathcal{E}_p(u)$ of the
+paper.
+\end{definition}

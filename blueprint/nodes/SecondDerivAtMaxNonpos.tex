@@ -1,0 +1,39 @@
+\begin{lemma}[The second-derivative test at an interior maximum]
+Let $g\colon\mathbb{R}\to\mathbb{R}$ be differentiable, suppose
+$g(\sigma)\le g(0)$ for every $\sigma\in\mathbb{R}$, and suppose the derivative
+$g'$ is itself differentiable at $0$ with $(g')'(0)=L$. Then $L\le 0$.
+\end{lemma}
+\begin{proof}
+Suppose for contradiction that $L>0$.
+
+\emph{Step 1: $g'(0)=0$.} The hypothesis $g(\sigma)\le g(0)$ for all $\sigma$
+says in particular that $g$ has a local maximum at $0$. A differentiable
+function has vanishing derivative at an interior local maximum, so $g'(0)=0$.
+
+\emph{Step 2: $g'$ is positive just to the right of $0$.} That $g'$ has
+derivative $L$ at $0$ means exactly that the difference quotient
+\[
+  \sigma\ \longmapsto\ \frac{g'(\sigma)-g'(0)}{\sigma-0}
+\]
+converges to $L$ as $\sigma\to 0$ with $\sigma\ne 0$. Since $L>0$, a limit
+exceeding the constant $0$ is eventually itself positive: there is $\delta>0$
+such that for every $\sigma$ with $0<\lvert \sigma\rvert<\delta$ the difference
+quotient above is strictly positive. Fix $x$ with $0<x<\delta$. Then
+$\lvert x\rvert=x<\delta$ and $x\ne 0$, so the quotient at $x$ is positive, and by
+Step 1 it equals $g'(x)/x$. Thus $g'(x)/x>0$ with $x>0$, and a quotient of reals
+is positive only if numerator and denominator have the same sign; the case of
+two negatives is impossible because $x>0$. Hence $g'(x)>0$.
+
+\emph{Step 3: $g$ increases on $[0,\delta/2]$.} The interval
+$[0,\delta/2]$ is convex, $g$ is continuous on it (being differentiable), and
+its interior is $(0,\delta/2)$. Every $x$ in that interior satisfies $0<x$ and
+$x<\delta/2<\delta$, so $g'(x)>0$ by Step 2. A function continuous on a convex
+set and with positive derivative throughout the interior is strictly increasing
+on that set, so $g$ is strictly increasing on $[0,\delta/2]$.
+
+\emph{Conclusion.} Both $0$ and $\delta/2$ lie in $[0,\delta/2]$, since
+$\delta>0$, and $0<\delta/2$. Strict monotonicity therefore gives
+$g(0)<g(\delta/2)$. But the maximality hypothesis at $\sigma=\delta/2$ gives
+$g(\delta/2)\le g(0)$, and the two inequalities are contradictory. Hence the
+assumption $L>0$ is untenable and $L\le 0$.
+\end{proof}

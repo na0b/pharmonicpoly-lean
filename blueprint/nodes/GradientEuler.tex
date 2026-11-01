@@ -1,0 +1,64 @@
+\begin{lemma}[Euler's identity for the gradient and the Hessian]
+Let $n,m\in\mathbb{N}$ with $m\ge1$, let $P\in\mathbb{R}[X_1,\dots,X_n]$ be
+homogeneous of degree $m$, let $\mathbb{R}^n$ carry the Euclidean inner product
+and let $u:\mathbb{R}^n\to\mathbb{R}$ be the polynomial function
+$u(y)=P(y_1,\dots,y_n)$. Then for all $x,w\in\mathbb{R}^n$
+\[
+  \bigl\langle\nabla u(x),x\bigr\rangle=m\,u(x)
+  \qquad\text{and}\qquad
+  D^2u(x)[x,w]=(m-1)\bigl\langle\nabla u(x),w\bigr\rangle .
+\]
+\end{lemma}
+\begin{proof}
+By \noderef{MvPolyGradient}, the $i$-th coordinate of $\nabla u(y)$ is
+$(\partial_iP)(y)$ for every $y$ and every $i$; combined with the coordinate
+formula for the Euclidean inner product this gives
+\begin{equation}\label{eq:ge-grad}
+  \bigl\langle\nabla u(y),z\bigr\rangle=\sum_{i=1}^{n}(\partial_iP)(y)\,z_i
+  \qquad(y,z\in\mathbb{R}^n).
+\end{equation}
+
+\emph{Step 1: the first identity.} By the background Euler identity applied to
+$P$, which is homogeneous of degree $m$,
+\[
+  \sum_{i=1}^{n}X_i\,\partial_iP=m\,P
+\]
+as polynomials. Evaluating both sides at $x$ (evaluation is a ring homomorphism,
+so it is additive and multiplicative and fixes the scalar $m$) gives
+\[
+  \sum_{i=1}^{n}x_i\,(\partial_iP)(x)=m\,u(x).
+\]
+By \eqref{eq:ge-grad} with $y=z=x$ the left-hand side is
+$\langle\nabla u(x),x\rangle$, which is the first identity.
+
+\emph{Step 2: Euler's identity for the first derivatives.} Fix $1\le j\le n$. By
+the background proposition on derivatives of homogeneous polynomials,
+$\partial_jP$ is homogeneous of degree $m-1$ (a genuine natural number, since
+$m\ge1$). Applying the background Euler identity to $\partial_jP$,
+\[
+  \sum_{i=1}^{n}X_i\,\partial_i(\partial_jP)=(m-1)\,\partial_jP ,
+\]
+and evaluating at $x$,
+\begin{equation}\label{eq:ge-second}
+  \sum_{i=1}^{n}x_i\,\bigl(\partial_i\partial_jP\bigr)(x)
+  =(m-1)\,(\partial_jP)(x).
+\end{equation}
+
+\emph{Step 3: the second identity.} By \noderef{MvPolyHessian} applied at the
+point $x$ with the two vectors $x$ and $w$,
+\[
+  D^2u(x)[x,w]
+  =\sum_{i=1}^{n}\sum_{j=1}^{n}x_i\,w_j\,\bigl(\partial_i\partial_jP\bigr)(x).
+\]
+Interchanging the order of the two finite sums and factoring $w_j$ out of the
+inner one,
+\[
+  D^2u(x)[x,w]
+  =\sum_{j=1}^{n}w_j\Bigl(\sum_{i=1}^{n}x_i\bigl(\partial_i\partial_jP\bigr)(x)\Bigr)
+  =\sum_{j=1}^{n}w_j\,(m-1)(\partial_jP)(x)
+  =(m-1)\sum_{j=1}^{n}(\partial_jP)(x)\,w_j ,
+\]
+where the middle step is \eqref{eq:ge-second}. By \eqref{eq:ge-grad} with $y=x$
+and $z=w$, the last sum is $\langle\nabla u(x),w\rangle$, which gives the second
+identity.
+\end{proof}

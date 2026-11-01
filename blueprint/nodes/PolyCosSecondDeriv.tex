@@ -1,0 +1,41 @@
+\begin{lemma}[Second derivative of $t\mapsto P(\cos t)$ at the origin]
+Let $P\in\mathbb{R}[X]$ and define $G:\mathbb{R}\to\mathbb{R}$ by
+$G(t)=P(\cos t)$. Then
+\[
+  G''(0)=-P'(1),
+\]
+where $G''$ denotes the second derivative of $G$ and $P'$ the formal derivative
+of $P$.
+\end{lemma}
+\begin{proof}
+Write $\widehat{P}:\mathbb{R}\to\mathbb{R}$, $\widehat{P}(x)=P(x)$, for the
+polynomial function attached to $P$, and likewise $\widehat{P'}$ and
+$\widehat{P''}$ for those of the first and second formal derivatives of $P$. It
+is classical that a polynomial function is infinitely differentiable and that
+its analytic derivative is the polynomial function of its formal derivative:
+$\widehat{P}\,'=\widehat{P'}$ and $\widehat{P'}\,'=\widehat{P''}$. Likewise
+$\cos$ is infinitely differentiable with $\cos'=-\sin$ and $\sin'=\cos$.
+
+\emph{Step 1: the first derivative.} We have $G=\widehat{P}\circ\cos$, a
+composition of differentiable functions, so $G$ is differentiable and the chain
+rule gives, for every $t\in\mathbb{R}$,
+\begin{equation}\label{eq:pcsd-first}
+  G'(t)=\widehat{P'}(\cos t)\cdot(-\sin t)=-\sin t\;P'(\cos t).
+\end{equation}
+
+\emph{Step 2: the second derivative.} The right-hand side of
+\eqref{eq:pcsd-first} is the product of the differentiable function
+$t\mapsto-\sin t$ and the differentiable function
+$t\mapsto\widehat{P'}(\cos t)$, the latter differentiable by the chain rule
+again, with derivative $t\mapsto-\sin t\,P''(\cos t)$. Hence $G'$ is
+differentiable and, by the product rule, for every $t\in\mathbb{R}$,
+\[
+  G''(t)=(-\cos t)\,P'(\cos t)+(-\sin t)\bigl(-\sin t\,P''(\cos t)\bigr)
+        =-\cos t\;P'(\cos t)+\sin^2 t\;P''(\cos t).
+\]
+
+\emph{Step 3: evaluation at $t=0$.} Since $\cos 0=1$ and $\sin 0=0$,
+\[
+  G''(0)=-1\cdot P'(1)+0\cdot P''(1)=-P'(1).
+\]
+\end{proof}

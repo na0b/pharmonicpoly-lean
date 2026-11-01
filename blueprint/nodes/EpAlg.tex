@@ -1,0 +1,18 @@
+\begin{definition}[The algebraic form of $\mathcal{E}_p$]
+Let $n\in\mathbb{N}$, let $p\in\mathbb{R}$ and let
+$P\in\mathbb{R}[X_1,\dots,X_n]$. Define the polynomial
+$\mathcal{E}^{\mathrm{alg}}_p(P)\in\mathbb{R}[X_1,\dots,X_n]$ by
+\[
+  \mathcal{E}^{\mathrm{alg}}_p(P)
+  =\Bigl(\sum_{i=1}^{n}(\partial_iP)^2\Bigr)
+    \Bigl(\sum_{i=1}^{n}\partial_i\partial_iP\Bigr)
+   +(p-2)\sum_{i=1}^{n}\sum_{j=1}^{n}
+      \bigl(\partial_i\partial_jP\bigr)\bigl(\partial_iP\bigr)\bigl(\partial_jP\bigr),
+\]
+where $\partial_i$ is formal partial differentiation with respect to $X_i$ and
+the scalar $p-2$ is understood as the corresponding constant polynomial. This is
+the expression $\mathcal{E}_p$ of the paper with $\lvert Du\rvert^2$, $\Delta u$
+and $\langle D^2u\,Du,Du\rangle$ replaced by their formal counterparts
+$\sum_i(\partial_iP)^2$, $\sum_i\partial_i\partial_iP$ and
+$\sum_{i,j}(\partial_i\partial_jP)(\partial_iP)(\partial_jP)$.
+\end{definition}

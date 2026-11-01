@@ -1,0 +1,60 @@
+\begin{lemma}[$\mathcal{E}^{\mathrm{alg}}_p$ is cubic in its argument]
+Let $n\in\mathbb{N}$ and $p,c\in\mathbb{R}$, and let
+$P\in\mathbb{R}[X_1,\dots,X_n]$. Then
+\[
+  \mathcal{E}^{\mathrm{alg}}_p(cP)=c^3\,\mathcal{E}^{\mathrm{alg}}_p(P).
+\]
+\end{lemma}
+\begin{proof}
+Since $\partial_i$ is $\mathbb{R}$-linear (background proposition on additivity
+of formal partial derivatives), for every $i$ and $j$
+\begin{equation}\label{eq:eas-lin}
+  \partial_i(cP)=c\,\partial_iP,
+  \qquad
+  \partial_i\partial_j(cP)=\partial_i\bigl(c\,\partial_jP\bigr)
+   =c\,\partial_i\partial_jP .
+\end{equation}
+
+\emph{Step 1: the first factor scales by $c^2$.} By \eqref{eq:eas-lin}, for each
+$i$ we have $(\partial_i(cP))^2=(c\,\partial_iP)^2=c^2(\partial_iP)^2$. Summing
+over $i$ and pulling the constant $c^2$ out of the finite sum,
+\[
+  \sum_{i=1}^{n}\bigl(\partial_i(cP)\bigr)^2
+  =c^2\sum_{i=1}^{n}(\partial_iP)^2 .
+\]
+
+\emph{Step 2: the second factor scales by $c$.} By \eqref{eq:eas-lin},
+$\partial_i\partial_i(cP)=c\,\partial_i\partial_iP$ for each $i$; summing over
+$i$ and pulling $c$ out,
+\[
+  \sum_{i=1}^{n}\partial_i\partial_i(cP)
+  =c\sum_{i=1}^{n}\partial_i\partial_iP .
+\]
+
+\emph{Step 3: the second block scales by $c^3$.} Fix $i,j$. By
+\eqref{eq:eas-lin} the three factors scale by $c$ each, so
+\[
+  \bigl(\partial_i\partial_j(cP)\bigr)\bigl(\partial_i(cP)\bigr)\bigl(\partial_j(cP)\bigr)
+  =\bigl(c\,\partial_i\partial_jP\bigr)\bigl(c\,\partial_iP\bigr)\bigl(c\,\partial_jP\bigr)
+  =c^3\bigl(\partial_i\partial_jP\bigr)\bigl(\partial_iP\bigr)\bigl(\partial_jP\bigr).
+\]
+Summing over $j$ and then over $i$ and pulling the constant $c^3$ out of both
+finite sums,
+\[
+  \sum_{i=1}^{n}\sum_{j=1}^{n}
+    \bigl(\partial_i\partial_j(cP)\bigr)\bigl(\partial_i(cP)\bigr)\bigl(\partial_j(cP)\bigr)
+  =c^3\sum_{i=1}^{n}\sum_{j=1}^{n}
+    \bigl(\partial_i\partial_jP\bigr)\bigl(\partial_iP\bigr)\bigl(\partial_jP\bigr).
+\]
+
+\emph{Step 4: conclusion.} Substituting Steps 1--3 into the definition in
+\noderef{EpAlg} applied to $cP$,
+\[
+  \mathcal{E}^{\mathrm{alg}}_p(cP)
+  =\Bigl(c^2\sum_i(\partial_iP)^2\Bigr)\Bigl(c\sum_i\partial_i\partial_iP\Bigr)
+   +(p-2)\,c^3\sum_i\sum_j(\partial_i\partial_jP)(\partial_iP)(\partial_jP).
+\]
+In the first summand $c^2\cdot c=c^3$, so both summands carry the factor $c^3$;
+factoring it out gives exactly $c^3\,\mathcal{E}^{\mathrm{alg}}_p(P)$, again by
+the definition in \noderef{EpAlg}.
+\end{proof}
