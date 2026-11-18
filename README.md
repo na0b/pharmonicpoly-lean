@@ -3,7 +3,7 @@
 This repository contains a Lean 4 formalization, built on [Mathlib](https://github.com/leanprover-community/mathlib4), of Theorem 1.1 and Lemma 2.1 of
 
 > Juan J. Manfredi and Aelson Sobral,
-> *p-harmonic homogeneous polynomials*, 2026.
+> *p-harmonic homogeneous polynomials*, https://arxiv.org/abs/2611.23136, 2026.
 
 Both results are stated and proved, together with everything their proofs use. The development contains no `sorry` and no axioms: every result depends only on the three standard axioms of Lean (`propext`, `Classical.choice`, `Quot.sound`). The formalization follows the paper's argument; no deviation from it was needed. The Bernstein–Szegő inequality, which the paper cites and Mathlib does not contain, is proved here.
 
